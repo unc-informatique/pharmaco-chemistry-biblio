@@ -1,6 +1,7 @@
 [BASIC]
-good-names=df
+# good-names=df
 good-names-rgxs=^[_a-z][_a-z0-9]?$
+
 
 [TYPECHECK]
 ignored-modules=Levenshtein

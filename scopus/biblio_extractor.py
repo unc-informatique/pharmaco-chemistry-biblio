@@ -545,7 +545,7 @@ async def consumer(
 
     logger.info("consumer(%s) ended, done %i jobs, retried %i", consumer_id, jobs_done, jobs_retried)
 
-    # note that results_df contains values: it's passed by reference
+    # NOTE: results_df contains values: it's passed by reference
     return jobs_done, jobs_retried
 
 
@@ -662,11 +662,11 @@ async def spawner(
 def launcher(
     src_df: pd.DataFrame,
     *,
-    task_factory=SEARCH_MODES[DEFAULT_SEARCH_MODE],
+    task_factory: SearchAPI = SEARCH_MODES[DEFAULT_SEARCH_MODE],
     # with_margin=False,
-    parallel_workers=DEFAULT_PARALLEL_WORKERS,
-    worker_delay=DEFAULT_WORKER_DELAY,
-    samples=None,
+    parallel_workers: int = DEFAULT_PARALLEL_WORKERS,
+    worker_delay: float = DEFAULT_WORKER_DELAY,
+    samples: int = None,
 ) -> pd.DataFrame:
     """Launch the batch of downloads: a simple (non async) wrapper around spawner
 
@@ -674,13 +674,13 @@ def launcher(
     ----------
     src_df : pd.DataFrame
         forwarded to spawner
-    task_factory : _type_, optional
+    task_factory : SearchAPI, optional
         forwarded to spawner, by default SEARCH_MODES[DEFAULT_SEARCH_MODE]
-    parallel_workers : _type_, optional
+    parallel_workers : int, optional
         forwarded to spawner, by default DEFAULT_PARALLEL_WORKERS
-    worker_delay : _type_, optional
+    worker_delay : float, optional
         forwarded to spawner, by default DEFAULT_WORKER_DELAY
-    samples : _type_, optional
+    samples : int, optional
         forwarded to spawner, by default None
 
     Returns

@@ -77,7 +77,7 @@ class Query:
     kind: tuple[Optional[bool], Optional[bool]]
 
     def short(self) -> str:
-        """shor representation of queries with first two fields omitted"""
+        """short representation of queries with first two fields omitted"""
         return f"+{self.pos_kws}, -{self.neg_kws}, k={self.kind}"
 
 
@@ -97,7 +97,7 @@ def load_data(filename: str | Path) -> pd.DataFrame:
     """loads a CSV dataset as a dataframe with two levels keywords"""
     # https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html
     # row/col dimension 0 is the class, row/col dimension 1 is the keyword
-    df: pd.DataFrame = pd.read_csv(filename, index_col=[0, 1], header=[0, 1]).fillna(0)
+    dataset: pd.DataFrame = pd.read_csv(filename, index_col=[0, 1], header=[0, 1]).fillna(0)
     logger.debug("load_data(%s): input dataset read", filename)
 
     def normalize_names(expr: str) -> str:
@@ -105,20 +105,26 @@ def load_data(filename: str | Path) -> pd.DataFrame:
         return ALT_SEP.join(string.strip().lower() for string in expr.split(ALT_SEP))
 
     # normalize strings
-    df.index = pd.MultiIndex.from_tuples([tuple(normalize_names(x) for x in t) for t in df.index])
-    df.columns = pd.MultiIndex.from_tuples([tuple(normalize_names(x) for x in t) for t in df.columns])
+    dataset.index = pd.MultiIndex.from_tuples([tuple(normalize_names(x) for x in t) for t in dataset.index])
+    dataset.columns = pd.MultiIndex.from_tuples([tuple(normalize_names(x) for x in t) for t in dataset.columns])
 
     logger.info(
-        "load_data(%s): %i compounds (with %i classes)", filename, len(df.index.levels[1]), len(df.index.levels[0])
+        "load_data(%s): %i compounds (with %i classes)",
+        filename,
+        len(dataset.index.levels[1]),
+        len(dataset.index.levels[0]),
     )
     logger.info(
-        "load_data(%s): %i activities (with %i classes)", filename, len(df.columns.levels[1]), len(df.columns.levels[0])
+        "load_data(%s): %i activities (with %i classes)",
+        filename,
+        len(dataset.columns.levels[1]),
+        len(dataset.columns.levels[0]),
     )
 
-    return df
+    return dataset
 
 
-def extend_df(df: pd.DataFrame) -> pd.DataFrame:
+def extend_df(src_df: pd.DataFrame) -> pd.DataFrame:
     """Add extra indexes as last level of rows and columns to store the 2x2 confusion matrix
 
     Index and columns are multi-level indexes. We duplicate each key to have
@@ -130,7 +136,7 @@ def extend_df(df: pd.DataFrame) -> pd.DataFrame:
     OBSOLETE : if margin are added, a  4 x (KW1 + 1) x (KW2 + 1) is constructed
     """
     logger.debug("extend_df()")
-    df2 = pd.DataFrame().reindex_like(df)
+    out_df = pd.DataFrame().reindex_like(src_df)
 
     # if with_margin:
 
@@ -143,14 +149,14 @@ def extend_df(df: pd.DataFrame) -> pd.DataFrame:
     # df2[(CLASS_SYMB, MARGIN_SYMB)] = None
     # df2[(CLASS_SYMB, MARGIN_SYMB)] = df2[(CLASS_SYMB, MARGIN_SYMB)].astype(int)
 
-    extended_rows = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in df2.index for s in SELECTORS)
-    extended_cols = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in df2.columns for s in SELECTORS)
+    extended_rows = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in out_df.index for s in SELECTORS)
+    extended_cols = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in out_df.columns for s in SELECTORS)
 
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html
     return pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int32")
 
 
-def fill_missing_counts(src_df: pd.DataFrame) -> None:
+def finalize_results(src_df: pd.DataFrame) -> None:
     """Takes a dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
         In other words, it fills the blanks in the following dataframe
@@ -176,51 +182,63 @@ def fill_missing_counts(src_df: pd.DataFrame) -> None:
 
     Parameters
     ----------
-    df : pd.DataFrame
-        the dataframe to be filled, passed by reference
+    src_df : pd.DataFrame
+        the source dataframe to be filled, copied to avoid modifications
+
+    Returns
+    -------
+    pd.DataFrame
+        the dataframe filled as described above
     """
 
     # a copy
-    df = src_df.copy().astype("float32")
+    dataset = src_df.copy().astype("float32")
 
-    # sort once and for all
-    df.sort_index(axis=1, inplace=True, ascending=SORT_ORDER)
-    df.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)
+    # sort once and for all, for performance, see
+    # https://stackoverflow.com/questions/54307300/what-causes-indexing-past-lexsort-depth-warning-in-pandas
+    # https://pandas.pydata.org/docs/reference/api/pandas.Index.is_monotonic_increasing.html
+    # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_index.html
+    dataset.sort_index(axis=1, inplace=True, ascending=SORT_ORDER)
+    dataset.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)
     # margin identifier
     margin_idx = (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
     # the gran total: a.k.a., the number of individuals
-    grand_total = df.loc[margin_idx, margin_idx]
+    grand_total = dataset.loc[margin_idx, margin_idx]
     logger.info("fill_missing_counts() N = %i", grand_total)
-    logger.debug("fill_missing_counts() df =\n%s", df)
+    logger.debug("fill_missing_counts() df =\n%s", dataset)
 
     # four filters that drops margin sums and keep (w/ or w/o) X (rows or cols)
-    w_rows_filter = [(c, a, k) for (c, a, k) in df.index if k == SELECTORS[True] and c != CLASS_SYMB]
-    w_cols_filter = [(c, a, k) for (c, a, k) in df.columns if k == SELECTORS[True] and c != CLASS_SYMB]
-    wo_rows_filter = [(c, a, k) for (c, a, k) in df.index if k == SELECTORS[False] and c != CLASS_SYMB]
-    wo_cols_filter = [(c, a, k) for (c, a, k) in df.columns if k == SELECTORS[False] and c != CLASS_SYMB]
+    w_rows_filter = [(c, a, k) for (c, a, k) in dataset.index if k == SELECTORS[True] and c != CLASS_SYMB]
+    w_cols_filter = [(c, a, k) for (c, a, k) in dataset.columns if k == SELECTORS[True] and c != CLASS_SYMB]
+    wo_rows_filter = [(c, a, k) for (c, a, k) in dataset.index if k == SELECTORS[False] and c != CLASS_SYMB]
+    wo_cols_filter = [(c, a, k) for (c, a, k) in dataset.columns if k == SELECTORS[False] and c != CLASS_SYMB]
 
     # update missing cols margin : w/o  = N - w/
-    df.loc[margin_idx, wo_cols_filter] = grand_total - df.loc[margin_idx, w_cols_filter].values
+    dataset.loc[margin_idx, wo_cols_filter] = grand_total - dataset.loc[margin_idx, w_cols_filter].values
     # update missing rows margin : w/o  = N - w/
-    df.T.loc[margin_idx, wo_rows_filter] = grand_total - df.T.loc[margin_idx, w_rows_filter].values
+    dataset.T.loc[margin_idx, wo_rows_filter] = grand_total - dataset.T.loc[margin_idx, w_rows_filter].values
 
     logger.debug("fill_missing_counts(): filled row margins")  # dataset[margin_idx]
     logger.debug("fill_missing_counts(): filled col margins")  # dataset.T[margin_idx]
 
     # the (w/, w/) base cells from Scopus
-    base_values = df.loc[w_rows_filter, w_cols_filter].values
+    base_values = dataset.loc[w_rows_filter, w_cols_filter].values
     logger.debug("fill_missing_counts() base_values=\n%s", base_values)
 
     # update (w/o, w/) cells = col_margins - (w/, w/)
-    df.loc[wo_rows_filter, w_cols_filter] = df.loc[margin_idx, w_cols_filter].values - base_values
+    dataset.loc[wo_rows_filter, w_cols_filter] = dataset.loc[margin_idx, w_cols_filter].values - base_values
     # update (w/, w/o) cells = row_margins - (w/, w/)
-    df.loc[w_rows_filter, wo_cols_filter] = df.T.loc[margin_idx, w_rows_filter].values.reshape(-1, 1) - base_values
+    dataset.loc[w_rows_filter, wo_cols_filter] = (
+        dataset.T.loc[margin_idx, w_rows_filter].values.reshape(-1, 1) - base_values
+    )
     # update (w/, w/) cells = N - (w/, w/) - (w/o, w/) - (w/, w/o)
-    df.loc[wo_rows_filter, wo_cols_filter] = grand_total - (
-        df.loc[wo_rows_filter, w_cols_filter].values + df.loc[w_rows_filter, wo_cols_filter].values + base_values
+    dataset.loc[wo_rows_filter, wo_cols_filter] = grand_total - (
+        dataset.loc[wo_rows_filter, w_cols_filter].values
+        + dataset.loc[w_rows_filter, wo_cols_filter].values
+        + base_values
     )
 
-    return df.astype("int32")
+    return dataset.astype("int32")
 
 
 # %%
@@ -361,6 +379,7 @@ def generate_all_queries(data: pd.DataFrame) -> Iterator[Query]:
     We extract J rows (coumpounds) and I columns (activities) from data.
     The function generates I*J + I + J + 1 = (I + 1) * (J + 1) queries
 
+    Commented code is legacy, when about 4*(I+1)*(J+1) queries where sent
 
     Parameters
     ----------
@@ -377,11 +396,14 @@ def generate_all_queries(data: pd.DataFrame) -> Iterator[Query]:
 
     compounds = data.index.to_list()
     activities = data.columns.to_list()
-    I = len(compounds)
-    J = len(activities)
+    nb_compounds = len(compounds)
+    nb_activities = len(activities)
 
     logger.info(
-        "generate_all_queries will yields I*J + I + J + 1 = %i queries (I = %i, J = %i)", I * J + I + J + 1, I, J
+        "generate_all_queries will yields I*J + I + J + 1 = %i queries (I = %i, J = %i)",
+        nb_compounds * nb_activities + nb_compounds + nb_activities + 1,
+        nb_compounds,
+        nb_activities,
     )
 
     # the main content : |KW1| x |KW2| queries
@@ -682,38 +704,10 @@ def launcher(
     total_time = time.perf_counter() - launch_start_time
     logger.info("launcher() all jobs done in %fs", total_time)
 
-    # order the index for performance, see
-    # https://stackoverflow.com/questions/54307300/what-causes-indexing-past-lexsort-depth-warning-in-pandas
-    # https://pandas.pydata.org/docs/reference/api/pandas.Index.is_monotonic_increasing.html
-    # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_index.html
-
-    return fill_missing_counts(results_df)
+    return finalize_results(results_df)
 
 
 # %%
-# for tests only
+
 if __name__ == "__main__":
-    logger.setLevel(logging.INFO)
-    logger.info("__main__ Scopus API key %s", API_KEY)
-
-    dataset = load_data(SAMPLE_DATA)
-    # all_compounds = list(dataset.index.get_level_values(1))
-    # all_activities = list(dataset.columns.get_level_values(1))
-    all_compounds = list(dataset.index)
-    all_activities = list(dataset.columns)
-    # logger.debug("__main__ all compounds %s", all_compounds)
-    # logger.debug("__main__ all activities %s", all_activities)
-    # 383330 / 243964
-    # db = gen_db(all_compounds, all_activities, 243964 // 10, 383330 / 243964)
-    # db.loc[("alkaloid", "acridine"), ("pharmaco", "cytotoxicity")]
-
-    # NB_KW1 = 2
-    # NB_KW2 = 2
-
-    # db = gen_db([("C", f"c_{i+1}") for i in range(NB_KW1)], [("A", f"a_{j+1}") for j in range(NB_KW2)], 10, 2.0)
-    # print(db)
-    # db.groupby(by=["compound", "activity"]).count()
-    # df = pd.DataFrame(db)
-    # results = launcher(dataset)
-    # print(results)
-    # print(results.info())
+    logger.error("Please use biblio_main.py to launch extraction")

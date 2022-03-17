@@ -17,7 +17,7 @@ import pandas as pd
 from biblio_extractor import SELECTORS, Keyword, MARGIN_SYMB, CLASS_SYMB, finalize_results
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(f"CHEMOTAXO.{__name__}")
 
@@ -137,7 +137,9 @@ def gen_independent_binomial_keywords(
 
 SAMPLES_KW1 = [("humanities", "linguistics"), ("humanities", "sociology")]
 SAMPLES_KW2 = [("cs", "databases"), ("cs", "web")]
+# observed ratio
+MAGIC = 1.571256414880884
 
 if __name__ == "__main__":
-    df = gen_independent_binomial_keywords(SAMPLES_KW1, SAMPLES_KW2, 1000, 2)
+    df = gen_independent_binomial_keywords(SAMPLES_KW1, SAMPLES_KW2, 1000, MAGIC)
     print(df)

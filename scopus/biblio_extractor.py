@@ -31,7 +31,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 if __name__ == "__main__":
-    logging.basicConfig()
+    logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(f"CHEMOTAXO.{__name__}")
 
@@ -51,6 +51,8 @@ ALT_SEP = "/"
 SELECTORS = ["w/o", "w/"]  # ordered as bools
 MARGIN_SYMB = "Σ"
 CLASS_SYMB = "*"
+# sort multilevel indexes usging : ascending/ascending/descending
+SORT_ORDER = [True, True, False]
 
 # Default parameters
 DEFAULT_PARALLEL_WORKERS = 8  # number of parallel jobs
@@ -145,8 +147,83 @@ def extend_df(df: pd.DataFrame) -> pd.DataFrame:
     extended_cols = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in df2.columns for s in SELECTORS)
 
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html
-    extended_df = pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int64")
-    return extended_df
+    return pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int32")
+
+
+def fill_missing_counts(src_df: pd.DataFrame) -> None:
+    """Takes a dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
+
+        In other words, it fills the blanks in the following dataframe
+
+                  Σ       w/o      w/     w/o      w/
+        Σ    3436.0       C1?  2325.0     C2?  1237.0
+        w/o     R1?        Z?      X?      Z?      X?
+        w/   3146.0        Y?  2161.0      Y?  1098.0
+        w/o     R2?        Z?      X?      Z?      X?
+        w/    294.0        Y?   166.0      Y?   141.0
+
+        First it fills the marginal sums R1 and R2, then C1 and C2.
+        Then, it fills X cells, then Y cells and Z cells.
+        On the example, in the end you have :
+
+                 Σ        w/o      w/     w/o      w/
+        Σ    3436.0    1111.0  2325.0  2199.0  1237.0
+        w/o   290.0     126.0   164.0   151.0   139.0
+        w/   3146.0     985.0  2161.0  2048.0  1098.0
+        w/o  3142.0     983.0  2159.0  2046.0  1096.0
+        w/    294.0     128.0   166.0   153.0   141.0
+
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        the dataframe to be filled, passed by reference
+    """
+
+    # a copy
+    df = src_df.copy().astype("float32")
+
+    # sort once and for all
+    df.sort_index(axis=1, inplace=True, ascending=SORT_ORDER)
+    df.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)
+    # margin identifier
+    margin_idx = (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
+    # the gran total: a.k.a., the number of individuals
+    grand_total = df.loc[margin_idx, margin_idx]
+    logger.info("fill_missing_counts() N = %i", grand_total)
+    logger.debug("fill_missing_counts() df =\n%s", df)
+
+    # four filters that drops margin sums and keep (w/ or w/o) X (rows or cols)
+    w_rows_filter = [(c, a, k) for (c, a, k) in df.index if k == SELECTORS[True] and c != CLASS_SYMB]
+    w_cols_filter = [(c, a, k) for (c, a, k) in df.columns if k == SELECTORS[True] and c != CLASS_SYMB]
+    wo_rows_filter = [(c, a, k) for (c, a, k) in df.index if k == SELECTORS[False] and c != CLASS_SYMB]
+    wo_cols_filter = [(c, a, k) for (c, a, k) in df.columns if k == SELECTORS[False] and c != CLASS_SYMB]
+
+    # update missing cols margin : w/o  = N - w/
+    df.loc[margin_idx, wo_cols_filter] = grand_total - df.loc[margin_idx, w_cols_filter].values
+    # update missing rows margin : w/o  = N - w/
+    df.T.loc[margin_idx, wo_rows_filter] = grand_total - df.T.loc[margin_idx, w_rows_filter].values
+
+    logger.debug("fill_missing_counts(): filled row margins")  # dataset[margin_idx]
+    logger.debug("fill_missing_counts(): filled col margins")  # dataset.T[margin_idx]
+
+    # the (w/, w/) base cells from Scopus
+    base_values = df.loc[w_rows_filter, w_cols_filter].values
+    logger.debug("fill_missing_counts() base_values=\n%s", base_values)
+
+    # update (w/o, w/) cells = col_margins - (w/, w/)
+    df.loc[wo_rows_filter, w_cols_filter] = df.loc[margin_idx, w_cols_filter].values - base_values
+    # update (w/, w/o) cells = row_margins - (w/, w/)
+    df.loc[w_rows_filter, wo_cols_filter] = df.T.loc[margin_idx, w_rows_filter].values.reshape(-1, 1) - base_values
+    # update (w/, w/) cells = N - (w/, w/) - (w/o, w/) - (w/, w/o)
+    df.loc[wo_rows_filter, wo_cols_filter] = grand_total - (
+        df.loc[wo_rows_filter, w_cols_filter].values + df.loc[w_rows_filter, wo_cols_filter].values + base_values
+    )
+
+    return df.astype("int32")
+
+
+# %%
 
 
 def build_clause(query: Query) -> str:
@@ -278,39 +355,63 @@ SEARCH_MODES = {
 DEFAULT_SEARCH_MODE = "fake"
 
 
-def generate_all_queries(data: pd.DataFrame, *, with_margin: bool = False) -> Iterator[Query]:
-    """Generate all queries from a dataset."""
+def generate_all_queries(data: pd.DataFrame) -> Iterator[Query]:
+    """Generate all queries from a dataset.
+
+    We extract J rows (coumpounds) and I columns (activities) from data.
+    The function generates I*J + I + J + 1 = (I + 1) * (J + 1) queries
+
+
+    Parameters
+    ----------
+    data : pd.DataFrame
+        the input data frame, with all keywords
+
+    Yields
+    ------
+    Iterator[Query]
+        yields queries, one for each (w/, w/) cells + two margins (rows and cols) + grand total
+    """
     # compounds = list(data.index.get_level_values(1))
     # activities = list(data.columns.get_level_values(1))
 
     compounds = data.index.to_list()
     activities = data.columns.to_list()
+    I = len(compounds)
+    J = len(activities)
 
-    # the main content : 4 x |KW1| x |KW2| cells
+    logger.info(
+        "generate_all_queries will yields I*J + I + J + 1 = %i queries (I = %i, J = %i)", I * J + I + J + 1, I, J
+    )
+
+    # the main content : |KW1| x |KW2| queries
     for compound in compounds:
         for activity in activities:
             # both the compound and the activity
             yield Query([], [], [compound, activity], [], (True, True))
-            # the activity but not this compound (but at least one another in the domain)
-            yield Query(compounds, [], [activity], [compound], (False, True))
-            # the compound but not this activity (but at least one another in the domain)
-            yield Query([], activities, [compound], [activity], (True, False))
-            # neither the compound nor the activity (but stil in the domain)
-            yield Query(compounds, activities, [], [compound, activity], (False, False))
 
-    # adds extra rows/columns for marginal sums (an extra row and an extra column for total)
-    # this should add 4 x (|KW1| + |KW2| + 1) but we exclude 2 + 2 + 3 degenerated combinations which always are 0
-    if with_margin:
-        # rows margin sums, -2 always 0
-        for compound in compounds:
-            yield Query([], activities, [compound], [], (True, None))
-            yield Query(compounds, activities, [], [compound], (False, None))
-        # cols margin sums, -2 always 0
-        for activity in activities:
-            yield Query(compounds, [], [activity], [], (None, True))
-            yield Query(compounds, activities, [], [activity], (None, False))
-        # total margin sum, -3 always 0
-        yield Query(compounds, activities, [], [], (None, None))
+            # the following are commented because they can can be deduces from margins.
+
+            # the activity but not this compound (but at least one another in the domain)
+            # yield Query(compounds, [], [activity], [compound], (False, True))
+            # the compound but not this activity (but at least one another in the domain)
+            # yield Query([], activities, [compound], [activity], (True, False))
+            # neither the compound nor the activity (but stil in the domain)
+            # yield Query(compounds, activities, [], [compound, activity], (False, False))
+
+    # rows/columns marginal sums (an extra row and an extra column for total)
+    # this generates (|KW1| + |KW2| + 1) queries
+    # if with_margin:
+    # rows margin sums
+    for compound in compounds:
+        yield Query([], activities, [compound], [], (True, None))
+        # yield Query(compounds, activities, [], [compound], (False, None))
+    # cols margin sums
+    for activity in activities:
+        yield Query(compounds, [], [activity], [], (None, True))
+        # yield Query(compounds, activities, [], [activity], (None, False))
+    # total margin sum
+    yield Query(compounds, activities, [], [], (None, None))
 
 
 async def consumer(
@@ -321,9 +422,35 @@ async def consumer(
     *,
     worker_delay: float = 1.0,
     consumer_id: Optional[Any] = None,
-):
+) -> tuple[int, int]:
     # pylint: disable=too-many-branches
-    """A (parallel) consumer that send a query to scopus and then add result to a dataframe"""
+    """A (parallel) consumer that send a query to scopus and then add result to a dataframe.
+
+    Parameters
+    ----------
+    session : ClientSession
+        the "wget" client session to send http queries to, passed to the task_factory function
+    queue : asyncio.Queue
+        where to read jobs from. Put back queries that return an HTTP error (e.g., 429 or 500)
+    results_df : pd.DataFrame
+        DataFrame where to store results, passed by reference
+    task_factory : SearchAPI
+        the function that generate HTTP queries
+    worker_delay : float, optional
+        delay BEFORE a query, passed to the task_factory function, by default 1.0
+    consumer_id : Optional[Any], optional
+        an identifier for the task (informative), by default None
+
+    Returns
+    -------
+    tuple[int, int]
+        the total number of queries handled and the number of queries that failed (put back into the queue)
+
+    Raises
+    ------
+    cancel
+        when the task is stopped by the task manager
+    """
     jobs_done = 0
     jobs_retried = 0
     try:
@@ -336,26 +463,37 @@ async def consumer(
             pos_kws = query.pos_kws
             neg_kws = query.neg_kws
             kind = query.kind
+            # ventilate each result into the right cell of results_df
+            # (w/, w/) cell
             if kind == (True, True):
                 results_df.loc[(*pos_kws[0], SELECTORS[True]), (*pos_kws[1], SELECTORS[True])] = nb_results
+            # (w/, w/o) cell
             elif kind == (True, False):
                 results_df.loc[(*pos_kws[0], SELECTORS[True]), (*neg_kws[0], SELECTORS[False])] = nb_results
+            # (w/o, w/) cell
             elif kind == (False, True):
                 results_df.loc[(*neg_kws[0], SELECTORS[False]), (*pos_kws[0], SELECTORS[True])] = nb_results
+            # (w/o, w/o) cell
             elif kind == (False, False):
                 results_df.loc[(*neg_kws[0], SELECTORS[False]), (*neg_kws[1], SELECTORS[False])] = nb_results
+            # (w/, Σ) cell (w/ row margin)
             elif kind == (True, None):
                 results_df.loc[(*pos_kws[0], SELECTORS[True]), (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])] = nb_results
+            # (w/o, Σ) cell (w/o row margin)
             elif kind == (False, None):
                 results_df.loc[(*neg_kws[0], SELECTORS[False]), (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])] = nb_results
+            # (Σ, w/) cell (w/ col margin)
             elif kind == (None, True):
                 results_df.loc[(CLASS_SYMB, MARGIN_SYMB, SELECTORS[True]), (*pos_kws[0], SELECTORS[True])] = nb_results
+            # (Σ, w/o) cell (w/o col margin)
             elif kind == (None, False):
                 results_df.loc[(CLASS_SYMB, MARGIN_SYMB, SELECTORS[True]), (*neg_kws[0], SELECTORS[False])] = nb_results
+            # (Σ, Σ) cell (grand total)
             elif kind == (None, None):
                 results_df.loc[
                     (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True]), (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
                 ] = nb_results
+            # that should not happen if all queries are generated properly
             else:
                 # raise ValueError(f"{len(pos_kw) = }, {len(neg_kw) = } for {kind = } should not arise")
                 logger.error(
@@ -385,6 +523,7 @@ async def consumer(
 
     logger.info("consumer(%s) ended, done %i jobs, retried %i", consumer_id, jobs_done, jobs_retried)
 
+    # note that results_df contains values: it's passed by reference
     return jobs_done, jobs_retried
 
 
@@ -402,21 +541,45 @@ async def observer(queue: asyncio.Queue, frequency: float = 0.5):
 
 
 async def spawner(
-    df: pd.DataFrame,
+    src_df: pd.DataFrame,
     *,
     task_factory: SearchAPI,
-    with_margin: bool,
+    # with_margin: bool,
     parallel_workers: int,
     worker_delay: float,
     samples: Optional[int],
-):
+) -> pd.DataFrame:
     # pylint: disable=too-many-locals
-    """Create tasks in a queue which is emptied in parallele ensuring at most MAX_REQ_BY_SEC requests per second"""
+    """Adds tasks into a queue which is emptied in parallel ensuring at most MAX_REQ_BY_SEC requests per second
+
+    Parameters
+    ----------
+    src_df : pd.DataFrame
+        the source dataframe: only rows/cols indexes are used
+    task_factory : SearchAPI
+        the function that generate HTTP queries, to be passed to consumers
+    parallel_workers : int
+        the number of parallel consumer that will take jobs from the queue
+    worker_delay : float
+        delay BEFORE a query, passed to the consumer function
+    samples : Optional[int]
+        if not None, samples queries (only for tests)
+
+    Returns
+    -------
+    pd.DataFrame
+        the results DataFrame, filled by consumer
+
+    Raises
+    ------
+    RuntimeError
+        When the event loop gets crazy
+    """
     jobs_queue: asyncio.Queue = asyncio.Queue()
     logger.info("spawner(): task_factory=%s, parallel_workers=%i", task_factory.__name__, parallel_workers)
 
     # generate all queries put them into the queue
-    all_queries = list(generate_all_queries(df, with_margin=with_margin))
+    all_queries = list(generate_all_queries(src_df))
     if samples is not None:
         all_queries = sample(all_queries, samples)
     for query in all_queries:
@@ -432,7 +595,7 @@ async def spawner(
     logger.info("spawner() observer (done=%s) task created", observer_task.done())
 
     consumer_tasks = []
-    result_df = extend_df(df)
+    result_df = extend_df(src_df)
     async with ClientSession(raise_for_status=True) as session:
 
         # on lance tous les exécuteurs de requêtes
@@ -444,7 +607,7 @@ async def spawner(
             for i in range(1, parallel_workers + 1)
         ]
 
-        logger.debug("spawner(): running tasks %s", asyncio.all_tasks())
+        # logger.debug("spawner(): running tasks %s", asyncio.all_tasks())
         logger.info("spawner() %i consumer tasks created", len(consumer_tasks))
 
         # NOTE : spawner cannot end if all workers are dead!
@@ -475,24 +638,43 @@ async def spawner(
 
 
 def launcher(
-    df: pd.DataFrame,
+    src_df: pd.DataFrame,
     *,
     task_factory=SEARCH_MODES[DEFAULT_SEARCH_MODE],
-    with_margin=False,
+    # with_margin=False,
     parallel_workers=DEFAULT_PARALLEL_WORKERS,
     worker_delay=DEFAULT_WORKER_DELAY,
     samples=None,
-):
-    """Launch the batch of downloads: a simple (non async) wrapper around tasks_spawner"""
+) -> pd.DataFrame:
+    """Launch the batch of downloads: a simple (non async) wrapper around spawner
+
+    Parameters
+    ----------
+    src_df : pd.DataFrame
+        forwarded to spawner
+    task_factory : _type_, optional
+        forwarded to spawner, by default SEARCH_MODES[DEFAULT_SEARCH_MODE]
+    parallel_workers : _type_, optional
+        forwarded to spawner, by default DEFAULT_PARALLEL_WORKERS
+    worker_delay : _type_, optional
+        forwarded to spawner, by default DEFAULT_WORKER_DELAY
+    samples : _type_, optional
+        forwarded to spawner, by default None
+
+    Returns
+    -------
+    pd.DataFrame
+        get results gathered by spawner, fills missing cells and sort the result
+    """
     launch_start_time = time.perf_counter()
     logger.info("launcher() launching all async tasks")
     results_df = asyncio.run(
         spawner(
-            df,
+            src_df,
             parallel_workers=parallel_workers,
             task_factory=task_factory,
             worker_delay=worker_delay,
-            with_margin=with_margin,
+            # with_margin=with_margin,
             samples=samples,
         )
     )
@@ -505,11 +687,7 @@ def launcher(
     # https://pandas.pydata.org/docs/reference/api/pandas.Index.is_monotonic_increasing.html
     # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_index.html
 
-    # ascending, ascending, descending
-    sort_order = [True, True, False]
-    results_df.sort_index(axis=1, inplace=True, ascending=sort_order)
-    results_df.sort_index(axis=0, inplace=True, ascending=sort_order)
-    return results_df.astype("Int64")
+    return fill_missing_counts(results_df)
 
 
 # %%

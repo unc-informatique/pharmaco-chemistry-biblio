@@ -128,8 +128,7 @@ def main():
     nb_queries = (
         args.samples
         if args.samples is not None
-        else 4 * len(all_compounds) * len(all_activities)
-        + (2 * len(all_compounds) + 2 * len(all_activities) + 1) * args.margins
+        else len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
     )
     print(
         f"Launching {nb_queries} queries using {args.search} with {args.parallel} parallel workers (w/ min delay {args.delay})"
@@ -138,7 +137,7 @@ def main():
     results = bex.launcher(
         dataset,
         task_factory=bex.SEARCH_MODES[args.search],
-        with_margin=args.margins,
+        # with_margin=args.margins,
         parallel_workers=args.parallel,
         worker_delay=args.delay,
         samples=args.samples,

@@ -1,7 +1,7 @@
 [BASIC]
 ; keep default values
 ; good-names=df
-; good-names-rgxs=^[a-zA-Z_][a-zA-Z0-9_]?$
+good-names-rgxs=^[a-zA-Z_][a-zA-Z0-9_]*$
 
 
 [TYPECHECK]

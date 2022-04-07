@@ -22,15 +22,16 @@ def get_colours(with_margins: bool = False) -> pd.DataFrame:
     )
 
     # order used in
+    pad = [SUM_SYMBOL] if with_margins else []
     colours = colours.reindex(
-        columns=["black", "brown", "red", "blond"] + ([SUM_SYMBOL] if with_margins else []),
-        index=["brown", "hazel", "green", "blue"] + ([SUM_SYMBOL] if with_margins else []),
+        columns=["black", "brown", "red", "blond"] + pad,
+        index=["brown", "hazel", "green", "blue"] + pad,
     )
     return colours
 
 
 def get_vitamin() -> pd.DataFrame:
-    """Simple 2X2 contingency"""
+    """Simple 2X2 contingency table"""
 
     # contingencies in 2D format, everything is fine (but col/rows names)
     vitamin = pd.read_csv(_ROOT / "vitamin_c.csv", delimiter=",", index_col=0)

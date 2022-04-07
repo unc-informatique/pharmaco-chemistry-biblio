@@ -156,7 +156,7 @@ def extend_df(src_df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int32")
 
 
-def finalize_results(src_df: pd.DataFrame) -> None:
+def finalize_results(src_df: pd.DataFrame) -> pd.DataFrame:
     """Takes a dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
         In other words, it fills the blanks in the following dataframe

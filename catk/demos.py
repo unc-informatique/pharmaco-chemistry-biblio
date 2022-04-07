@@ -9,6 +9,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from scipy.stats import poisson
+import statsmodels.api as sm
+
 from IPython.display import display
 
 from catk import CA
@@ -41,15 +44,15 @@ display(contribs)
 ca.plot((1, 2))
 print("End of demo")
 # %%
-
 # reconstruction
 
 assert np.isclose(ca.S, ca.U @ ca.Da @ ca.Vt).all()
 
-
 for k_rank in range(0, len(ca.Da)):
-    print(f"Approximation at rank {k_rank}")
-    mask = np.diag([1] * k_rank + [0] * (len(ca.Da) - k_rank))
-    P = np.diag(ca.c ** 0.5) @ ca.U @ (ca.Da * mask) @ ca.Vt @ np.diag(ca.r ** 0.5) + ca.E
-    display(reindex_from((ca.n * P), df).astype(int))
-# %%
+    display(reindex_from(df - ca.n * ca.approx(k_rank), df).astype(int))
+    # print(f"Approximation at rank {k_rank}: difference between O and E")
+    # mask = np.diag([1] * k_rank + [0] * (len(ca.Da) - k_rank))
+    # Dr = np.diag(ca.r ** 0.5)
+    # Dc = np.diag(ca.c ** 0.5)
+    # P = (Dr @ ca.U @ (ca.Da * mask) @ ca.Vt @ Dc) + ca.E
+    # display(reindex_from((df - ca.n * P), df).astype(int))

@@ -166,6 +166,7 @@ class CA:
         # SVD ensures that Vt  @ Vt.T == I == U.T @ U
         assert np.allclose(self.Vt @ self.Vt.T, np.identity(J))
         assert np.allclose(self.U.T @ self.U, np.identity(I))
+        assert np.allclose(self.U @ self.Da @ self.Vt, self.S)
 
         # chi_score is the trace of (squared) eingenvalues times N
         assert np.isclose(self.chi_score, self.n * np.trace(self.Da ** 2))
@@ -272,6 +273,15 @@ class CA:
         for index, row in data.iterrows():
             ax.annotate(index, (row[("Coords", x)] + X_SHIFT, row[("Coords", y)] + Y_SHIFT))
         return ax
+
+
+    def approx(self, K = None):
+        """approximate the orginal up to order/rank K : the number of eigenvectors to use"""
+        mask = np.diag([1] * K + [0] * (len(self.Da) - K))
+        Dr_inv = np.diag(self.r ** 0.5)
+        Dc_inv = np.diag(self.c ** 0.5)
+        return (Dr_inv @ self.U @ (self.Da * mask) @ self.Vt @ Dc_inv) + self.E
+
 
 
 print(f"'{__file__}' loaded")

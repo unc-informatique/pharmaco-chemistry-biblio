@@ -28,8 +28,10 @@ SUM_SYMBOL = "Σ"
 # %%
 # classical example from Snee (1974)
 
+FILE = "../catk/catk/data/colours.csv"
+
 # use margins from pivot_table
-df_colours_margins = pd.read_csv("data/colours.csv", delim_whitespace=True).pivot_table(
+df_colours_margins = pd.read_csv(FILE, delim_whitespace=True).pivot_table(
     index="eyes",
     columns="hair",
     values="nb",

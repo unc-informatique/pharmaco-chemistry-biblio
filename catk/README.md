@@ -9,14 +9,21 @@ With extra help from Abdi and Bera's _Correspondence Analysis_ <https://cedric.c
 
 ## Install / dev mode
 
+**BUG** sur `--editable` et `--user` ensemble <https://github.com/pypa/pip/issues/7953#issuecomment-1027704899>
+
 ```bash
 # install dev mode
 pip install -e ./
 # some .egg link file is added to site-packages
 pip install -e ./ --upgrade
-
 # to remove
 pip uninstall catk
+```
+
+Sous Linux
+
+```bash
+python3.10 -m pip install --user --no-build-isolation --editable ./
 ```
 
 To activate autoreload in IPython <https://ipython.readthedocs.io/en/stable/config/extensions/autoreload.html>

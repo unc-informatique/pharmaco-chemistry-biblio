@@ -79,6 +79,7 @@ class CA:
         self.N = None
         self.I = None
         self.J = None
+        self.rank = None
         self.index = None
         self.columns = None
 
@@ -114,6 +115,9 @@ class CA:
 
         # shape
         self.I, self.J = self.N.shape
+        self.rank = min(self.I - 1, self.J - 1)
+        if self.rank < 0:
+            raise ValueError(f"cannot fit with dimensions {self.N.shape}")
         # self.K = min(self.I, self.J)
         logger.debug("fitting data of shape %i rows and %i columns", self.I, self.J)
 
@@ -195,7 +199,7 @@ class CA:
     def axes(self) -> pd.DataFrame:
         """Describes axes"""
 
-        K = min(self.I, self.J) - 1
+        K = self.rank
         inertias = self.principal_inertias[:K].reshape(K, 1)
         chi_contribs = self.n * inertias
         inertias_pc = 100 * inertias / inertias.sum()
@@ -214,12 +218,14 @@ class CA:
             raise ValueError("must call fit first")
 
         index = []
-        rank = min(self.I, self.J) - 1
-        if K is not None:
-            if K > rank:
-                raise ValueError(f"K must be at most {rank}")
-        else:
-            K = rank
+        # rank = min(self.I, self.J) - 1
+        # if K is not None:
+        #     if K > rank:
+        #         raise ValueError(f"K must be at most {rank}")
+        # else:
+        #     K = rank
+        if K is None or K > self.rank:
+            K = self.rank
 
         if self.columns is not None:
             index.extend(self.columns)
@@ -303,7 +309,9 @@ class CA:
         data = self.contributions(K=None)
         x_col = (CONTRIB_COLUMNS[1], x)
         y_col = (CONTRIB_COLUMNS[1], y)
-        if min(self.I - 1, self.J - 1) == 1:
+        
+        # print(self.rank)
+        if self.rank == 1:
             data[y_col] = np.zeros(len(data))
             rotation = 45
             inertias = np.array([self.principal_inertias[x - 1], 0])
@@ -326,7 +334,7 @@ class CA:
             plot.annotate(index, (row[x_col] + X_SHIFT, row[y_col] + Y_SHIFT), rotation=rotation)
         return plot
 
-    def approx(self, K=None):
+    def approx(self, K=0):
         """Approximates the original frequency table up to order/rank K, with K the number of eigenvalues to use. K = 0 is expected frequencies under independence. K = min(I, J) - 1 is the complete model.
 
         Fixing rows and cols masses gives (I-1)+(J-1) parameters.
@@ -340,10 +348,12 @@ class CA:
         So each additional order gives J-1 parameters.
         """
         # mask = np.diag([1] * K + [0] * (len(self.Da) - K))
+        if K > self.rank:
+            K = 0
         mask = np.eye(self.I, self.J) * ([1] * K + [0] * (len(self.eiv) - K))
-        Dr_inv = np.diag(self.r**0.5)
-        Dc_inv = np.diag(self.c**0.5)
-        return (Dr_inv @ self.U @ (self.Da * mask) @ self.Vt @ Dc_inv) + (self.r.reshape(-1, 1) @ self.c.reshape(1, -1))
+        dr_inv = np.diag(self.r**0.5)
+        dc_inv = np.diag(self.c**0.5)
+        return (dr_inv @ self.U @ (self.Da * mask) @ self.Vt @ dc_inv) + (self.r.reshape(-1, 1) @ self.c.reshape(1, -1))
 
 
 print(f"'{__file__}' loaded")

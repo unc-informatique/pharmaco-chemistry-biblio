@@ -281,7 +281,7 @@ class CA:
 
         res.columns = pd.MultiIndex.from_product([CONTRIB_COLUMNS, range(1, K + 1)])
 
-        res["Mass (%)"] = (100 * np.hstack((self.r, self.c))).tolist()
+        res["Mass (%)"] = (100 * np.hstack((self.c, self.r))).tolist()
         res["Kind"] = [self.columns.name if self.columns is not None else "col"] * self.J + [
             self.index.name if self.index is not None else "row"
         ] * self.I
@@ -299,15 +299,19 @@ class CA:
         X_SHIFT, Y_SHIFT = 0.01, 0.01
         x, y = axes
 
-        inertias = self.principal_inertias[[x - 1, y - 1]]
-        inertias_pc = 100 * inertias / self.principal_inertias.sum()
-
         # sns.set_theme(style="whitegrid", font_scale=1.05, rc={"figure.figsize": (8, 6)})
         data = self.contributions(K=None)
         x_col = (CONTRIB_COLUMNS[1], x)
         y_col = (CONTRIB_COLUMNS[1], y)
         if min(self.I - 1, self.J - 1) == 1:
             data[y_col] = np.zeros(len(data))
+            rotation = 45
+            inertias = np.array([self.principal_inertias[x - 1], 0])
+        else:
+            rotation = 0
+            inertias = self.principal_inertias[[x - 1, y - 1]]
+
+        inertias_pc = 100 * inertias / self.principal_inertias.sum()
 
         plot = sns.scatterplot(
             data=data,
@@ -319,7 +323,7 @@ class CA:
         plot.set_xlabel(f"Axis #{x} ({inertias_pc[0]:.2f}%)")
         plot.set_ylabel(f"Axis #{y} ({inertias_pc[1]:.2f}%)")
         for index, row in data.iterrows():
-            plot.annotate(index, (row[x_col] + X_SHIFT, row[y_col] + Y_SHIFT), rotation=45)
+            plot.annotate(index, (row[x_col] + X_SHIFT, row[y_col] + Y_SHIFT), rotation=rotation)
         return plot
 
     def approx(self, K=None):

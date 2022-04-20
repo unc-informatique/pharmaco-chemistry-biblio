@@ -12,7 +12,8 @@ def get_colours(with_margins: bool = False) -> pd.DataFrame:
     """classical example from Snee (1974)"""
 
     # contingencies in flat format : use pivot_table with or without margins
-    colours = pd.read_csv(_ROOT / "colours.csv", delim_whitespace=True).pivot_table(
+    # delim_whitespace=True
+    colours = pd.read_csv(_ROOT / "colours.csv", delimiter=",").pivot_table(
         index="eyes",
         columns="hair",
         values="nb",
@@ -39,6 +40,17 @@ def get_vitamin() -> pd.DataFrame:
     vitamin.columns.name = "sickness"  # pylint: disable=no-member
 
     return vitamin
+
+
+def get_smokers() -> pd.DataFrame:
+    """classical example from Greenacre 1984"""
+
+    # contingencies in 2D format, everything is fine (but col/rows names)
+    smokers = pd.read_csv(_ROOT / "smokers.csv", delimiter=",", index_col=0)
+    smokers.index.name = "Staff group"
+    smokers.columns.name = "Smoking category"  # pylint: disable=no-member
+
+    return smokers
 
 
 print(f"'{__file__}' loaded")

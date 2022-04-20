@@ -48,7 +48,7 @@ contributions = ca.contributions(2)
 display(contributions)
 
 #       Coords (std)       Coords (princ.)       Contributions        Cosine²        Mass (%)  Kind
-#                  1     2               1     2             1      2       1      2               
+#                  1     2               1     2             1      2       1      2
 # brown        -1.10  1.44           -0.50  0.21         22.25  37.88   83.80  15.19    37.16  eyes
 # hazel        -0.32 -0.22           -0.15 -0.03          5.09   2.32   86.44   4.20    15.71  eyes
 # green        -0.28 -2.14           -0.13 -0.32          0.96  55.13   13.33  81.18    10.81  eyes
@@ -67,7 +67,9 @@ print("End of demo")
 # reconstruction
 
 
+# k=0: null model, k=rank: saturated model
 for k_rank in range(0, len(ca.Da)):
+    print(f"rank {k_rank} approximation")
     display(reindex_from(df - ca.n * ca.approx(k_rank), df).astype(int))
 
 

@@ -2,11 +2,14 @@
 """Package catk Correspondence Analysis Toolkit: main class"""
 
 import logging
+from itertools import chain
+from multiprocessing.sharedctypes import Value
 from typing import Optional
 
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 from scipy import linalg
 from scipy.stats import chi2
@@ -14,7 +17,12 @@ from scipy.stats import chi2
 # from .config import SUM_SYMBOL
 
 logger = logging.getLogger(f"{__name__}")
-CONTRIB_COLUMNS = ["Coords (std)", "Coords (princ.)", "Contributions (%)", "Cosine²"]
+CONTRIB_COLUMNS = [
+    "Coords (std)",
+    "Coords (princ.)",
+    "Contributions (%)",
+    "Cosine²",
+]
 
 
 class CA:
@@ -82,6 +90,8 @@ class CA:
         self.rank = None
         self.index = None
         self.columns = None
+        self.index_name = None
+        self.columns_name = None
 
         self.c = None
         self.r = None
@@ -106,8 +116,6 @@ class CA:
 
         if isinstance(data, pd.DataFrame):
             self.N = data.to_numpy()
-            self.index = data.index.copy()
-            self.columns = data.columns.copy()
         elif isinstance(data, np.ndarray):
             self.N = data
         else:
@@ -120,6 +128,18 @@ class CA:
             raise ValueError(f"cannot fit with dimensions {self.N.shape}")
         # self.K = min(self.I, self.J)
         logger.debug("fitting data of shape %i rows and %i columns", self.I, self.J)
+
+        if isinstance(data, pd.DataFrame):
+            self.index = data.index.copy()
+            self.columns = data.columns.copy()
+            self.index_name = data.index.name
+            self.columns_name = data.columns.name
+
+        elif isinstance(data, np.ndarray):
+            self.index = [f"row-{i+1}" for i in range(self.I)]
+            self.columns = [f"col-{j+1}" for j in range(self.J)]
+            self.index_name = "row"
+            self.columns_name = "column"
 
         # grand total: the number of individuals
         self.n = self.N.sum()
@@ -217,7 +237,7 @@ class CA:
         if self.N is None:
             raise ValueError("must call fit first")
 
-        index = []
+        # index = []
         # rank = min(self.I, self.J) - 1
         # if K is not None:
         #     if K > rank:
@@ -227,15 +247,16 @@ class CA:
         if K is None or K > self.rank:
             K = self.rank
 
-        if self.columns is not None:
-            index.extend(self.columns)
-        else:
-            index.extend(f"col-{j+1}" for j in range(self.J))
+        # if self.columns is not None:
+        #     index.extend(self.columns)
+        # else:
+        #     index.extend(f"col-{j+1}" for j in range(self.J))
 
-        if self.index is not None:
-            index.extend(self.index)
-        else:
-            index.extend(f"row-{i+1}" for i in range(self.I))
+        # if self.index is not None:
+        #     index.extend(self.index)
+        # else:
+        #     index.extend(f"row-{i+1}" for i in range(self.I))
+        index = list(chain(self.columns, self.index))
 
         # standard coordinates
         c_coords_std = self.Dc_sq @ self.Vt.T
@@ -274,11 +295,16 @@ class CA:
         r_cos2 = (r_coords**2) / (r_coords**2).sum(axis=1).reshape(-1, 1)
 
         res = pd.DataFrame(
+            # construct CONTRIB_COLUMNS x NB_AXES
             np.hstack(
                 [
+                    # Coords (std)
                     np.vstack((c_coords_std[:, :K], r_coords_std[:, :K])),
+                    # Coords (princ.)
                     np.vstack((c_coords[:, :K], r_coords[:, :K])),
+                    # Contributions (%)
                     100 * np.vstack((c_contrib[:, :K], r_contrib[:, :K])),
+                    # Cosine²
                     100 * np.vstack((c_cos2[:, :K], r_cos2[:, :K])),
                 ]
             )
@@ -287,52 +313,104 @@ class CA:
 
         res.columns = pd.MultiIndex.from_product([CONTRIB_COLUMNS, range(1, K + 1)])
 
+        res["Quality (%)"] = 100 * np.vstack((c_contrib[:, :K], r_contrib[:, :K])).sum(axis=1)
         res["Mass (%)"] = (100 * np.hstack((self.c, self.r))).tolist()
-        res["Kind"] = [self.columns.name if self.columns is not None else "col"] * self.J + [
-            self.index.name if self.index is not None else "row"
-        ] * self.I
+        res["Kind"] = [self.columns_name] * self.J + [self.index_name] * self.I
 
         return res
 
-    def plot(self, axes=(1, 2), **kwargs):
-        """Plot the diagram on two given axis using seaborn"""
+    def plot(self, *, ax=None, axes=(1, 2), coords=("principal", "principal"), **kwargs):
+        """Plot the diagram on two given axis using seaborn
+
+        See https://matplotlib.org/stable/tutorials/introductory/usage.html#making-a-helper-functions
+
+        Parameters
+        ----------
+        ax
+            the axe to add the plot to
+        axes
+            identifiers of principal axis (first is 1) to print
+        coords
+            projections, either "principal" or "standard" on principal axes for (rows, cols)
+
+        Returns
+        -------
+        AxesSubplot
+            the ax modified with a new plot
+
+        """
         kwargs = {
             "sizes": (32, 512),
             "legend": "brief",
             "hue": "Kind",
             "size": "Mass (%)",
         } | kwargs
-        X_SHIFT, Y_SHIFT = 0.01, 0.01
+        X_SHIFT, Y_SHIFT = 0.0, 0.0  # 0.01, 0.01
         x, y = axes
+        if ax is None:
+            ax = plt.gca()
 
         # sns.set_theme(style="whitegrid", font_scale=1.05, rc={"figure.figsize": (8, 6)})
         data = self.contributions(K=None)
-        x_col = (CONTRIB_COLUMNS[1], x)
-        y_col = (CONTRIB_COLUMNS[1], y)
-        
-        # print(self.rank)
+        rows = data["Kind"] == self.index_name
+        cols = data["Kind"] == self.columns_name
+
+        def map_coords(kind: str) -> str:
+            if kind == "standard":
+                return CONTRIB_COLUMNS[0]
+            if kind == "principal":
+                return CONTRIB_COLUMNS[1]
+            raise ValueError(f"unknown projection type {kind}")
+
+        # choose the appropripate coordinate system for rows and columns
+        row_kind, col_kind = coords
+        data["x_coords"] = pd.concat(
+            [
+                data.loc[cols][(map_coords(col_kind), x)],
+                data.loc[rows][(map_coords(row_kind), x)],
+            ]
+        )
+
+        text_rotation = 0
         if self.rank == 1:
-            data[y_col] = np.zeros(len(data))
-            rotation = 45
+            data["y_coords"] = np.zeros(len(data))
+            text_rotation = 45
             inertias = np.array([self.principal_inertias[x - 1], 0])
         else:
-            rotation = 0
-            inertias = self.principal_inertias[[x - 1, y - 1]]
+            data["y_coords"] = pd.concat(
+                [
+                    data.loc[cols][(map_coords(col_kind), y)],
+                    data.loc[rows][(map_coords(row_kind), y)],
+                ]
+            )
+            inertias = [self.principal_inertias[x - 1], self.principal_inertias[y - 1]]
 
         inertias_pc = 100 * inertias / self.principal_inertias.sum()
 
-        plot = sns.scatterplot(
+        sns.scatterplot(
             data=data,
-            x=x_col,
-            y=y_col,
+            x="x_coords",
+            y="y_coords",
+            ax=ax,
             **kwargs,
         )
-        plot.set_title(f"Total captured inertia={inertias_pc.sum():.2f}%")
-        plot.set_xlabel(f"Axis #{x} ({inertias_pc[0]:.2f}%)")
-        plot.set_ylabel(f"Axis #{y} ({inertias_pc[1]:.2f}%)")
+        ax.set_title(f"Total captured inertia={inertias_pc.sum():.2f}%")
+        ax.set_xlabel(f"Axis #{x} ({inertias_pc[0]:.2f}%)")
+        ax.set_ylabel(f"Axis #{y} ({inertias_pc[1]:.2f}%)")
+        plt.xticks([], [])
+        plt.yticks([], [])
+
         for index, row in data.iterrows():
-            plot.annotate(index, (row[x_col] + X_SHIFT, row[y_col] + Y_SHIFT), rotation=rotation)
-        return plot
+            ax.annotate(
+                index,
+                (row["x_coords"] + X_SHIFT, row["y_coords"] + Y_SHIFT),
+                rotation=text_rotation,
+            )
+
+        plt.axhline(y=0, linestyle="--", linewidth=1.0, alpha=0.5)
+        plt.axvline(x=0, linestyle="--", linewidth=1.0, alpha=0.5)
+
+        return ax
 
     def approx(self, K=0):
         """Approximates the original frequency table up to order/rank K, with K the number of eigenvalues to use. K = 0 is expected frequencies under independence. K = min(I, J) - 1 is the complete model.

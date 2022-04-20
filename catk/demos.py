@@ -91,6 +91,17 @@ for i in range(BOOTSRAPS):
 plt.show()
 
 # %%
+# cas 2x1
+df1 = get_vitamin()
+df1.drop("Cold", axis=1, inplace=True)
+display(df1)
+
+
+ca1 = CA()
+ca1.fit(df1)
+ca1.contributions()
+
+
 
 
 # %%

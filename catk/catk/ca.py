@@ -124,7 +124,7 @@ class CA:
         # shape
         self.I, self.J = self.N.shape
         self.rank = min(self.I - 1, self.J - 1)
-        if self.rank < 0:
+        if self.rank < 1:
             raise ValueError(f"cannot fit with dimensions {self.N.shape}")
         # self.K = min(self.I, self.J)
         logger.debug("fitting data of shape %i rows and %i columns", self.I, self.J)
@@ -385,7 +385,7 @@ class CA:
             )
             inertias = [self.principal_inertias[x - 1], self.principal_inertias[y - 1]]
 
-        inertias_pc = 100 * inertias / self.principal_inertias.sum()
+        inertias_pc =  100*(inertias / self.principal_inertias.sum())
 
         sns.scatterplot(
             data=data,

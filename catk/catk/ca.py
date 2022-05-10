@@ -183,6 +183,8 @@ class CA:
 
         self.S = self.Dr_sq @ (P - self.E) @ self.Dc_sq
 
+        # (S / (np.sqrt(c))) / (np.sqrt(r))
+
         logger.debug("S=\n%s", self.S)
 
         # SVD decomposition
@@ -431,6 +433,9 @@ class CA:
         mask = np.eye(self.I, self.J) * ([1] * K + [0] * (len(self.eiv) - K))
         dr_inv = np.diag(self.r**0.5)
         dc_inv = np.diag(self.c**0.5)
+
+        # soit n*((ca.U @ ca.Da @ ca.Vt) * np.sqrt(c) * np.sqrt(r) + r@c)
+
         return (dr_inv @ self.U @ (self.Da * mask) @ self.Vt @ dc_inv) + (self.r.reshape(-1, 1) @ self.c.reshape(1, -1))
 
 

@@ -13,7 +13,7 @@ import time
 from collections import defaultdict
 from dataclasses import dataclass
 from functools import partial, wraps
-from itertools import product
+from itertools import combinations, product
 from os import environ
 from pathlib import Path
 from pprint import pprint
@@ -124,7 +124,7 @@ def load_data(filename: str | Path) -> pd.DataFrame:
     return dataset
 
 
-def extend_df(src_df: pd.DataFrame) -> pd.DataFrame:
+def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     """Add extra indexes as last level of rows and columns to store the 2x2 confusion matrix
 
     Index and columns are multi-level indexes. We duplicate each key to have
@@ -136,28 +136,22 @@ def extend_df(src_df: pd.DataFrame) -> pd.DataFrame:
     OBSOLETE : if margin are added, a  4 x (KW1 + 1) x (KW2 + 1) is constructed
     """
     logger.debug("extend_df()")
-    out_df = pd.DataFrame().reindex_like(src_df)
 
-    # if with_margin:
-
-    # margin_row = pd.DataFrame(index=pd.MultiIndex.from_tuples([(CLASS_SYMB, MARGIN_SYMB)]), columns=df.columns)
-    # df2 = pd.concat([df2, margin_row], axis=0)
-    # margin_col = pd.DataFrame(index=df.columns, columns=pd.MultiIndex.from_tuples([(CLASS_SYMB, MARGIN_SYMB)]))
-    # df2 = pd.concat([df2, margin_col], axis=1)
-
-    # df2 = df2.append(margin_row)
-    # df2[(CLASS_SYMB, MARGIN_SYMB)] = None
-    # df2[(CLASS_SYMB, MARGIN_SYMB)] = df2[(CLASS_SYMB, MARGIN_SYMB)].astype(int)
-
-    extended_rows = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in out_df.index for s in SELECTORS)
-    extended_cols = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in out_df.columns for s in SELECTORS)
+    # out_df = pd.DataFrame().reindex_like(src_df)
+    extended_rows = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in src_df.index for s in SELECTORS)
+    extended_cols = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in src_df.columns for s in SELECTORS)
 
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html
-    return pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int32")
+    if query_mode == "cross":
+        return pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int32")
+    if query_mode == "compounds":
+        return pd.DataFrame(index=extended_rows, columns=extended_rows).astype("Int32")
+    if query_mode == "activities":
+        return pd.DataFrame(index=extended_cols, columns=extended_cols).astype("Int32")
 
 
-def finalize_results(src_df: pd.DataFrame) -> pd.DataFrame:
-    """Takes a dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
+def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
+    """Takes a CROSS dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
         In other words, it fills the blanks in the following dataframe
 
@@ -192,7 +186,7 @@ def finalize_results(src_df: pd.DataFrame) -> pd.DataFrame:
     """
 
     # a copy
-    dataset = src_df.copy().astype("float32")
+    dataset = res_df.copy().astype("float32").fillna(0)
 
     # sort once and for all, for performance, see
     # https://stackoverflow.com/questions/54307300/what-causes-indexing-past-lexsort-depth-warning-in-pandas
@@ -209,34 +203,40 @@ def finalize_results(src_df: pd.DataFrame) -> pd.DataFrame:
 
     # four filters that drops margin sums and keep (w/ or w/o) X (rows or cols)
     w_rows_filter = [(c, a, k) for (c, a, k) in dataset.index if k == SELECTORS[True] and c != CLASS_SYMB]
-    w_cols_filter = [(c, a, k) for (c, a, k) in dataset.columns if k == SELECTORS[True] and c != CLASS_SYMB]
     wo_rows_filter = [(c, a, k) for (c, a, k) in dataset.index if k == SELECTORS[False] and c != CLASS_SYMB]
+    w_cols_filter = [(c, a, k) for (c, a, k) in dataset.columns if k == SELECTORS[True] and c != CLASS_SYMB]
     wo_cols_filter = [(c, a, k) for (c, a, k) in dataset.columns if k == SELECTORS[False] and c != CLASS_SYMB]
 
-    # update missing cols margin : w/o  = N - w/
-    dataset.loc[margin_idx, wo_cols_filter] = grand_total - dataset.loc[margin_idx, w_cols_filter].values
-    # update missing rows margin : w/o  = N - w/
-    dataset.T.loc[margin_idx, wo_rows_filter] = grand_total - dataset.T.loc[margin_idx, w_rows_filter].values
+    # according to query_mode, we restrict to CxA, CxC or AxA
+    if query_mode == "cross":
+        xs_w, ys_w = w_rows_filter, w_cols_filter
+        xs_wo, ys_wo = wo_rows_filter, wo_cols_filter
+    elif query_mode == "compounds":
+        xs_w, ys_w = w_rows_filter, w_rows_filter
+        xs_wo, ys_wo = wo_rows_filter, wo_rows_filter
+    elif query_mode == "activities":
+        xs_w, ys_w = w_cols_filter, w_cols_filter
+        xs_wo, ys_wo = wo_cols_filter, wo_cols_filter
 
-    logger.debug("fill_missing_counts(): filled row margins")  # dataset[margin_idx]
-    logger.debug("fill_missing_counts(): filled col margins")  # dataset.T[margin_idx]
+    # BUG : compte incorrect si query_mode != cross
+
+    # update missing rows margin : w/o  = N - w/
+    dataset.T.loc[margin_idx, xs_wo] = grand_total - dataset.T.loc[margin_idx, xs_w].values
+    # update missing cols margin : w/o  = N - w/
+    dataset.loc[margin_idx, ys_wo] = grand_total - dataset.loc[margin_idx, ys_w].values
 
     # the (w/, w/) base cells from Scopus
-    base_values = dataset.loc[w_rows_filter, w_cols_filter].values
-    logger.debug("fill_missing_counts() base_values=\n%s", base_values)
-
+    base_values = dataset.loc[xs_w, ys_w].values
     # update (w/o, w/) cells = col_margins - (w/, w/)
-    dataset.loc[wo_rows_filter, w_cols_filter] = dataset.loc[margin_idx, w_cols_filter].values - base_values
+    dataset.loc[xs_wo, ys_w] = dataset.loc[margin_idx, ys_w].values - base_values
     # update (w/, w/o) cells = row_margins - (w/, w/)
-    dataset.loc[w_rows_filter, wo_cols_filter] = (
-        dataset.T.loc[margin_idx, w_rows_filter].values.reshape(-1, 1) - base_values
+    dataset.loc[xs_w, ys_wo] = dataset.T.loc[margin_idx, xs_w].values.reshape(-1, 1) - base_values
+    # update (w/o, w/o) cells = N - (w/, w/) - (w/o, w/) - (w/, w/o)
+    dataset.loc[xs_wo, ys_wo] = grand_total - (
+        dataset.loc[xs_wo, ys_w].values + dataset.loc[xs_w, ys_wo].values + base_values
     )
-    # update (w/, w/) cells = N - (w/, w/) - (w/o, w/) - (w/, w/o)
-    dataset.loc[wo_rows_filter, wo_cols_filter] = grand_total - (
-        dataset.loc[wo_rows_filter, w_cols_filter].values
-        + dataset.loc[w_rows_filter, wo_cols_filter].values
-        + base_values
-    )
+
+    logger.debug("fill_missing_counts() base_values=\n%s", base_values)
 
     return dataset.astype("int32")
 
@@ -416,39 +416,38 @@ def generate_all_queries(data: pd.DataFrame, query_mode: str) -> Iterator[Query]
         nb_activities,
     )
 
+    # compute all pairs of interest according to query_mode, either
+    # compounds x activities, compounds x compounds or activities x activities
     if query_mode == "cross":
-        # compute all compounds x activities cells
         # the main content : |KW1| x |KW2| queries
-        for compound in compounds:
-            for activity in activities:
-                # both the compound and the activity
-                yield Query([], [], [compound, activity], [], (True, True))
-
-                # the following are commented because they can can be deduces from margins.
-
-                # the activity but not this compound (but at least one another in the domain)
-                # yield Query(compounds, [], [activity], [compound], (False, True))
-                # the compound but not this activity (but at least one another in the domain)
-                # yield Query([], activities, [compound], [activity], (True, False))
-                # neither the compound nor the activity (but stil in the domain)
-                # yield Query(compounds, activities, [], [compound, activity], (False, False))
-
-        # rows/columns marginal sums (an extra row and an extra column for total)
-        # this generates (|KW1| + |KW2| + 1) queries
-        # if with_margin:
-        # rows margin sums
-        for compound in compounds:
-            yield Query([], activities, [compound], [], (True, None))
-            # yield Query(compounds, activities, [], [compound], (False, None))
-        # cols margin sums
-        for activity in activities:
-            yield Query(compounds, [], [activity], [], (None, True))
-            # yield Query(compounds, activities, [], [activity], (None, False))
-        # total margin sum
-        yield Query(compounds, activities, [], [], (None, None))
-
+        # a pair is a compound and an activity
+        for pair in product(compounds, activities):
+            yield Query([], [], pair, [], (True, True))
+    elif query_mode == "compounds":
+        # symmetric mode #1: analysis of cooc among compounds
+        # pairs of compounds
+        for pair in combinations(compounds, 2):
+            yield Query([], activities, pair, [], (True, True))
+    elif query_mode == "activities":
+        # symmetric mode #2: analysis of cooc among activities
+        # pairs of activities
+        for pair in combinations(activities, 2):
+            yield Query(compounds, [], pair, [], (True, True))
     else:
         raise ValueError(f"unknown query mode '{query_mode}' to generate queries")
+
+    # rows/columns marginal sums (an extra row and an extra column for total)
+    # this generates (|KW1| + |KW2| + 1) queries
+    # rows margin sums
+    if query_mode in ["compounds", "cross"]:
+        for compound in compounds:
+            yield Query([], activities, [compound], [], (True, None))
+    # cols margin sums
+    if query_mode in ["activities", "cross"]:
+        for activity in activities:
+            yield Query(compounds, [], [activity], [], (None, True))
+    # total margin sum
+    yield Query(compounds, activities, [], [], (None, None))
 
 
 async def consumer(
@@ -586,7 +585,9 @@ async def spawner(
     query_mode: str,
 ) -> pd.DataFrame:
     # pylint: disable=too-many-locals
-    """Adds tasks into a queue which is emptied in parallel ensuring at most MAX_REQ_BY_SEC requests per second
+    """Adds tasks into a queue which is emptied in parallel ensuring at most MAX_REQ_BY_SEC requests per second.
+
+    Creates the results DataFrame to store queries results
 
     Parameters
     ----------
@@ -629,7 +630,10 @@ async def spawner(
     logger.info("spawner() observer (done=%s) task created", observer_task.done())
 
     consumer_tasks = []
-    result_df = extend_df(src_df)
+    # NOTE! ici, dans le cas cross on étend les données d'origine aux 2 dimensions supplémentaires
+    result_df = extend_df(src_df, query_mode)
+    # logger.debug(result_df)
+
     async with ClientSession(raise_for_status=True) as session:
 
         # on lance tous les exécuteurs de requêtes
@@ -713,8 +717,9 @@ def launcher(
 
     total_time = time.perf_counter() - launch_start_time
     logger.info("launcher() all jobs done in %fs", total_time)
+    # logger.debug("results dataframe %s", results_df)
 
-    return finalize_results(results_df)
+    return finalize_results(results_df, query_mode=query_mode)
 
 
 # %%

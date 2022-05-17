@@ -127,6 +127,8 @@ def main():
 
     if args.search not in bex.SEARCH_MODES:
         raise ValueError(f"Unknown search mode {args.search}")
+    if args.mode not in bex.QUERY_MODES:
+        raise ValueError(f"Unknown query mode {args.mode}")
 
     # if args.search == "offline":
     #     nb_papers = 243964 // (len(all_compounds) * len(all_activities))

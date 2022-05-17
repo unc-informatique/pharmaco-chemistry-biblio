@@ -373,7 +373,15 @@ SEARCH_MODES = {
 DEFAULT_SEARCH_MODE = "fake"
 
 
-def generate_all_queries(data: pd.DataFrame) -> Iterator[Query]:
+QUERY_MODES = [
+    "activities",
+    "compounds",
+    "cross",
+]
+DEFAULT_QUERY_MODE = "cross"
+
+
+def generate_all_queries(data: pd.DataFrame, query_mode: str) -> Iterator[Query]:
     """Generate all queries from a dataset.
 
     We extract J rows (coumpounds) and I columns (activities) from data.
@@ -383,8 +391,10 @@ def generate_all_queries(data: pd.DataFrame) -> Iterator[Query]:
 
     Parameters
     ----------
-    data : pd.DataFrame
+    data: pd.DataFrame
         the input data frame, with all keywords
+    query_mode: str
+        the generation mode in QUERY_MODES
 
     Yields
     ------
@@ -406,34 +416,39 @@ def generate_all_queries(data: pd.DataFrame) -> Iterator[Query]:
         nb_activities,
     )
 
-    # the main content : |KW1| x |KW2| queries
-    for compound in compounds:
+    if query_mode == "cross":
+        # compute all compounds x activities cells
+        # the main content : |KW1| x |KW2| queries
+        for compound in compounds:
+            for activity in activities:
+                # both the compound and the activity
+                yield Query([], [], [compound, activity], [], (True, True))
+
+                # the following are commented because they can can be deduces from margins.
+
+                # the activity but not this compound (but at least one another in the domain)
+                # yield Query(compounds, [], [activity], [compound], (False, True))
+                # the compound but not this activity (but at least one another in the domain)
+                # yield Query([], activities, [compound], [activity], (True, False))
+                # neither the compound nor the activity (but stil in the domain)
+                # yield Query(compounds, activities, [], [compound, activity], (False, False))
+
+        # rows/columns marginal sums (an extra row and an extra column for total)
+        # this generates (|KW1| + |KW2| + 1) queries
+        # if with_margin:
+        # rows margin sums
+        for compound in compounds:
+            yield Query([], activities, [compound], [], (True, None))
+            # yield Query(compounds, activities, [], [compound], (False, None))
+        # cols margin sums
         for activity in activities:
-            # both the compound and the activity
-            yield Query([], [], [compound, activity], [], (True, True))
+            yield Query(compounds, [], [activity], [], (None, True))
+            # yield Query(compounds, activities, [], [activity], (None, False))
+        # total margin sum
+        yield Query(compounds, activities, [], [], (None, None))
 
-            # the following are commented because they can can be deduces from margins.
-
-            # the activity but not this compound (but at least one another in the domain)
-            # yield Query(compounds, [], [activity], [compound], (False, True))
-            # the compound but not this activity (but at least one another in the domain)
-            # yield Query([], activities, [compound], [activity], (True, False))
-            # neither the compound nor the activity (but stil in the domain)
-            # yield Query(compounds, activities, [], [compound, activity], (False, False))
-
-    # rows/columns marginal sums (an extra row and an extra column for total)
-    # this generates (|KW1| + |KW2| + 1) queries
-    # if with_margin:
-    # rows margin sums
-    for compound in compounds:
-        yield Query([], activities, [compound], [], (True, None))
-        # yield Query(compounds, activities, [], [compound], (False, None))
-    # cols margin sums
-    for activity in activities:
-        yield Query(compounds, [], [activity], [], (None, True))
-        # yield Query(compounds, activities, [], [activity], (None, False))
-    # total margin sum
-    yield Query(compounds, activities, [], [], (None, None))
+    else:
+        raise ValueError(f"unknown query mode '{query_mode}' to generate queries")
 
 
 async def consumer(
@@ -566,10 +581,9 @@ async def spawner(
     src_df: pd.DataFrame,
     *,
     task_factory: SearchAPI,
-    # with_margin: bool,
     parallel_workers: int,
     worker_delay: float,
-    samples: Optional[int],
+    query_mode: str,
 ) -> pd.DataFrame:
     # pylint: disable=too-many-locals
     """Adds tasks into a queue which is emptied in parallel ensuring at most MAX_REQ_BY_SEC requests per second
@@ -584,8 +598,8 @@ async def spawner(
         the number of parallel consumer that will take jobs from the queue
     worker_delay : float
         delay BEFORE a query, passed to the consumer function
-    samples : Optional[int]
-        if not None, samples queries (only for tests)
+    query_mode:str
+        query mode, forwarded to generate_all_queries
 
     Returns
     -------
@@ -600,10 +614,8 @@ async def spawner(
     jobs_queue: asyncio.Queue = asyncio.Queue()
     logger.info("spawner(): task_factory=%s, parallel_workers=%i", task_factory.__name__, parallel_workers)
 
-    # generate all queries put them into the queue
-    all_queries = list(generate_all_queries(src_df))
-    if samples is not None:
-        all_queries = sample(all_queries, samples)
+    # generate all queries according to the selected mode put them into the queue
+    all_queries = list(generate_all_queries(src_df, query_mode=query_mode))
     for query in all_queries:
         await jobs_queue.put(query)
         logger.debug("spawner() added query=%s", query.short())
@@ -663,10 +675,9 @@ def launcher(
     src_df: pd.DataFrame,
     *,
     task_factory: SearchAPI = SEARCH_MODES[DEFAULT_SEARCH_MODE],
-    # with_margin=False,
     parallel_workers: int = DEFAULT_PARALLEL_WORKERS,
     worker_delay: float = DEFAULT_WORKER_DELAY,
-    samples: int = None,
+    query_mode: str = DEFAULT_QUERY_MODE,
 ) -> pd.DataFrame:
     """Launch the batch of downloads: a simple (non async) wrapper around spawner
 
@@ -680,8 +691,8 @@ def launcher(
         forwarded to spawner, by default DEFAULT_PARALLEL_WORKERS
     worker_delay : float, optional
         forwarded to spawner, by default DEFAULT_WORKER_DELAY
-    samples : int, optional
-        forwarded to spawner, by default None
+    query_mode:str
+        query mode, forwarded to generate_all_queries via spawner
 
     Returns
     -------
@@ -696,8 +707,7 @@ def launcher(
             parallel_workers=parallel_workers,
             task_factory=task_factory,
             worker_delay=worker_delay,
-            # with_margin=with_margin,
-            samples=samples,
+            query_mode=query_mode,
         )
     )
 

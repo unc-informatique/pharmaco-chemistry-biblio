@@ -22,7 +22,7 @@ def get_parser() -> argparse.ArgumentParser:
     )
     arg_parser.add_argument(
         "filename",
-        help="file to read chemo activities from",
+        help="csv file to read compounds and activities from.",
     )
     arg_parser.add_argument(
         "--verbose",
@@ -62,14 +62,6 @@ def get_parser() -> argparse.ArgumentParser:
         help="minimum delay between two consecutive queries from a worker.",
     )
     arg_parser.add_argument(
-        "--samples",
-        "-s",
-        type=int,
-        action="store",
-        default=bex.DEFAULT_SAMPLES,
-        help="maximum number of queries (random samples).",
-    )
-    arg_parser.add_argument(
         "--write",
         "-w",
         action="store_true",
@@ -77,12 +69,27 @@ def get_parser() -> argparse.ArgumentParser:
         help="writes results to csv file.",
     )
     arg_parser.add_argument(
-        "--margins",
+        "--mode",
         "-m",
-        action="store_true",
-        default=False,
-        help="returns marginal sums as well.",
+        action="store",
+        default=bex.DEFAULT_QUERY_MODE,
+        help=f"query mode in {', '.join(bex.QUERY_MODES)}",
     )
+    # arg_parser.add_argument(
+    #     "--margins",
+    #     "-m",
+    #     action="store_true",
+    #     default=False,
+    #     help="returns marginal sums as well.",
+    # )
+    # arg_parser.add_argument(
+    #     "--samples",
+    #     "-s",
+    #     type=int,
+    #     action="store",
+    #     default=bex.DEFAULT_SAMPLES,
+    #     help="maximum number of queries (random samples).",
+    # )
     return arg_parser
 
 
@@ -125,11 +132,12 @@ def main():
     #     nb_papers = 243964 // (len(all_compounds) * len(all_activities))
     #     results = bex.gen_db(list(dataset.index), list(dataset.columns), nb_papers, 383330 / 243964)
     # else:
-    nb_queries = (
-        args.samples
-        if args.samples is not None
-        else len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
-    )
+    # nb_queries = (
+    #     args.samples
+    #     if args.samples is not None
+    #     else len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
+    # )
+    nb_queries = len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
     print(
         f"Launching {nb_queries} queries using {args.search} with {args.parallel} parallel workers (w/ min delay {args.delay})"
     )
@@ -140,7 +148,8 @@ def main():
         # with_margin=args.margins,
         parallel_workers=args.parallel,
         worker_delay=args.delay,
-        samples=args.samples,
+        query_mode=args.mode,
+        # samples=args.samples,
     )
 
     print(results)

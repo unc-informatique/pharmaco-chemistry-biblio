@@ -51,6 +51,7 @@ ALT_SEP = "/"
 SELECTORS = ["w/o", "w/"]  # ordered as bools
 MARGIN_SYMB = "Σ"
 CLASS_SYMB = "*"
+MARGIN_IDX = (CLASS_SYMB, MARGIN_SYMB, SELECTORS[1])
 # sort multilevel indexes usging : ascending/ascending/descending
 SORT_ORDER = [True, True, False]
 
@@ -93,12 +94,12 @@ class SearchAPI(Protocol):  # pylint: disable=too-few-public-methods
         pass
 
 
-def load_data(filename: str | Path) -> pd.DataFrame:
-    """loads a CSV dataset as a dataframe with two levels keywords"""
+def load_input(filename: str | Path) -> pd.DataFrame:
+    """loads an 'input' CSV dataset as a dataframe with two levels keywords"""
     # https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html
     # row/col dimension 0 is the class, row/col dimension 1 is the keyword
     dataset: pd.DataFrame = pd.read_csv(filename, index_col=[0, 1], header=[0, 1]).fillna(0)
-    logger.debug("load_data(%s): input dataset read", filename)
+    logger.debug("load_input(%s): input dataset read", filename)
 
     def normalize_names(expr: str) -> str:
         """convenience tool for normalizing strings"""
@@ -122,6 +123,32 @@ def load_data(filename: str | Path) -> pd.DataFrame:
     )
 
     return dataset
+
+
+def load_results(filename: str | Path) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
+    """loads a CSV dataset as a dataframe with two levels keywords"""
+    dataset_with_margin = pd.read_csv(filename, index_col=[0, 1, 2], header=[0, 1, 2])
+    logger.debug("load_results(%s): results dataset read", filename)
+    dataset_with_margin.sort_index(axis=1, inplace=True, ascending=SORT_ORDER)
+    dataset_with_margin.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)
+    logger.debug("load_results(): dataset\n%s", dataset_with_margin)
+
+    grand_total = dataset_with_margin.loc[MARGIN_IDX, MARGIN_IDX]
+    logger.debug("load_results(): %s papers in total", grand_total)
+
+    # all rows/lines but margins
+    all_comp_but_margin = pd.Series(idx for idx in dataset_with_margin.index if idx != MARGIN_IDX)
+    all_acti_but_margin = pd.Series(idx for idx in dataset_with_margin.columns if idx != MARGIN_IDX)
+    # filter out
+    comp_margin = dataset_with_margin.loc[all_comp_but_margin, MARGIN_IDX]
+    acti_margin = dataset_with_margin.loc[MARGIN_IDX, all_acti_but_margin]
+
+    dataset = dataset_with_margin.loc[all_comp_but_margin, all_acti_but_margin]
+
+    return dataset, comp_margin, acti_margin
+
+
+# %%
 
 
 def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
@@ -260,8 +287,8 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
         dataset.loc[xs_wo, ys_w].values + dataset.loc[xs_w, ys_wo].values + base_values
     )
 
-
     return dataset.astype("int32")
+
 
 # %%
 

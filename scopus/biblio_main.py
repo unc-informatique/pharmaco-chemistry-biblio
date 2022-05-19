@@ -116,7 +116,7 @@ def main():
     logger.info("Scopus API key %s", bex.API_KEY)
 
     filename = Path(args.filename)
-    dataset = bex.load_data(filename)
+    dataset = bex.load_input(filename)
     all_compounds = list(dataset.index.get_level_values(1))
     all_activities = list(dataset.columns.get_level_values(1))
     print(f"Loaded {len(all_compounds)} compounds and {len(all_activities)} activities")

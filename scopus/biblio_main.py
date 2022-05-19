@@ -2,7 +2,7 @@
 
 import argparse
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from pprint import pformat
 
@@ -139,19 +139,25 @@ def main():
     #     if args.samples is not None
     #     else len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
     # )
-    nb_queries = len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
+    if args.mode == "cross":
+        nb_queries = len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
+    elif args.mode == "compounds":
+        nb_queries = len(all_compounds) * (len(all_compounds) - 1) // 2 + len(all_compounds) + 1
+    elif args.mode == "activities":
+        nb_queries = len(all_activities) * (len(all_activities) - 1) // 2 + len(all_activities) + 1
+
+    default_ping = 0.500
+    estimated_secs = max(args.delay, default_ping) * nb_queries / args.parallel
     print(
-        f"Launching {nb_queries} queries using {args.search} with {args.parallel} parallel workers (w/ min delay {args.delay})"
+        f"Launching {nb_queries} queries using {args.search} with {args.parallel} parallel workers (w/ min delay {args.delay}), ETA {(datetime.now() + timedelta(seconds=estimated_secs)).strftime('%H:%M:%S')} ({round(estimated_secs)} seconds)"
     )
 
     results = bex.launcher(
         dataset,
         task_factory=bex.SEARCH_MODES[args.search],
-        # with_margin=args.margins,
         parallel_workers=args.parallel,
         worker_delay=args.delay,
         query_mode=args.mode,
-        # samples=args.samples,
     )
 
     print(results)

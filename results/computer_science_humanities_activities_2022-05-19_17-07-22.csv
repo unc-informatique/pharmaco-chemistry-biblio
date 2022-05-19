@@ -1,0 +1,8 @@
+,,,*,cs,cs,cs,cs
+,,,Σ,databases,databases,web,web
+,,,w/,w/o,w/,w/o,w/
+*,Σ,w/,3446,1120,2326,2200,1246
+cs,databases,w/o,1120,1120,0,0,1120
+cs,databases,w/,2326,0,2326,2200,126
+cs,web,w/o,2200,0,2200,2200,0
+cs,web,w/,1246,1120,126,0,1246

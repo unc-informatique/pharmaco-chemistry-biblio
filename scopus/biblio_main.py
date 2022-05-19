@@ -158,7 +158,7 @@ def main():
 
     if args.write:
         now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        output_filename = output_dir / f"{filename.stem}_{now}.csv"
+        output_filename = output_dir / f"{filename.stem}_{args.mode}_{now}.csv"
         results.to_csv(output_filename)
         logger.info("results written to %s", output_filename)
 

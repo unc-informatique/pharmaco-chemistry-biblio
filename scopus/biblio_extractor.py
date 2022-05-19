@@ -143,13 +143,16 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
 
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html
     if query_mode == "cross":
-        return pd.DataFrame(index=extended_rows, columns=extended_cols).astype("Int32")
-    if query_mode == "compounds":
-        return pd.DataFrame(index=extended_rows, columns=extended_rows).astype("Int32")
-    if query_mode == "activities":
-        return pd.DataFrame(index=extended_cols, columns=extended_cols).astype("Int32")
+        xs, ys = extended_rows, extended_cols
+    elif query_mode == "compounds":
+        xs, ys = extended_rows, extended_rows
+    elif query_mode == "activities":
+        xs, ys = extended_cols, extended_cols
+
+    return pd.DataFrame(index=xs, columns=ys).astype("Int32")
 
 
+# %%
 def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     """Takes a CROSS dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
@@ -199,7 +202,7 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     # the gran total: a.k.a., the number of individuals
     grand_total = dataset.loc[margin_idx, margin_idx]
     logger.info("fill_missing_counts() N = %i", grand_total)
-    logger.debug("fill_missing_counts() df =\n%s", dataset)
+    # logger.debug("fill_missing_counts() df =\n%s", dataset)
 
     # four filters that drops margin sums and keep (w/ or w/o) X (rows or cols)
     w_rows_filter = [(c, a, k) for (c, a, k) in dataset.index if k == SELECTORS[True] and c != CLASS_SYMB]
@@ -218,15 +221,36 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
         xs_w, ys_w = w_cols_filter, w_cols_filter
         xs_wo, ys_wo = wo_cols_filter, wo_cols_filter
 
-    # BUG : compte incorrect si query_mode != cross
-
     # update missing rows margin : w/o  = N - w/
-    dataset.T.loc[margin_idx, xs_wo] = grand_total - dataset.T.loc[margin_idx, xs_w].values
+    if query_mode in ["cross", "compounds"]:
+        dataset.T.loc[margin_idx, xs_wo] = grand_total - dataset.T.loc[margin_idx, xs_w].values
     # update missing cols margin : w/o  = N - w/
-    dataset.loc[margin_idx, ys_wo] = grand_total - dataset.loc[margin_idx, ys_w].values
+    if query_mode in ["cross", "activities"]:
+        dataset.loc[margin_idx, ys_wo] = grand_total - dataset.loc[margin_idx, ys_w].values
+
+    # copy margin rows <-> cols and to diagonal
+    if query_mode == "compounds":
+        dataset.loc[margin_idx] = dataset.T.loc[margin_idx]
+    elif query_mode == "activities":
+        dataset.T.loc[margin_idx] = dataset.loc[margin_idx]
 
     # the (w/, w/) base cells from Scopus
     base_values = dataset.loc[xs_w, ys_w].values
+    # if not cross mode, symmetrize w/w/ and replicate margin into diagonal
+    if query_mode in ["compounds", "activities"]:
+        base_values += base_values.T
+        base_values += np.diag(dataset.loc[margin_idx, xs_w])
+        dataset.loc[xs_w, ys_w] = base_values
+        # for idx, val in dataset.loc[margin_idx, xs_w].items():
+        #     # logger.debug("%s, %s", idx, val)
+        #     dataset.loc[idx, idx] = val
+
+    # logger.debug("x_m =\n%s", dataset.T.loc[margin_idx])
+    # logger.debug("y_m =\n%s", dataset.loc[margin_idx])
+
+    logger.debug("base_values=\n%s", base_values)
+    logger.debug("dataset =\n%s", dataset)
+
     # update (w/o, w/) cells = col_margins - (w/, w/)
     dataset.loc[xs_wo, ys_w] = dataset.loc[margin_idx, ys_w].values - base_values
     # update (w/, w/o) cells = row_margins - (w/, w/)
@@ -236,10 +260,8 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
         dataset.loc[xs_wo, ys_w].values + dataset.loc[xs_w, ys_wo].values + base_values
     )
 
-    logger.debug("fill_missing_counts() base_values=\n%s", base_values)
 
     return dataset.astype("int32")
-
 
 # %%
 

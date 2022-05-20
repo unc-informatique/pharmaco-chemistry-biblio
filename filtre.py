@@ -1,73 +1,70 @@
+#%%
+import pandas as pd
 from pandas import DataFrame
 
 
+
 def row(dataset, seuil) -> DataFrame:
-    """_summary_
+    """Remove all the row < seuil and return a new Dataframe
     Args:
-        dataset (dataframe): _description_
-        seuil (int): _description_
+        dataset (dataframe):
+        seuil (int): the min value for remove the small one
     """
-    good = dataset.sum(1) > seuil
-    for i in range(0, len(good), 2):
-        res = good[i] and good[i+1]
-        good[i] = res
-        good[i+1] = res
+
+    good = dataset.xs("w/", axis = 0,  level=2).sum(axis=1) / (len(dataset.columns)/2) > seuil
+    good = pd.concat([good]*2).sort_index()
+    good.index = dataset.index
     return dataset[good]
 
 
-def column(dataset, seuil) -> DataFrame:
-    """_summary_
+def column(dataset : DataFrame, seuil) -> DataFrame:
+    """Remove all the column < seuil and return a new Dataframe
     Args:
-        dataset (dataframe): _description_
-        seuil (int): _description_
+        dataset (dataframe):
+        seuil (int): the min value for remove the small one
     """
-    good = dataset.sum(0) > seuil
-    for i in range(0, len(good), 2):
-        res = good[i] and good[i+1]
-        good[i] = res
-        good[i+1] = res
-
-    return dataset.T[good.T].T
+    
+    return row(dataset.T, seuil).T
 
 
-def ByColumnName(dataset, *categorie) -> DataFrame:
-    """_summary_
+def by_column_name(dataset, *categorie) -> DataFrame:
+    """keep only the specific column
 
     Args:
-        dataset (_type_): _description_
+        dataset (DataFrame):
 
     Returns:
-        DataFrame: _description_
+        DataFrame: new dataframe
     """
-    for arg in categorie:
-        dataset = dataset[arg]
-    return dataset
+    return dataset[(categorie)]
 
-def ByRowName(dataset, *categorie) -> DataFrame:
-    """_summary_
+def by_row_name(dataset, *categorie) -> DataFrame:
+    """keep only the specific row
 
     Args:
-        dataset (dataframe): _description_
-        categorie (str): _description_
-        activities (str): _description_
+        dataset (DataFrame):
 
     Returns:
-        dataframe: _description_
+        DataFrame: new dataframe
     """
-    dataset = dataset.T
-    for arg in categorie:
-        dataset = dataset[arg]
-    return dataset.T
+    return dataset.loc[(categorie)]
 
 
-def KeepWithOrWithOut(dataset, value) -> DataFrame:
-    """_summary_
+def keep_with_or_without(dataset, value) -> DataFrame:
+    """Keep only the 3rd index choice
 
     Args:
-        dataset (dataframe): _description_
-        value (str): _description_
+        dataset (dataframe):
+        value (str): the 3rd that you want to keep ("w/","w/o")
 
     Returns:
-        DataFrame: _description_
+        DataFrame:
     """
     return dataset.loc[:, :, value].T.loc[:, :, value].T
+
+
+
+
+
+
+# %%

@@ -132,14 +132,14 @@ class CA:
         if isinstance(data, pd.DataFrame):
             self.index = data.index.copy()
             self.columns = data.columns.copy()
-            self.index_name = data.index.name
-            self.columns_name = data.columns.name
+            self.index_name = data.index.name if data.index.name is not None else "row"
+            self.columns_name = data.columns.name if data.columns.name is not None else "col"
 
         elif isinstance(data, np.ndarray):
             self.index = [f"row-{i+1}" for i in range(self.I)]
             self.columns = [f"col-{j+1}" for j in range(self.J)]
             self.index_name = "row"
-            self.columns_name = "column"
+            self.columns_name = "col"
 
         # grand total: the number of individuals
         self.n = self.N.sum()

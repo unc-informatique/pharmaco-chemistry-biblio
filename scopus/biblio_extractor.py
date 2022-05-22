@@ -145,7 +145,7 @@ def load_results(filename: str | Path) -> tuple[pd.DataFrame, pd.Series, pd.Seri
 
     dataset = dataset_with_margin.loc[all_comp_but_margin, all_acti_but_margin]
 
-    return dataset, comp_margin, acti_margin
+    return dataset, comp_margin, acti_margin, grand_total
 
 
 # %%

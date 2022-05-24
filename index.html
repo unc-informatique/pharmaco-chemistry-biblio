@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Chart</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <header>
+        <p>pharmaco_chemistry</p>
+    </header>
+    <div style="margin-top: 50px; text-align: center;">
+        <select id="select" class="select">
+        </select>
+    </div>
+    <main style="margin-top: 30px; text-align: center;">
+        <div id="content-chart">
+
+        </div>
+    </main>
+</body>
+</html>

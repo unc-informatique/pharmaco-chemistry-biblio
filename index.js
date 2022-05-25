@@ -25,7 +25,7 @@ function addChart(json) {
     var embedOpt = {"mode": "vega-lite"};
 
     function showError(el, error){
-        el.innerHTML = ('<div class="error" style="color:red;">'
+        document.getElementById("content-chart").innerHTML = ('<div class="error" style="color:red;">'
                         + '<p>JavaScript Error: ' + error.message + '</p>'
                         + "<p>This usually means there's a typo in your chart specification. "
                         + "See the javascript console for the full traceback.</p>"
@@ -33,7 +33,7 @@ function addChart(json) {
         throw error;
     }
     vegaEmbed("#content-chart", spec, embedOpt)
-      .catch(error => showError(el, error));
+      .catch(error => showError(document.getElementById("content-chart"), error));
 }
 
 

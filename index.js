@@ -1,5 +1,5 @@
 const main = document.querySelector('#main');
-const jsonName = ["mark.json", "vbar.json", "hit_map.json", "sankey.json"];
+const jsonName = ["vbar.json", "mark.json", "sankey.json"];
 const select = document.querySelector('#select');
 
 
@@ -8,10 +8,11 @@ const select = document.querySelector('#select');
  */
 function addToSelect(){
     jsonName.forEach(function(name) {
-        const option = document.createElement('option');
-        option.value = name;
-        option.innerHTML = name;
-        select.appendChild(option);
+        addChart(name, "/json_chart/" + name);
+        // const option = document.createElement('option');
+        // option.value = name;
+        // option.innerHTML = name;
+        // select.appendChild(option);
     });
 }
 
@@ -20,20 +21,32 @@ function addToSelect(){
  * fonction qui crée le graphique dans la div 
  * @param {url du json} json 
  */
-function addChart(json) {
+function addChart(name, json) {
     var spec = json;
     var embedOpt = {"mode": "vega-lite"};
 
+    var div = document.createElement('li');
+    var br = document.createElement('br');
     function showError(el, error){
-        document.getElementById("content-chart").innerHTML = ('<div class="error" style="color:red;">'
+        div.innerHTML = ('<div class="error" style="color:red;">'
                         + '<p>JavaScript Error: ' + error.message + '</p>'
                         + "<p>This usually means there's a typo in your chart specification. "
                         + "See the javascript console for the full traceback.</p>"
                         + '</div>');
         throw error;
     }
-    vegaEmbed("#content-chart", spec, embedOpt)
-      .catch(error => showError(document.getElementById("content-chart"), error));
+    // create a new div 
+    
+    // add the id name to the div but remove the .json
+    div.classList.add("chart");
+    name = name.replace(".json", "");
+    div.id = name;
+    // add the div to the main div
+    document.querySelector("#content-chart").appendChild(br);
+    document.querySelector("#content-chart").appendChild(div);
+
+    vegaEmbed("#"+name, spec, embedOpt)
+      .catch(error => showError(div, error));
 }
 
 
@@ -42,5 +55,6 @@ select.addEventListener('change', (event) => {
 });
 
 addToSelect();
-addChart("http://127.0.0.1:5500/json_chart/" + jsonName[0]);
+
+
 

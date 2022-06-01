@@ -1,5 +1,5 @@
 const main = document.querySelector('#main');
-const jsonName = ["vbar.json", "mark.json", "sankey.json"];
+const jsonName = ["vbar.json", "mark.json", "sankey_template.json"];
 const select = document.querySelector('#select');
 
 

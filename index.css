@@ -37,10 +37,13 @@ input, select, textarea{
     background-color: rgb(217, 217, 217);
     color: black; 
 }
+<<<<<<< HEAD
 tbody tr:nth-child(odd){
     background-color: rgb(217, 217, 217);
     color: black; 
   }
+=======
+>>>>>>> 62f09e15716cc20cf31fb596b22628494b43865f
 
 body{
     background-color: white;
@@ -48,9 +51,16 @@ body{
 }
 
 
+<<<<<<< HEAD
 @media (min-width:1500px) {
 
     #mark{
         margin-left: -400px;
+=======
+@media (min-width:1100px) {
+
+    #mark{
+        margin-left: -200px;
+>>>>>>> 62f09e15716cc20cf31fb596b22628494b43865f
     }
   }

@@ -1,7 +1,5 @@
 const main = document.querySelector('#main');
 const jsonName = ["vbar.json", "mark.json", "sankey_template.json"];
-const select = document.querySelector('#select');
-
 
 /**
  * ajoute tout les nom dans jsonName a la select box 
@@ -9,10 +7,6 @@ const select = document.querySelector('#select');
 function addToSelect(){
     jsonName.forEach(function(name) {
         addChart(name, "/json_chart/" + name);
-        // const option = document.createElement('option');
-        // option.value = name;
-        // option.innerHTML = name;
-        // select.appendChild(option);
     });
 }
 
@@ -49,10 +43,6 @@ function addChart(name, json) {
       .catch(error => showError(div, error));
 }
 
-
-select.addEventListener('change', (event) => {
-    addChart("/json_chart/" + event.target.value);
-});
 
 addToSelect();
 

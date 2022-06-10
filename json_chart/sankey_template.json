@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.0.json",
-  "height": 700,
-  "width": 700,
+  "height": 800,
+  "width": 900,
   "data": [
     {
       "name": "rawData",
@@ -11,7 +11,7 @@
         { "type": "formula", "expr": "datum.key.stk1", "as": "stk1" },
         { "type": "formula", "expr": "datum.key.stk2", "as": "stk2" },
         { "type": "formula", "expr": "datum.doc_count", "as": "size" },
-        { "type": "filter", "expr": "datum.doc_count > slider" }
+        { "type": "filter", "expr": "datum.doc_count > papers_threshold" }
       ]
     },
     {
@@ -191,7 +191,7 @@
             "signal": "!groupSelector && (groupHover.stk1 == datum.stk1 || groupHover.stk2 == datum.stk2) ? 1 : 0"
           },
           "tooltip": {
-            "signal": "datum.stk1 + ' \u00e2\u2020\u2019 ' + datum.stk2 + '    ' + format(datum.size, ',.0f') + '   (' + format(datum.percentage, '.1%') + ')'"
+            "signal": "datum.stk1 + ' + ' + datum.stk2 + '    ' + format(datum.size, ',.0f') + '   (' + format(datum.percentage, '.1%') + ')'"
           }
         },
         "hover": { "strokeOpacity": { "value": 1 } }
@@ -297,7 +297,7 @@
   ],
   "signals": [
     {
-      "name": "slider",
+      "name": "papers_threshold",
       "bind": { "input": "range", "min": 0, "max": 10000, "step": 1 },
       "value": 1700
     },

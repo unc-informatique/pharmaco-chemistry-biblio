@@ -1,17 +1,6 @@
-
-header{
-    background-color: black;
-    margin-left: -10px;
-    margin-right: -10px;
-    margin-top: -20px;
-    text-align: center;
-    height: 60px;
-    
-}
-
-
 .chart{
     display : block;
+    margin-bottom: 70px;
 }
 
 header > p {
@@ -21,3 +10,47 @@ header > p {
 
 }
 
+header>nav a:hover{
+    color: white;
+    border-color: white;
+}
+
+a{  
+    line-height: 2;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 0.1rem 1rem;
+    text-decoration: none;
+}
+
+svg{
+    vertical-align: sub;
+    width: 1em;
+    height: 1.3em;
+    margin-right: 0.2rem;
+    stroke-width: 0;
+    fill: white;
+}
+
+input, select, textarea{
+    background-color: rgb(217, 217, 217);
+    color: black; 
+}
+tbody tr:nth-child(odd){
+    background-color: rgb(217, 217, 217);
+    color: black; 
+  }
+
+body{
+    background-color: white;
+    color: black;
+}
+
+
+@media (min-width:1500px) {
+
+    #mark{
+        margin-left: -400px;
+    }
+  }

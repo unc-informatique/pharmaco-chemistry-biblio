@@ -145,6 +145,8 @@ def main():
         nb_queries = len(all_compounds) * (len(all_compounds) - 1) // 2 + len(all_compounds) + 1
     elif args.mode == "activities":
         nb_queries = len(all_activities) * (len(all_activities) - 1) // 2 + len(all_activities) + 1
+    elif args.mode == "margins":
+        nb_queries = len(all_compounds) + len(all_activities) + 1
 
     default_ping = 0.500
     estimated_secs = max(args.delay, default_ping) * nb_queries / args.parallel

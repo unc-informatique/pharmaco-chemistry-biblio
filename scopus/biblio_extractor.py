@@ -17,7 +17,7 @@ from itertools import combinations, product
 from os import environ
 from pathlib import Path
 from pprint import pprint
-from random import randint, sample
+from random import randint, choice
 from typing import Any, Awaitable, Callable, Iterator, Optional, Protocol
 
 import certifi
@@ -169,7 +169,7 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     extended_cols = pd.MultiIndex.from_tuples((cls, val, s) for (cls, val) in src_df.columns for s in SELECTORS)
 
     # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html
-    if query_mode == "cross":
+    if query_mode in ("cross", "margins"):
         xs, ys = extended_rows, extended_cols
     elif query_mode == "compounds":
         xs, ys = extended_rows, extended_rows
@@ -180,7 +180,8 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
 
 
 # %%
-def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
+# BUG : CECI EST ABSOLUMENT DEGUEULASSE !
+def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total=438_174) -> pd.DataFrame:
     """Takes a CROSS dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
         In other words, it fills the blanks in the following dataframe
@@ -226,7 +227,10 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     dataset.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)
     # margin identifier
     margin_idx = (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
-    # the gran total: a.k.a., the number of individuals
+    # the grand total: a.k.a., the number of individuals
+
+    if given_grand_total is not None:
+        dataset.loc[margin_idx, margin_idx] = given_grand_total
     grand_total = dataset.loc[margin_idx, margin_idx]
     logger.info("fill_missing_counts() N = %i", grand_total)
     # logger.debug("fill_missing_counts() df =\n%s", dataset)
@@ -238,7 +242,7 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     wo_cols_filter = [(c, a, k) for (c, a, k) in dataset.columns if k == SELECTORS[False] and c != CLASS_SYMB]
 
     # according to query_mode, we restrict to CxA, CxC or AxA
-    if query_mode == "cross":
+    if query_mode in ("cross", "margins"):
         xs_w, ys_w = w_rows_filter, w_cols_filter
         xs_wo, ys_wo = wo_rows_filter, wo_cols_filter
     elif query_mode == "compounds":
@@ -249,10 +253,10 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
         xs_wo, ys_wo = wo_cols_filter, wo_cols_filter
 
     # update missing rows margin : w/o  = N - w/
-    if query_mode in ["cross", "compounds"]:
+    if query_mode in ["cross", "compounds", "margins"]:
         dataset.T.loc[margin_idx, xs_wo] = grand_total - dataset.T.loc[margin_idx, xs_w].values
     # update missing cols margin : w/o  = N - w/
-    if query_mode in ["cross", "activities"]:
+    if query_mode in ["cross", "activities", "margins"]:
         dataset.loc[margin_idx, ys_wo] = grand_total - dataset.loc[margin_idx, ys_w].values
 
     # copy margin rows <-> cols and to diagonal
@@ -278,14 +282,15 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     logger.debug("base_values=\n%s", base_values)
     logger.debug("dataset =\n%s", dataset)
 
-    # update (w/o, w/) cells = col_margins - (w/, w/)
-    dataset.loc[xs_wo, ys_w] = dataset.loc[margin_idx, ys_w].values - base_values
-    # update (w/, w/o) cells = row_margins - (w/, w/)
-    dataset.loc[xs_w, ys_wo] = dataset.T.loc[margin_idx, xs_w].values.reshape(-1, 1) - base_values
-    # update (w/o, w/o) cells = N - (w/, w/) - (w/o, w/) - (w/, w/o)
-    dataset.loc[xs_wo, ys_wo] = grand_total - (
-        dataset.loc[xs_wo, ys_w].values + dataset.loc[xs_w, ys_wo].values + base_values
-    )
+    if query_mode != "margins":
+        # update (w/o, w/) cells = col_margins - (w/, w/)
+        dataset.loc[xs_wo, ys_w] = dataset.loc[margin_idx, ys_w].values - base_values
+        # update (w/, w/o) cells = row_margins - (w/, w/)
+        dataset.loc[xs_w, ys_wo] = dataset.T.loc[margin_idx, xs_w].values.reshape(-1, 1) - base_values
+        # update (w/o, w/o) cells = N - (w/, w/) - (w/o, w/) - (w/, w/o)
+        dataset.loc[xs_wo, ys_wo] = grand_total - (
+            dataset.loc[xs_wo, ys_w].values + dataset.loc[xs_w, ys_wo].values + base_values
+        )
 
     return dataset.astype("int32")
 
@@ -311,10 +316,14 @@ def build_clause(query: Query) -> str:
     See tests for more information.
     """
 
+    field_search = "TITLE-ABS-KEY"
+
     def split_alts(string: str, operator: str = "OR") -> str:
         """transform alternatives in keywords"""
-        base = f" {operator.strip()} ".join(f'KEY("{name}")' for name in string.split(ALT_SEP))
-        return f"({base})"
+        # base = f" {operator.strip()} ".join(f'KEY("{name}")' for name in string.split(ALT_SEP))
+        # return f"({base})"
+        base = f" {operator.strip()} ".join(f'"{name}"' for name in string.split(ALT_SEP))
+        return f"{field_search}({base})"
 
     # compounds, activities, pos_kw, neg_kw, _ = query
 
@@ -337,14 +346,16 @@ def build_clause(query: Query) -> str:
     return clauses
 
 
-async def broken_search(session: ClientSession, query: Query, *, delay: float = 0.0) -> ResultAPI:
+async def broken_search(
+    session: ClientSession,
+    query: Query,
+) -> ResultAPI:
     """Dummy function for tests and error reporting"""
     raise NotImplementedError("Do not call broken_search(), use gen_db() if needed")
 
 
-async def fake_search(_: ClientSession, query: Query, *, delay: float = 0.0) -> ResultAPI:
+async def fake_search(_: ClientSession, query: Query) -> ResultAPI:
     """Fake query tool WITHOUT network, for test purpose"""
-    await asyncio.sleep(delay)
     start_time = time.perf_counter()
     clause = build_clause(query)
     logger.debug("fake_search(%s)", query.short())
@@ -355,27 +366,32 @@ async def fake_search(_: ClientSession, query: Query, *, delay: float = 0.0) -> 
     return results_nb, elapsed
 
 
-async def httpbin_search(
-    session: ClientSession, query: Query, *, delay: float = 0.0, error_rate: int = 10
-) -> ResultAPI:
+async def httpbin_search(session: ClientSession, query: Query, *, error_rate: int = 0) -> ResultAPI:
     """Fake query tool WITH network on httpbin, for test purpose. Simulates error rate (with http 429)"""
     if randint(1, 100) <= error_rate:
-        url = "http://httpbin.org/status/429"
+        # N404: OT FOUND, 413: PAYLOAD TOO LARGE, 429  TOO MANY REQUESTS
+        http_code = choice((404, 413, 429))
+        url = f"http://httpbin.org/status/{http_code}"
     else:
         url = "http://httpbin.org/anything"
+
     data = {"answer": randint(1, 10000)}
-    results_nb = None
-    await asyncio.sleep(delay)
+    results_nb: Optional[int] = None
     start_time = time.perf_counter()
-    logger.debug("httpbin_search(%s)", query.short())
+
     json_query = wrap_scopus(build_clause(query))
+    logger.debug("httpbin_search(%s)", query.short())
+    logger.debug("%s", json_query)
 
     try:
         async with session.get(url, params=json_query, data=data, ssl=SSL_CONTEXT) as resp:
             json = await resp.json()
             results_nb = int(json["form"]["answer"])
     except ClientResponseError as err:
-        logger.warning("scopus_search(): ClientResponseError #%i: %s", err.status, err.message)
+        logger.warning("httpbin_search(): ClientResponseError #%i: %s", err.status, err.message)
+        logger.warning(err)
+        # on HTTP  error, return the "negative" HTTP code
+        results_nb = -(err.status)  # pylint: disable=invalid-unary-operand-type
     finally:
         elapsed = time.perf_counter() - start_time
     logger.debug("httpbin_search(%s)=%i in %f sec", query.short(), results_nb, elapsed)
@@ -389,15 +405,16 @@ def wrap_scopus(string: str):
     return {"query": f'DOCTYPE("ar") AND {string}', "count": 1}
 
 
-async def scopus_search(session: ClientSession, query: Query, *, delay=0):
+async def scopus_search(session: ClientSession, query: Query):
     """Scopus query tool: return the number of article papers having two sets of keywords. Delay is in sec"""
     scopus_url = "https://api.elsevier.com/content/search/scopus"
     results_nb = None
-
-    await asyncio.sleep(delay)
     start_time = time.perf_counter()
-    logger.debug("scopus_search(%s)", query.short())
+
     json_query = wrap_scopus(build_clause(query))
+    logger.debug("scopus_search(%s)", query.short())
+    logger.debug("%s", json_query)
+
     try:
         async with session.get(scopus_url, params=json_query, headers=API_KEY, ssl=SSL_CONTEXT) as resp:
             logger.debug("X-RateLimit-Remaining=%s", resp.headers.get("X-RateLimit-Remaining", None))
@@ -405,6 +422,7 @@ async def scopus_search(session: ClientSession, query: Query, *, delay=0):
             results_nb = int(json["search-results"]["opensearch:totalResults"], 10)
     except ClientResponseError as err:
         logger.warning("scopus_search(): ClientResponseError #%i: %s", err.status, err.message)
+        logger.warning(err)
     finally:
         elapsed = time.perf_counter() - start_time
     logger.debug("scopus_search(%s)=%s in %f sec", query.short(), results_nb, elapsed)
@@ -422,11 +440,7 @@ SEARCH_MODES = {
 DEFAULT_SEARCH_MODE = "fake"
 
 
-QUERY_MODES = [
-    "activities",
-    "compounds",
-    "cross",
-]
+QUERY_MODES = ["activities", "compounds", "cross", "margins"]
 DEFAULT_QUERY_MODE = "cross"
 
 
@@ -482,17 +496,19 @@ def generate_all_queries(data: pd.DataFrame, query_mode: str) -> Iterator[Query]
         # pairs of activities
         for pair in combinations(activities, 2):
             yield Query(compounds, [], pair, [], (True, True))
+    elif query_mode == "margins":
+        pass
     else:
         raise ValueError(f"unknown query mode '{query_mode}' to generate queries")
 
     # rows/columns marginal sums (an extra row and an extra column for total)
     # this generates (|KW1| + |KW2| + 1) queries
     # rows margin sums
-    if query_mode in ["compounds", "cross"]:
+    if query_mode in ["compounds", "cross", "margins"]:
         for compound in compounds:
             yield Query([], activities, [compound], [], (True, None))
     # cols margin sums
-    if query_mode in ["activities", "cross"]:
+    if query_mode in ["activities", "cross", "margins"]:
         for activity in activities:
             yield Query(compounds, [], [activity], [], (None, True))
     # total margin sum
@@ -538,13 +554,19 @@ async def consumer(
     """
     jobs_done = 0
     jobs_retried = 0
+    jobs_failed = 0
     try:
         # queue must be filled first
         while not queue.empty():
             query = await queue.get()
-            nb_results, duration = await task_factory(session, query, delay=0.0)
-
+            nb_results, duration = await task_factory(session, query)
             logger.info("consumer(%s) got %s from job %s after %f", consumer_id, nb_results, query.short(), duration)
+
+            failed_job = nb_results is None or nb_results < 0
+            nb_results_orig = nb_results
+            if failed_job:
+                nb_results = -1
+
             pos_kws = query.pos_kws
             neg_kws = query.neg_kws
             kind = query.kind
@@ -588,14 +610,20 @@ async def consumer(
                     len(neg_kws),
                     kind,
                 )
-            queue.task_done()
-            jobs_done += 1
 
-            # add the same query again in the job queue to retry it
-            if nb_results is None:
-                await queue.put(query)
-                jobs_retried += 1
-                logger.info("consumer(%s) added back %s to the queue", consumer_id, query.short())
+            jobs_done += 1
+            queue.task_done()
+
+            # add the same query again in the job queue to retry it if http error is TOO MANY REQUESTS (429)
+            # if nb_results is None:
+            if failed_job:
+                jobs_failed += 1
+                if nb_results_orig is not None and nb_results_orig == -429:
+                    await queue.put(query)
+                    jobs_retried += 1
+                    logger.info("consumer(%s) added back %s to the queue from error 429", consumer_id, query.short())
+                else:
+                    logger.error("consumer(%s) dropped %s from error %s", consumer_id, query.short(), nb_results_orig)
                 # raise RuntimeWarning(f"consumer({consumer_id}) broken here ")
 
             await asyncio.sleep(max(worker_delay - duration, 0))
@@ -609,7 +637,7 @@ async def consumer(
     logger.info("consumer(%s) ended, done %i jobs, retried %i", consumer_id, jobs_done, jobs_retried)
 
     # NOTE: results_df contains values: it's passed by reference
-    return jobs_done, jobs_retried
+    return jobs_done, jobs_retried, jobs_failed
 
 
 async def observer(queue: asyncio.Queue, frequency: float = 0.5):
@@ -622,7 +650,7 @@ async def observer(queue: asyncio.Queue, frequency: float = 0.5):
             observations += 1
             await asyncio.sleep(delay)
     except asyncio.CancelledError:
-        logger.info("observer() canceled after %i observations", observations)
+        logger.info("observer() canceled after %i round of observations", observations)
 
 
 async def spawner(
@@ -681,7 +709,10 @@ async def spawner(
     consumer_tasks = []
     # NOTE! ici, dans le cas cross on étend les données d'origine aux 2 dimensions supplémentaires
     result_df = extend_df(src_df, query_mode)
-    # logger.debug(result_df)
+    # BUG : https://stackoverflow.com/questions/48860117/why-performancewarning-when-indexed-lookup-on-sorted-index
+    result_df.sort_index(level=[0, 1])
+    logger.debug("result_df.index.is_monotonic_increasing %s", result_df.index.is_monotonic_increasing)
+    logger.debug(result_df)
 
     async with ClientSession(raise_for_status=True) as session:
 
@@ -716,10 +747,12 @@ async def spawner(
         logging.debug("spawner() %i errors from workers: %s", len(errors), errors)
         if not done_jobs:
             raise RuntimeError("No async worker ended properly")
-        nb_jobs, nb_retries = zip(*done_jobs)
+        nb_jobs, nb_retries, nb_failed = zip(*done_jobs)
         print(f"Summary: {len(consumer_tasks)} workers ended correctly.")
 
-        print(f"{sum(nb_jobs)} jobs with {sum(nb_retries)} retries on error. {len(errors)} workers crashed.")
+        print(
+            f"{sum(nb_jobs)} jobs with {sum(nb_retries)} retries on error with {sum(nb_failed)} total failed. {len(errors)} workers crashed."
+        )
 
     return result_df
 

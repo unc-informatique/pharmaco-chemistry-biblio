@@ -25,11 +25,49 @@ curl -vv -X GET --header 'Accept: application/json' 'https://api.elsevier.com/co
 ## trace
 
 ```raw
-py biblio_main.py ../input/pharmaco_chemistry_2.csv --search scopus  --mode cross --write -vv 2> scopus.log
+py biblio_main.py ../input/pharmaco_chemistry_2.csv --search scopus  --mode cross --write -vv 2> logs/scopus.log
 Scopus downloader started (debug=10)
 Loaded 54 compounds and 37 activities
 Launching 2090 queries using scopus with 8 parallel workers (w/ min delay 1.0), ETA 18:16:24 (261 seconds)
 >2090 jobs in the queue @18-12-03.339326
 >2074 jobs in the queue @18-12-05.340491
 >2058 jobs in the queue @18-12-07.341678
+
+Summary: 8 workers ended correctly.
+2090 jobs with 0 retries on error with 4 total failed. 0 workers crashed.
+```
+
+```log
+ERROR:CHEMOTAXO.biblio_extractor:consumer(3) dropped +[], -[], k=(None, None) from error None
+
+ERROR:CHEMOTAXO.biblio_extractor:consumer(5) dropped +(('alkaloid', 'benzylamine'), ('biotic', 'pollination')), -[], k=(True, True) from error None
+WARNING:CHEMOTAXO.biblio_extractor:scopus_search(): ClientResponseError #429: Too Many Requests
+
+ERROR:CHEMOTAXO.biblio_extractor:consumer(6) dropped +(('alkaloid', 'benzylamine'), ('biotic', 'seed dispersal')), -[], k=(True, True) from error None
+WARNING:CHEMOTAXO.biblio_extractor:scopus_search(): ClientResponseError #429: Too Many Requests
+
+ERROR:CHEMOTAXO.biblio_extractor:consumer(4) dropped +(('alkaloid', 'benzylamine'), ('biotic', 'phytotoxicity')), -[], k=(True, True) from error None
+
+```
+
+```raw
+py biblio_main.py  ../input/pharmaco_chemistry_2.csv  --search httpbin --mode margins -vv 2> logs/httpbin_margins.log
+Scopus downloader started (debug=10)
+Loaded 54 compounds and 37 activities
+Launching 92 queries using httpbin with 8 parallel workers (w/ min delay 1.0), ETA 09:20:56 (12 seconds)
+>  92 jobs in the queue @09-20-45.598565
+>  76 jobs in the queue @09-20-47.601354
+>  60 jobs in the queue @09-20-49.604265
+```
+
+
+```bash
+http "https://api.elsevier.com/content/search/scopus?query=DOCTYPE(%22ar%22)+AND+(TITLE-ABS-KEY(%22benzylamine%22)+OR+TITLE-ABS-KEY(%22colchicine%22)+OR+TITLE-ABS-KEY(%22cyclopeptide%22)+OR+TITLE-ABS-KEY(%22imidazole%22)+OR+TITLE-ABS-KEY(%22indole%22)+OR+TITLE-ABS-KEY(%22indolizidine%22)+OR+TITLE-ABS-KEY(%22isoquinoline%22)+OR+TITLE-ABS-KEY(%22isoxazole%22)+OR+TITLE-ABS-KEY(%22muscarine%22)+OR+TITLE-ABS-KEY(%22oxazole%22)+OR+TITLE-ABS-KEY(%22phenylethylamine%22)+OR+TITLE-ABS-KEY(%22piperidine%22)+OR+TITLE-ABS-KEY(%22purine%22)+OR+TITLE-ABS-KEY(%22putrescine%22)+OR+TITLE-ABS-KEY(%22pyridine%22)+OR+TITLE-ABS-KEY(%22pyrrolidine%22)+OR+TITLE-ABS-KEY(%22pyrrolizidine%22)+OR+TITLE-ABS-KEY(%22quinazoline%22)+OR+TITLE-ABS-KEY(%22quinoline%22)+OR+TITLE-ABS-KEY(%22quinolizidine%22)+OR+TITLE-ABS-KEY(%22spermidine%22)+OR+TITLE-ABS-KEY(%22spermine%22)+OR+TITLE-ABS-KEY(%22thiazole%22)+OR+TITLE-ABS-KEY(%22tropane%22)+OR+TITLE-ABS-KEY(%22acetophenone%22)+OR+TITLE-ABS-KEY(%22anthraquinone%22)+OR+TITLE-ABS-KEY(%22flavonoids%22+OR+%22biflavonoids%22+OR+%22anthocyanin%22)+OR+TITLE-ABS-KEY(%22isoflavanoids%22)+OR+TITLE-ABS-KEY(%22lignans%22)+OR+TITLE-ABS-KEY(%22naphthoquinone%22)+OR+TITLE-ABS-KEY(%22phenolic+acid%22)+OR+TITLE-ABS-KEY(%22phenylpropanoid%22)+OR+TITLE-ABS-KEY(%22stilbene%22)+OR+TITLE-ABS-KEY(%22tannin%22)+OR+TITLE-ABS-KEY(%22xanthone%22)+OR+TITLE-ABS-KEY(%22coumarin%22)+OR+TITLE-ABS-KEY(%22acetogenin%22)+OR+TITLE-ABS-KEY(%22ansamycin%22)+OR+TITLE-ABS-KEY(%22macrolide%22)+OR+TITLE-ABS-KEY(%22polyene%22)+OR+TITLE-ABS-KEY(%22polyether%22)+OR+TITLE-ABS-KEY(%22tetracycline%22)+OR+TITLE-ABS-KEY(%22diterpene%22)+OR+TITLE-ABS-KEY(%22hemiterpene%22)+OR+TITLE-ABS-KEY(%22monoterpene%22)+OR+TITLE-ABS-KEY(%22norisoprenoid%22)+OR+TITLE-ABS-KEY(%22polyterpene%22)+OR+TITLE-ABS-KEY(%22sesquiterpene%22)+OR+TITLE-ABS-KEY(%22sesterterpene%22)+OR+TITLE-ABS-KEY(%22tetraterpene%22+OR+%22carotenoid%22+OR+%22xanthophyll%22)+OR+TITLE-ABS-KEY(%22triterpene%22+OR+%22saponin%22)+OR+TITLE-ABS-KEY(%22sterols%22+OR+%22cardenolides%22)+OR+TITLE-ABS-KEY(%22sulphur+compounds%22+OR+%22glucosinolates%22)+OR+TITLE-ABS-KEY(%22lactones%22+OR+%22strigolactones%22))+AND+(TITLE-ABS-KEY(%22hydric+stress%22+OR+%22drought+stress%22+OR+%22hydric+tolerance%22+OR+%22drought+tolerance%22+OR+%22hydric+resistance%22+OR+%22drought+resistance%22+OR+%22hydric+impact%22+OR+%22drought+impact%22+OR+%22hydric+change%22+OR+%22drought+change%22)+OR+TITLE-ABS-KEY(%22heavy+metal+stress%22+OR+%22metallic+trace+element+stress%22+OR+%22heavy+metal+tolerance%22+OR+%22metallic+trace+element+tolerance%22+OR+%22heavy+metal+resistance%22+OR+%22metallic+trace+element+resistance%22+OR+%22heavy+metal+impact%22+OR+%22metallic+trace+element+impact%22+OR+%22heavy+metal+change%22+OR+%22metallic+trace+element+change%22)+OR+TITLE-ABS-KEY(%22uv+stress%22+OR+%22light+stress%22+OR+%22uv+tolerance%22+OR+%22light+tolerance%22+OR+%22uv+resistance%22+OR+%22light+resistance%22+OR+%22uv+impact%22+OR+%22light+impact%22+OR+%22uv+change%22+OR+%22light+change%22+OR+%22irradiance%22)+OR+TITLE-ABS-KEY(%22salt+stress%22+OR+%22salinity+stress%22+OR+%22salt+tolerance%22+OR+%22salinity+tolerance%22+OR+%22salt+resistance%22+OR+%22salinity+resistance%22+OR+%22salt+impact%22+OR+%22salinity+impact%22+OR+%22salt+change%22+OR+%22salinity+change%22)+OR+TITLE-ABS-KEY(%22heat+stress%22+OR+%22heat+tolerance%22+OR+%22heat+resistance%22+OR+%22heat+impact%22+OR+%22heat+change%22+OR+%22temperature+stress%22+OR+%22temperature+tolerance%22+OR+%22temperature+resistance%22+OR+%22temperature+impact%22+OR+%22temperature+change%22)+OR+TITLE-ABS-KEY(%22ph+stress%22+OR+%22ph+tolerance%22+OR+%22ph+resistance%22+OR+%22ph+impact%22+OR+%22ph+change%22)+OR+TITLE-ABS-KEY(%22antifeedant%22+OR+%22phytophagous%22+OR+%22herbivory%22+OR+%22feeding%0Adeterrents%22)+OR+TITLE-ABS-KEY(%22root+respiration%22+OR+%22branching+factors%22+OR+%22root+formation%22)+OR+TITLE-ABS-KEY(%22attractant%22)+OR+TITLE-ABS-KEY(%22germination%22)+OR+TITLE-ABS-KEY(%22herbicidal%22)+OR+TITLE-ABS-KEY(%22pollination%22)+OR+TITLE-ABS-KEY(%22seed+dispersal%22)+OR+TITLE-ABS-KEY(%22phytotoxicity%22)+OR+TITLE-ABS-KEY(%22quorum+sensing%22)+OR+TITLE-ABS-KEY(%22repulsive%22)+OR+TITLE-ABS-KEY(%22pigment%22+OR+%22colours%22)+OR+TITLE-ABS-KEY(%22immuno-modulatory%22)+OR+TITLE-ABS-KEY(%22antidiabetic%22)+OR+TITLE-ABS-KEY(%22cardiovascular%22)+OR+TITLE-ABS-KEY(%22obesity%22)+OR+TITLE-ABS-KEY(%22rheumatism%22)+OR+TITLE-ABS-KEY(%22antibacterial%22)+OR+TITLE-ABS-KEY(%22antifungal%22)+OR+TITLE-ABS-KEY(%22antimicrobial%22)+OR+TITLE-ABS-KEY(%22antiparasitic%22)+OR+TITLE-ABS-KEY(%22antiviral%22)+OR+TITLE-ABS-KEY(%22anti-inflammatory%22)+OR+TITLE-ABS-KEY(%22arthritis%22)+OR+TITLE-ABS-KEY(%22burns%22)+OR+TITLE-ABS-KEY(%22wound%22)+OR+TITLE-ABS-KEY(%22anticancer%22+OR+%22anti-tumour%22+OR+%22anti-apoptotic%22+OR+%22anti-angiogenic%22)+OR+TITLE-ABS-KEY(%22cytotoxicity%22)+OR+TITLE-ABS-KEY(%22sedative%22+OR+%22analgesic%22)+OR+TITLE-ABS-KEY(%22toxicity%22)+OR+TITLE-ABS-KEY(%22antioxidant%22)+OR+TITLE-ABS-KEY(%22dementia%22+OR+%22alzheimer%22))&count=1&apiKey=7f59af901d2d86f78a1fd60c1bf9426a" --all
+HTTP/1.1 413 Payload Too Large
+CF-Cache-Status: DYNAMIC
+CF-RAY: 7561d020bc28d4d1-NOU
+Connection: keep-alive
+Content-Length: 0
+Date: Thu, 06 Oct 2022 22:25:27 GMT
+Server: cloudflare
 ```

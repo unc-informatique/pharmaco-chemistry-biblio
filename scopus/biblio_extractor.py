@@ -190,8 +190,8 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
 
 # %%
 # BUG : CE given_grand_total EST ABSOLUMENT DEGUEULASSE !
-# valeur 438_174 en date du, total citation 1_165_494 : x2.66
-def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total=438_174) -> pd.DataFrame:
+# valeur 438_418 en date du 05/10/22, total citations par alternative 1_165_494 : x2.66
+def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total=438_418) -> pd.DataFrame:
     """Takes a CROSS dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
         In other words, it fills the blanks in the following dataframe

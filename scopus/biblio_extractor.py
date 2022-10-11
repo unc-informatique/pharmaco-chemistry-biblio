@@ -13,7 +13,7 @@ import time
 from collections import defaultdict
 from dataclasses import dataclass
 from functools import partial, wraps
-from itertools import combinations, product
+from itertools import combinations, product, chain
 from os import environ
 from pathlib import Path
 from pprint import pprint
@@ -98,7 +98,7 @@ def load_input(filename: str | Path) -> pd.DataFrame:
     """loads an 'input' CSV dataset as a dataframe with two levels keywords"""
     # https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html
     # row/col dimension 0 is the class, row/col dimension 1 is the keyword
-    dataset: pd.DataFrame = pd.read_csv(filename, index_col=[0, 1], header=[0, 1]).fillna(0)
+    dataset: pd.DataFrame = pd.read_csv(filename, index_col=[0, 1], header=[0, 1], sep=";").fillna(0)
     logger.debug("load_input(%s): input dataset read", filename)
 
     def normalize_names(expr: str) -> str:
@@ -127,7 +127,7 @@ def load_input(filename: str | Path) -> pd.DataFrame:
 
 def load_results(filename: str | Path) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
     """loads a CSV dataset as a dataframe with two levels keywords"""
-    dataset_with_margin = pd.read_csv(filename, index_col=[0, 1, 2], header=[0, 1, 2])
+    dataset_with_margin = pd.read_csv(filename, index_col=[0, 1, 2], header=[0, 1, 2], sep=";")
     logger.debug("load_results(%s): results dataset read", filename)
     dataset_with_margin.sort_index(axis=1, inplace=True, ascending=SORT_ORDER)
     dataset_with_margin.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)
@@ -175,12 +175,20 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
         xs, ys = extended_rows, extended_rows
     elif query_mode == "activities":
         xs, ys = extended_cols, extended_cols
+    elif query_mode == "alternatives":
+        xs = pd.MultiIndex.from_tuples(
+            [(cls, val) for (cls, vals) in src_df.index for val in vals.split(ALT_SEP)]
+            + [(cls, val) for (cls, vals) in src_df.columns for val in vals.split(ALT_SEP)]
+        )
+        ys = pd.Index(["Count"])
+    else:
+        raise ValueError(f"unknown query mode '{query_mode}' extend results")
 
     return pd.DataFrame(index=xs, columns=ys).astype("Int32")
 
 
 # %%
-# BUG : CECI EST ABSOLUMENT DEGUEULASSE !
+# BUG : CE given_grand_total EST ABSOLUMENT DEGUEULASSE !
 def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total=438_174) -> pd.DataFrame:
     """Takes a CROSS dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
@@ -230,6 +238,7 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total
     # the grand total: a.k.a., the number of individuals
 
     if given_grand_total is not None:
+        logger.warn("finalize_results() fixed value for grand_total %s", given_grand_total)
         dataset.loc[margin_idx, margin_idx] = given_grand_total
     grand_total = dataset.loc[margin_idx, margin_idx]
     logger.info("fill_missing_counts() N = %i", grand_total)
@@ -440,8 +449,25 @@ SEARCH_MODES = {
 DEFAULT_SEARCH_MODE = "fake"
 
 
-QUERY_MODES = ["activities", "compounds", "cross", "margins"]
+QUERY_MODES = ["activities", "compounds", "cross", "margins", "alternatives"]
 DEFAULT_QUERY_MODE = "cross"
+
+
+def number_queries(compounds, activities, mode: str) -> Optional[int]:
+
+    if mode == "cross":
+        return len(compounds) * len(activities) + len(compounds) + len(activities) + 1
+    if mode == "compounds":
+        return len(compounds) * (len(compounds) - 1) // 2 + len(compounds) + 1
+    if mode == "activities":
+        return len(activities) * (len(activities) - 1) // 2 + len(activities) + 1
+    if mode == "margins":
+        return len(compounds) + len(activities) + 1
+    if mode == "alternatives":
+        alt_compunds = [alt for comp in compounds for alt in comp.split(ALT_SEP)]
+        alt_activities = [alt for act in activities for alt in act.split(ALT_SEP)]
+        return len(alt_compunds) + len(alt_activities)
+    return None
 
 
 def generate_all_queries(data: pd.DataFrame, query_mode: str) -> Iterator[Query]:
@@ -496,7 +522,7 @@ def generate_all_queries(data: pd.DataFrame, query_mode: str) -> Iterator[Query]
         # pairs of activities
         for pair in combinations(activities, 2):
             yield Query(compounds, [], pair, [], (True, True))
-    elif query_mode == "margins":
+    elif query_mode in ("margins", "alternatives"):
         pass
     else:
         raise ValueError(f"unknown query mode '{query_mode}' to generate queries")
@@ -512,7 +538,14 @@ def generate_all_queries(data: pd.DataFrame, query_mode: str) -> Iterator[Query]
         for activity in activities:
             yield Query(compounds, [], [activity], [], (None, True))
     # total margin sum
-    yield Query(compounds, activities, [], [], (None, None))
+    if query_mode in ["activities", "compounds", "cross", "margins"]:
+        yield Query(compounds, activities, [], [], (None, None))
+
+    if query_mode == "alternatives":
+        for compound in ((cls, val) for (cls, vals) in compounds for val in vals.split(ALT_SEP)):
+            yield Query([], activities, [compound], [], (ALT_SEP, None))
+        for activity in ((cls, val) for (cls, vals) in activities for val in vals.split(ALT_SEP)):
+            yield Query(compounds, [], [activity], [], (None, ALT_SEP))
 
 
 async def consumer(
@@ -600,6 +633,12 @@ async def consumer(
                 results_df.loc[
                     (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True]), (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
                 ] = nb_results
+            # count of compounds alternatives
+            elif kind == (ALT_SEP, None):
+                results_df.loc[pos_kws[0], "Count"] = nb_results
+            elif kind == (None, ALT_SEP):
+                results_df.loc[pos_kws[0], "Count"] = nb_results
+
             # that should not happen if all queries are generated properly
             else:
                 # raise ValueError(f"{len(pos_kw) = }, {len(neg_kw) = } for {kind = } should not arise")
@@ -801,10 +840,24 @@ def launcher(
     logger.info("launcher() all jobs done in %fs", total_time)
     # logger.debug("results dataframe %s", results_df)
 
-    return finalize_results(results_df, query_mode=query_mode)
+    if query_mode in (
+        "activities",
+        "compounds",
+        "cross",
+        "margins",
+    ):
+        final_res = finalize_results(results_df, query_mode=query_mode)
+    elif query_mode in ("alternatives"):
+        final_res = results_df
+
+    return final_res
 
 
 # %%
 
 if __name__ == "__main__":
     logger.error("Please use biblio_main.py to launch extraction")
+    the_filename = Path("../input/pharmaco_chemistry_2_samples.csv")
+    the_dataset = load_input(the_filename)
+    the_compounds = list(the_dataset.index.get_level_values(1))
+    the_activities = list(the_dataset.columns.get_level_values(1))

@@ -130,23 +130,7 @@ def main():
     if args.mode not in bex.QUERY_MODES:
         raise ValueError(f"Unknown query mode {args.mode}")
 
-    # if args.search == "offline":
-    #     nb_papers = 243964 // (len(all_compounds) * len(all_activities))
-    #     results = bex.gen_db(list(dataset.index), list(dataset.columns), nb_papers, 383330 / 243964)
-    # else:
-    # nb_queries = (
-    #     args.samples
-    #     if args.samples is not None
-    #     else len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
-    # )
-    if args.mode == "cross":
-        nb_queries = len(all_compounds) * len(all_activities) + len(all_compounds) + len(all_activities) + 1
-    elif args.mode == "compounds":
-        nb_queries = len(all_compounds) * (len(all_compounds) - 1) // 2 + len(all_compounds) + 1
-    elif args.mode == "activities":
-        nb_queries = len(all_activities) * (len(all_activities) - 1) // 2 + len(all_activities) + 1
-    elif args.mode == "margins":
-        nb_queries = len(all_compounds) + len(all_activities) + 1
+    nb_queries = bex.number_queries(all_compounds, all_activities, args.mode)
 
     default_ping = 0.500
     estimated_secs = max(args.delay, default_ping) * nb_queries / args.parallel
@@ -167,7 +151,7 @@ def main():
     if args.write:
         now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         output_filename = output_dir / f"{filename.stem}_{args.mode}_{now}.csv"
-        results.to_csv(output_filename)
+        results.to_csv(output_filename, sep=";")
         logger.info("results written to %s", output_filename)
 
 

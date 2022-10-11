@@ -180,6 +180,7 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
             [(cls, val) for (cls, vals) in src_df.index for val in vals.split(ALT_SEP)]
             + [(cls, val) for (cls, vals) in src_df.columns for val in vals.split(ALT_SEP)]
         )
+        # no "Query" column here to prevent Int32 casting
         ys = pd.Index(["Count"])
     else:
         raise ValueError(f"unknown query mode '{query_mode}' extend results")
@@ -404,7 +405,7 @@ async def httpbin_search(session: ClientSession, query: Query, *, error_rate: in
     finally:
         elapsed = time.perf_counter() - start_time
     logger.debug("httpbin_search(%s)=%i in %f sec", query.short(), results_nb, elapsed)
-    return results_nb, elapsed
+    return results_nb, elapsed, json_query["query"]
 
 
 def wrap_scopus(string: str):
@@ -435,7 +436,7 @@ async def scopus_search(session: ClientSession, query: Query):
     finally:
         elapsed = time.perf_counter() - start_time
     logger.debug("scopus_search(%s)=%s in %f sec", query.short(), results_nb, elapsed)
-    return results_nb, elapsed
+    return results_nb, elapsed, json_query["query"]
 
 
 # query modes : one fake, one fake over network, one true
@@ -592,7 +593,7 @@ async def consumer(
         # queue must be filled first
         while not queue.empty():
             query = await queue.get()
-            nb_results, duration = await task_factory(session, query)
+            nb_results, duration, sent_query = await task_factory(session, query)
             logger.info("consumer(%s) got %s from job %s after %f", consumer_id, nb_results, query.short(), duration)
 
             failed_job = nb_results is None or nb_results < 0
@@ -634,10 +635,9 @@ async def consumer(
                     (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True]), (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
                 ] = nb_results
             # count of compounds alternatives
-            elif kind == (ALT_SEP, None):
+            elif kind in [(ALT_SEP, None), (None, ALT_SEP)]:
                 results_df.loc[pos_kws[0], "Count"] = nb_results
-            elif kind == (None, ALT_SEP):
-                results_df.loc[pos_kws[0], "Count"] = nb_results
+                results_df.loc[pos_kws[0], "Query"] = sent_query
 
             # that should not happen if all queries are generated properly
             else:

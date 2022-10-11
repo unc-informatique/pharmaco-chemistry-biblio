@@ -1,57 +1,57 @@
-,,"Abiotic","Abiotic","Abiotic","Abiotic","Abiotic","Abiotic","Biotic","Biotic","Biotic","Biotic","Biotic","Biotic","Biotic","Biotic","Biotic","Biotic","Biotic","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Pharmaco","Toxicity","Pharmaco","Pharmaco"
-,,"hydric stress/drought stress/hydric tolerance/drought tolerance/hydric resistance/drought resistance/hydric impact/drought impact/hydric change/drought change","heavy metal stress/metallic trace element stress/heavy metal tolerance/metallic trace element tolerance/heavy metal resistance/metallic trace element resistance/heavy metal impact/metallic trace element impact/heavy metal change/metallic trace element change","UV stress/light stress/UV tolerance/light tolerance/UV resistance/light resistance/UV impact/light impact/UV change/light change/irradiance","Salt stress/salinity stress/SALT tolerance/salinity tolerance/SALT resistance/salinity resistance/SALT impact/salinity impact/SALT change/salinity change","Heat stress/Heat tolerance/Heat resistance/Heat impact/Heat change/temperature stress/ temperature tolerance/temperature resistance/temperature impact/temperature change","pH stress/ pH tolerance/pH resistance/pH impact/pH change","antifeedant/phytophagous/herbivory/feeding deterrents","root respiration/branching factors/root formation","attractant","germination","herbicidal","pollination","seed dispersal","phytotoxicity","quorum sensing","repulsive","pigment/colour","immuno-modulatory","antidiabetic","cardiovascular","obesity","rheumatism","antibacterial","antifungal","antimicrobial","antiparasitic","antiviral","anti-inflammatory","arthritis","burns","wound","anticancer/anti-tumour/anti-apoptotic/anti-angiogenic","cytotoxicity","sedative/analgesic","toxicity","antioxidant","dementia/Alzheimer"
-"alkaloid","acridine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","benzylamine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","colchicine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","cyclopeptide",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","imidazole",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","indole",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","indolizidine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","isoquinoline",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","isoxazole",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","muscarine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","oxazole",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","phenylethylamine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","piperidine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","purine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","putrescine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","pyridine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","pyrrolidine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","pyrrolizidine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","quinazoline",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","quinoline",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","quinolizidine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","spermidine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","spermine",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","thiazole",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"alkaloid","tropane",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","acetophenone",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","anthraquinone",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","flavonoids/biflavonoids/anthocyanin",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","isoflavanoids",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","lignans",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","naphthoquinone",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","phenolic acid",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","phenylpropanoid",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","stilbene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","tannin",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","xanthone",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"phenolic compound","coumarin ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"polyketide","acetogenin",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"polyketide","ansamycin",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"polyketide","macrolide",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"polyketide","polyene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"polyketide","polyether",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"polyketide","tetracycline",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","diterpene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","hemiterpene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","monoterpene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","norisoprenoid",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","polyterpene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","sesquiterpene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","sesterterpene",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","tetraterpene/carotenoid/xanthophyll",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"terpenoid / terpene","triterpene/saponin",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"sterols","sterols/cardenolides",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"sulphur compounds","sulphur compounds/glucosinolates",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"lactones","lactones/strigolactones",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;;"Abiotic";"Abiotic";"Abiotic";"Abiotic";"Abiotic";"Abiotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Biotic";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Pharmaco";"Toxicity";"Pharmaco";"Pharmaco"
+;;"hydric stress/drought stress/hydric tolerance/drought tolerance/hydric resistance/drought resistance/hydric impact/drought impact/hydric change/drought change";"heavy metal stress/metallic trace element stress/heavy metal tolerance/metallic trace element tolerance/heavy metal resistance/metallic trace element resistance/heavy metal impact/metallic trace element impact/heavy metal change/metallic trace element change";"UV stress/light stress/UV tolerance/light tolerance/UV resistance/light resistance/UV impact/light impact/UV change/light change/irradiance";"Salt stress/salinity stress/SALT tolerance/salinity tolerance/SALT resistance/salinity resistance/SALT impact/salinity impact/SALT change/salinity change";"Heat stress/Heat tolerance/Heat resistance/Heat impact/Heat change/temperature stress/ temperature tolerance/temperature resistance/temperature impact/temperature change";"pH stress/ pH tolerance/pH resistance/pH impact/pH change";"antifeedant/phytophagous/herbivory/feeding deterrents";"root respiration/branching factors/root formation";"attractant";"germination";"herbicidal";"pollination";"seed dispersal";"phytotoxicity";"quorum sensing";"repulsive";"pigment/colour";"immuno-modulatory";"antidiabetic";"cardiovascular";"obesity";"rheumatism";"antibacterial";"antifungal";"antimicrobial";"antiparasitic";"antiviral";"anti-inflammatory";"arthritis";"burns";"wound";"anticancer/anti-tumour/anti-apoptotic/anti-angiogenic";"cytotoxicity";"sedative/analgesic";"toxicity";"antioxidant";"dementia/Alzheimer"
+"alkaloid";"acridine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"benzylamine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"colchicine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"cyclopeptide";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"imidazole";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"indole";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"indolizidine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"isoquinoline";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"isoxazole";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"muscarine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"oxazole";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"phenylethylamine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"piperidine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"purine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"putrescine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"pyridine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"pyrrolidine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"pyrrolizidine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"quinazoline";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"quinoline";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"quinolizidine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"spermidine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"spermine";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"thiazole";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"alkaloid";"tropane";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"acetophenone";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"anthraquinone";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"flavonoids/biflavonoids/anthocyanin";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"isoflavanoids";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"lignans";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"naphthoquinone";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"phenolic acid";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"phenylpropanoid";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"stilbene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"tannin";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"xanthone";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"phenolic compound";"coumarin ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"polyketide";"acetogenin";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"polyketide";"ansamycin";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"polyketide";"macrolide";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"polyketide";"polyene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"polyketide";"polyether";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"polyketide";"tetracycline";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"diterpene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"hemiterpene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"monoterpene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"norisoprenoid";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"polyterpene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"sesquiterpene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"sesterterpene";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"tetraterpene/carotenoid/xanthophyll";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"terpenoid / terpene";"triterpene/saponin";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"sterols";"sterols/cardenolides";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"sulphur compounds";"sulphur compounds/glucosinolates";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"lactones";"lactones/strigolactones";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

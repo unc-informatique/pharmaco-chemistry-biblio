@@ -1,0 +1,161 @@
+;;Count
+alkaloid;benzylamine;1276
+alkaloid;colchicine;9356
+alkaloid;cyclopeptide;3498
+alkaloid;imidazole;22400
+alkaloid;indole;26793
+alkaloid;indolizidine;142
+alkaloid;isoquinoline;3613
+alkaloid;isoxazole;3722
+alkaloid;muscarine;181
+alkaloid;oxazole;2624
+alkaloid;phenylethylamine;360
+alkaloid;piperidine;13042
+alkaloid;purine;10340
+alkaloid;putrescine;2675
+alkaloid;pyridine;26012
+alkaloid;pyrrolidine;4993
+alkaloid;pyrrolizidine;1092
+alkaloid;quinazoline;4856
+alkaloid;quinoline;21087
+alkaloid;quinolizidine;312
+alkaloid;spermidine;2908
+alkaloid;spermine;2733
+alkaloid;thiazole;14567
+alkaloid;tropane;618
+phenolic compound;acetophenone;2885
+phenolic compound;anthraquinone;6926
+phenolic compound;flavonoids;81009
+phenolic compound;biflavonoids;1154
+phenolic compound;anthocyanin;22326
+phenolic compound;isoflavanoids;16
+phenolic compound;lignans;4335
+phenolic compound;naphthoquinone;4662
+phenolic compound;phenolic acid;8999
+phenolic compound;phenylpropanoid;2891
+phenolic compound;stilbene;7725
+phenolic compound;tannin;20163
+phenolic compound;xanthone;2921
+phenolic compound;coumarin;12107
+polyketide;acetogenin;473
+polyketide;ansamycin;277
+polyketide;macrolide;13338
+polyketide;polyene;3120
+polyketide;polyether;1449
+polyketide;tetracycline;36412
+terpenoid/terpene;diterpene;5926
+terpenoid/terpene;hemiterpene;233
+terpenoid/terpene;monoterpene;3191
+terpenoid/terpene;norisoprenoid;163
+terpenoid/terpene;polyterpene;10
+terpenoid/terpene;sesquiterpene;9306
+terpenoid/terpene;sesterterpene;283
+terpenoid/terpene;tetraterpene;26
+terpenoid/terpene;carotenoid;33831
+terpenoid/terpene;xanthophyll;7373
+terpenoid/terpene;triterpene;9192
+terpenoid/terpene;saponin;16951
+sterols;sterols;13379
+sterols;cardenolides;473
+sulphur compounds;sulphur compounds;12140
+sulphur compounds;glucosinolates;1628
+lactones;lactones;15415
+lactones;strigolactones;513
+abiotic;hydric stress;13
+abiotic;drought stress;2135
+abiotic;hydric tolerance;0
+abiotic;drought tolerance;856
+abiotic;hydric resistance;0
+abiotic;drought resistance;343
+abiotic;hydric impact;0
+abiotic;drought impact;15
+abiotic;hydric change;0
+abiotic;drought change;1
+abiotic;heavy metal stress;228
+abiotic;metallic trace element stress;0
+abiotic;heavy metal tolerance;99
+abiotic;metallic trace element tolerance;0
+abiotic;heavy metal resistance;200
+abiotic;metallic trace element resistance;0
+abiotic;heavy metal impact;5
+abiotic;metallic trace element impact;0
+abiotic;heavy metal change;4
+abiotic;metallic trace element change;0
+abiotic;uv stress;71
+abiotic;light stress;610
+abiotic;uv tolerance;23
+abiotic;light tolerance;35
+abiotic;uv resistance;81
+abiotic;light resistance;29
+abiotic;uv impact;3
+abiotic;light impact;5
+abiotic;uv change;0
+abiotic;light change;31
+abiotic;irradiance;1566
+abiotic;salt stress;2446
+abiotic;salinity stress;946
+abiotic;salt tolerance;1391
+abiotic;salinity tolerance;507
+abiotic;salt resistance;122
+abiotic;salinity resistance;16
+abiotic;salt impact;4
+abiotic;salinity impact;10
+abiotic;salt change;6
+abiotic;salinity change;35
+abiotic;heat stress;1083
+abiotic;heat tolerance;479
+abiotic;heat resistance;626
+abiotic;heat impact;3
+abiotic;heat change;15
+abiotic;temperature stress;696
+abiotic;temperature tolerance;162
+abiotic;temperature resistance;120
+abiotic;temperature impact;26
+abiotic;temperature change;418
+abiotic;ph stress;38
+abiotic;ph tolerance;54
+abiotic;ph resistance;18
+abiotic;ph impact;9
+abiotic;ph change;687
+biotic;antifeedant;648
+biotic;phytophagous;168
+biotic;herbivory;1787
+biotic;feeding deterrents;265
+biotic;root respiration;22
+biotic;branching factors;16
+biotic;root formation;911
+biotic;attractant;520
+biotic;germination;7467
+biotic;herbicidal;661
+biotic;pollination;1083
+biotic;seed dispersal;119
+biotic;phytotoxicity;1978
+biotic;quorum sensing;4583
+biotic;repulsive;568
+biotic;pigment;31558
+biotic;colour;30981
+pharmaco;immuno-modulatory;70
+pharmaco;antidiabetic;9148
+pharmaco;cardiovascular;21062
+pharmaco;obesity;10867
+pharmaco;rheumatism;822
+pharmaco;antibacterial;37384
+pharmaco;antifungal;24283
+pharmaco;antimicrobial;58194
+pharmaco;antiparasitic;2141
+pharmaco;antiviral;13867
+pharmaco;anti-inflammatory;38623
+pharmaco;arthritis;10638
+pharmaco;burns;1851
+pharmaco;wound;11776
+pharmaco;anticancer;25744
+pharmaco;anti-tumour;7005
+pharmaco;anti-apoptotic;2988
+pharmaco;anti-angiogenic;1456
+pharmaco;cytotoxicity;59001
+pharmaco;sedative;3791
+pharmaco;analgesic;12642
+toxicity;toxicity;57322
+pharmaco;antioxidant;98994
+pharmaco;dementia;3035
+pharmaco;alzheimer;10764

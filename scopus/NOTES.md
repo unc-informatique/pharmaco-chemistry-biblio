@@ -16,7 +16,6 @@ Liens scopus
 
 Requête de test : `DOCTYPE("ar") AND (TITLE-ABS-KEY("benzylamine"))` : 9,484 document results. Avec `curl` et `http` :
 
-
 ```bash
 curl -vv -X GET --header 'Accept: application/json' 'https://api.elsevier.com/content/search/scopus?query=DOCTYPE("ar") AND (TITLE-ABS-KEY("benzylamine"))&apiKey=74c71d241426db269fba091507dfde38'
 
@@ -70,7 +69,7 @@ It's frustrating because the human interface <https://www.scopus.com/search/form
 
 For instance, I know that there are 438 418 results (I'm only interested by the number of results, not the content) to the following query but I cannot execute it on the REST API :
 
-> DOCTYPE("ar") AND (TITLE-ABS-KEY("benzylamine") OR TITLE-ABS-KEY("colchicine") OR TITLE-ABS-KEY("cyclopeptide") OR TITLE-ABS-KEY("imidazole") OR TITLE-ABS-KEY("indole") OR TITLE-ABS-KEY("indolizidine") OR TITLE-ABS-KEY("isoquinoline") OR TITLE-ABS-KEY("isoxazole") OR TITLE-ABS-KEY("muscarine") OR TITLE-ABS-KEY("oxazole") OR TITLE-ABS-KEY("phenylethylamine") OR TITLE-ABS-KEY("piperidine") OR TITLE-ABS-KEY("purine") OR TITLE-ABS-KEY("putrescine") OR TITLE-ABS-KEY("pyridine") OR TITLE-ABS-KEY("pyrrolidine") OR TITLE-ABS-KEY("pyrrolizidine") OR TITLE-ABS-KEY("quinazoline") OR TITLE-ABS-KEY("quinoline") OR TITLE-ABS-KEY("quinolizidine") OR TITLE-ABS-KEY("spermidine") OR TITLE-ABS-KEY("spermine") OR TITLE-ABS-KEY("thiazole") OR TITLE-ABS-KEY("tropane") OR TITLE-ABS-KEY("acetophenone") OR TITLE-ABS-KEY("anthraquinone") OR TITLE-ABS-KEY("flavonoids" OR "biflavonoids" OR "anthocyanin") OR TITLE-ABS-KEY("isoflavanoids") OR TITLE-ABS-KEY("lignans") OR TITLE-ABS-KEY("naphthoquinone") OR TITLE-ABS-KEY("phenolic acid") OR TITLE-ABS-KEY("phenylpropanoid") OR TITLE-ABS-KEY("stilbene") OR TITLE-ABS-KEY("tannin") OR TITLE-ABS-KEY("xanthone") OR TITLE-ABS-KEY("coumarin") OR TITLE-ABS-KEY("acetogenin") OR TITLE-ABS-KEY("ansamycin") OR TITLE-ABS-KEY("macrolide") OR TITLE-ABS-KEY("polyene") OR TITLE-ABS-KEY("polyether") OR TITLE-ABS-KEY("tetracycline") OR TITLE-ABS-KEY("diterpene") OR TITLE-ABS-KEY("hemiterpene") OR TITLE-ABS-KEY("monoterpene") OR TITLE-ABS-KEY("norisoprenoid") OR TITLE-ABS-KEY("polyterpene") OR TITLE-ABS-KEY("sesquiterpene") OR TITLE-ABS-KEY("sesterterpene") OR TITLE-ABS-KEY("tetraterpene" OR "carotenoid" OR "xanthophyll") OR TITLE-ABS-KEY("triterpene" OR "saponin") OR TITLE-ABS-KEY("sterols" OR "cardenolides") OR TITLE-ABS-KEY("sulphur compounds" OR "glucosinolates") OR TITLE-ABS-KEY("lactones" OR "strigolactones")) AND (TITLE-ABS-KEY("hydric stress" OR "drought stress" OR "hydric tolerance" OR "drought tolerance" OR "hydric resistance" OR "drought resistance" OR "hydric impact" OR "drought impact" OR "hydric change" OR "drought change") OR TITLE-ABS-KEY("heavy metal stress" OR "metallic trace element stress" OR "heavy metal tolerance" OR "metallic trace element tolerance" OR "heavy metal resistance" OR "metallic trace element resistance" OR "heavy metal impact" OR "metallic trace element impact" OR "heavy metal change" OR "metallic trace element change") OR TITLE-ABS-KEY("uv stress" OR "light stress" OR "uv tolerance" OR "light tolerance" OR "uv resistance" OR "light resistance" OR "uv impact" OR "light impact" OR "uv change" OR "light change" OR "irradiance") OR TITLE-ABS-KEY("salt stress" OR "salinity stress" OR "salt tolerance" OR "salinity tolerance" OR "salt resistance" OR "salinity resistance" OR "salt impact" OR "salinity impact" OR "salt change" OR "salinity change") OR TITLE-ABS-KEY("heat stress" OR "heat tolerance" OR "heat resistance" OR "heat impact" OR "heat change" OR "temperature stress" OR "temperature tolerance" OR "temperature resistance" OR "temperature impact" OR "temperature change") OR TITLE-ABS-KEY("ph stress" OR "ph tolerance" OR "ph resistance" OR "ph impact" OR "ph change") OR TITLE-ABS-KEY("antifeedant" OR "phytophagous" OR "herbivory" OR "feeding deterrents") OR TITLE-ABS-KEY("root respiration" OR "branching factors" OR "root formation") OR TITLE-ABS-KEY("attractant") OR TITLE-ABS-KEY("germination") OR TITLE-ABS-KEY("herbicidal") OR TITLE-ABS-KEY("pollination") OR TITLE-ABS-KEY("seed dispersal") OR TITLE-ABS-KEY("phytotoxicity") OR TITLE-ABS-KEY("quorum sensing") OR TITLE-ABS-KEY("repulsive") OR TITLE-ABS-KEY("pigment" OR "colour") OR TITLE-ABS-KEY("immuno-modulatory") OR TITLE-ABS-KEY("antidiabetic") OR TITLE-ABS-KEY("cardiovascular") OR TITLE-ABS-KEY("obesity") OR TITLE-ABS-KEY("rheumatism") OR TITLE-ABS-KEY("antibacterial") OR TITLE-ABS-KEY("antifungal") OR TITLE-ABS-KEY("antimicrobial") OR TITLE-ABS-KEY("antiparasitic") OR TITLE-ABS-KEY("antiviral") OR TITLE-ABS-KEY("anti-inflammatory") OR TITLE-ABS-KEY("arthritis") OR TITLE-ABS-KEY("burns") OR TITLE-ABS-KEY("wound") OR TITLE-ABS-KEY("anticancer" OR "anti-tumour" OR "anti-apoptotic" OR "anti-angiogenic") OR TITLE-ABS-KEY("cytotoxicity") OR TITLE-ABS-KEY("sedative" OR "analgesic") OR TITLE-ABS-KEY("toxicity") OR TITLE-ABS-KEY("antioxidant") OR TITLE-ABS-KEY("dementia" OR "alzheimer")) 
+> DOCTYPE("ar") AND (TITLE-ABS-KEY("benzylamine") OR TITLE-ABS-KEY("colchicine") OR TITLE-ABS-KEY("cyclopeptide") OR TITLE-ABS-KEY("imidazole") OR TITLE-ABS-KEY("indole") OR TITLE-ABS-KEY("indolizidine") OR TITLE-ABS-KEY("isoquinoline") OR TITLE-ABS-KEY("isoxazole") OR TITLE-ABS-KEY("muscarine") OR TITLE-ABS-KEY("oxazole") OR TITLE-ABS-KEY("phenylethylamine") OR TITLE-ABS-KEY("piperidine") OR TITLE-ABS-KEY("purine") OR TITLE-ABS-KEY("putrescine") OR TITLE-ABS-KEY("pyridine") OR TITLE-ABS-KEY("pyrrolidine") OR TITLE-ABS-KEY("pyrrolizidine") OR TITLE-ABS-KEY("quinazoline") OR TITLE-ABS-KEY("quinoline") OR TITLE-ABS-KEY("quinolizidine") OR TITLE-ABS-KEY("spermidine") OR TITLE-ABS-KEY("spermine") OR TITLE-ABS-KEY("thiazole") OR TITLE-ABS-KEY("tropane") OR TITLE-ABS-KEY("acetophenone") OR TITLE-ABS-KEY("anthraquinone") OR TITLE-ABS-KEY("flavonoids" OR "biflavonoids" OR "anthocyanin") OR TITLE-ABS-KEY("isoflavanoids") OR TITLE-ABS-KEY("lignans") OR TITLE-ABS-KEY("naphthoquinone") OR TITLE-ABS-KEY("phenolic acid") OR TITLE-ABS-KEY("phenylpropanoid") OR TITLE-ABS-KEY("stilbene") OR TITLE-ABS-KEY("tannin") OR TITLE-ABS-KEY("xanthone") OR TITLE-ABS-KEY("coumarin") OR TITLE-ABS-KEY("acetogenin") OR TITLE-ABS-KEY("ansamycin") OR TITLE-ABS-KEY("macrolide") OR TITLE-ABS-KEY("polyene") OR TITLE-ABS-KEY("polyether") OR TITLE-ABS-KEY("tetracycline") OR TITLE-ABS-KEY("diterpene") OR TITLE-ABS-KEY("hemiterpene") OR TITLE-ABS-KEY("monoterpene") OR TITLE-ABS-KEY("norisoprenoid") OR TITLE-ABS-KEY("polyterpene") OR TITLE-ABS-KEY("sesquiterpene") OR TITLE-ABS-KEY("sesterterpene") OR TITLE-ABS-KEY("tetraterpene" OR "carotenoid" OR "xanthophyll") OR TITLE-ABS-KEY("triterpene" OR "saponin") OR TITLE-ABS-KEY("sterols" OR "cardenolides") OR TITLE-ABS-KEY("sulphur compounds" OR "glucosinolates") OR TITLE-ABS-KEY("lactones" OR "strigolactones")) AND (TITLE-ABS-KEY("hydric stress" OR "drought stress" OR "hydric tolerance" OR "drought tolerance" OR "hydric resistance" OR "drought resistance" OR "hydric impact" OR "drought impact" OR "hydric change" OR "drought change") OR TITLE-ABS-KEY("heavy metal stress" OR "metallic trace element stress" OR "heavy metal tolerance" OR "metallic trace element tolerance" OR "heavy metal resistance" OR "metallic trace element resistance" OR "heavy metal impact" OR "metallic trace element impact" OR "heavy metal change" OR "metallic trace element change") OR TITLE-ABS-KEY("uv stress" OR "light stress" OR "uv tolerance" OR "light tolerance" OR "uv resistance" OR "light resistance" OR "uv impact" OR "light impact" OR "uv change" OR "light change" OR "irradiance") OR TITLE-ABS-KEY("salt stress" OR "salinity stress" OR "salt tolerance" OR "salinity tolerance" OR "salt resistance" OR "salinity resistance" OR "salt impact" OR "salinity impact" OR "salt change" OR "salinity change") OR TITLE-ABS-KEY("heat stress" OR "heat tolerance" OR "heat resistance" OR "heat impact" OR "heat change" OR "temperature stress" OR "temperature tolerance" OR "temperature resistance" OR "temperature impact" OR "temperature change") OR TITLE-ABS-KEY("ph stress" OR "ph tolerance" OR "ph resistance" OR "ph impact" OR "ph change") OR TITLE-ABS-KEY("antifeedant" OR "phytophagous" OR "herbivory" OR "feeding deterrents") OR TITLE-ABS-KEY("root respiration" OR "branching factors" OR "root formation") OR TITLE-ABS-KEY("attractant") OR TITLE-ABS-KEY("germination") OR TITLE-ABS-KEY("herbicidal") OR TITLE-ABS-KEY("pollination") OR TITLE-ABS-KEY("seed dispersal") OR TITLE-ABS-KEY("phytotoxicity") OR TITLE-ABS-KEY("quorum sensing") OR TITLE-ABS-KEY("repulsive") OR TITLE-ABS-KEY("pigment" OR "colour") OR TITLE-ABS-KEY("immuno-modulatory") OR TITLE-ABS-KEY("antidiabetic") OR TITLE-ABS-KEY("cardiovascular") OR TITLE-ABS-KEY("obesity") OR TITLE-ABS-KEY("rheumatism") OR TITLE-ABS-KEY("antibacterial") OR TITLE-ABS-KEY("antifungal") OR TITLE-ABS-KEY("antimicrobial") OR TITLE-ABS-KEY("antiparasitic") OR TITLE-ABS-KEY("antiviral") OR TITLE-ABS-KEY("anti-inflammatory") OR TITLE-ABS-KEY("arthritis") OR TITLE-ABS-KEY("burns") OR TITLE-ABS-KEY("wound") OR TITLE-ABS-KEY("anticancer" OR "anti-tumour" OR "anti-apoptotic" OR "anti-angiogenic") OR TITLE-ABS-KEY("cytotoxicity") OR TITLE-ABS-KEY("sedative" OR "analgesic") OR TITLE-ABS-KEY("toxicity") OR TITLE-ABS-KEY("antioxidant") OR TITLE-ABS-KEY("dementia" OR "alzheimer"))
 
 ## Query globale
 
@@ -114,4 +113,88 @@ Launching 92 queries using httpbin with 8 parallel workers (w/ min delay 1.0), E
 >  92 jobs in the queue @09-20-45.598565
 >  76 jobs in the queue @09-20-47.601354
 >  60 jobs in the queue @09-20-49.604265
+```
+
+## CS/linguistics results
+
+### Margins
+
+Les marges, _id est_ le nombre dans chaque colonne/ligne
+
+```raw
+py biblio_main.py -v --search scopus  --mode margins ../input/computer_science_humanities.csv
+
+                               *        cs
+                               Σ databases         web
+                              w/       w/o    w/   w/o    w/
+*          Σ           w/   6935      2292  4643  4155  2780
+humanities linguistics w/o  1499         0     0     0     0
+                       w/   5436         0     0     0     0
+           sociology   w/o  5411         0     0     0     0
+                       w/   1524         0     0     0     0
+```
+
+### Alternatives
+
+Même que précédent, mais en décomposant chaque alternative.
+
+```raw
+py biblio_main.py -vv --search scopus  --mode alternatives ../input/computer_science_humanities.csv
+
+                        Count                                              Query
+humanities sociology     1524  DOCTYPE("ar") AND (TITLE-ABS-KEY("databases") ...
+           linguistics   5436  DOCTYPE("ar") AND (TITLE-ABS-KEY("databases") ...
+cs         databases     4643  DOCTYPE("ar") AND (TITLE-ABS-KEY("sociology") ...
+           web           2780  DOCTYPE("ar") AND (TITLE-ABS-KEY("sociology") ...
+```
+
+### Cross
+
+La matrice d'étude
+
+```raw
+py biblio_main.py -v --search scopus  --mode cross ../input/computer_science_humanities.csv
+
+                               *        cs
+                               Σ databases         web
+                              w/       w/o    w/   w/o    w/
+*          Σ           w/   6935      2292  4643  4155  2780
+humanities linguistics w/o  1499       527   972   826   673
+                       w/   5436      1765  3671  3329  2107
+           sociology   w/o  5411      1753  3658  3317  2094
+                       w/   1524       539   985   838   686
+```
+
+### Activities
+
+Le produit ligne/ligne.
+
+```raw
+py biblio_main.py --search scopus  --mode activities ../input/computer_science_humanities.csv
+
+                     *        cs
+                     Σ databases         web
+                    w/       w/o    w/   w/o    w/
+*  Σ         w/   6935      2292  4643  4155  2780
+cs databases w/o  2292      2292     0     0  2292
+             w/   4643         0  4643  4155   488
+   web       w/o  4155         0  4155  4155     0
+             w/   2780      2292   488     0  2780
+```
+
+### Compounds
+
+Le produit colonne/colonne.
+
+```raw
+py biblio_main.py --search scopus  --mode compounds ../input/computer_science_humanities.csv
+
+                               *  humanities
+                               Σ linguistics       sociology
+                              w/         w/o    w/       w/o    w/
+*          Σ           w/   6935        1499  5436      5411  1524
+humanities linguistics w/o  1499        1499     0         0  1499
+                       w/   5436           0  5436      5411    25
+           sociology   w/o  5411           0  5411      5411     0
+                       w/   1524        1499    25         0  1524
 ```

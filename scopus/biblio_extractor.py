@@ -191,7 +191,7 @@ def extend_df(src_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
 # %%
 # BUG : CE given_grand_total EST ABSOLUMENT DEGUEULASSE !
 # valeur 438_418 en date du 05/10/22, total citations par alternative 1_165_494 : x2.66
-def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total=438_418) -> pd.DataFrame:
+def finalize_results(res_df: pd.DataFrame, query_mode: str) -> pd.DataFrame:
     """Takes a CROSS dataframe with (w/, w/) cells and w/ marginal sums only and fills the remaining ones.
 
         In other words, it fills the blanks in the following dataframe
@@ -239,9 +239,9 @@ def finalize_results(res_df: pd.DataFrame, query_mode: str, *, given_grand_total
     margin_idx = (CLASS_SYMB, MARGIN_SYMB, SELECTORS[True])
     # the grand total: a.k.a., the number of individuals
 
-    if given_grand_total is not None:
-        logger.warn("finalize_results() fixed value for grand_total %s", given_grand_total)
-        dataset.loc[margin_idx, margin_idx] = given_grand_total
+    # if given_grand_total is not None:
+    #     logger.warn("finalize_results() fixed value for grand_total %s", given_grand_total)
+    #     dataset.loc[margin_idx, margin_idx] = given_grand_total
     grand_total = dataset.loc[margin_idx, margin_idx]
     logger.info("fill_missing_counts() N = %i", grand_total)
     # logger.debug("fill_missing_counts() df =\n%s", dataset)
@@ -386,7 +386,7 @@ async def httpbin_search(session: ClientSession, query: Query, *, error_rate: in
     else:
         url = "http://httpbin.org/anything"
 
-    data = {"answer": randint(1, 10000)}
+    # data = {"answer": randint(1, 10000)}
     results_nb: Optional[int] = None
     start_time = time.perf_counter()
 
@@ -395,9 +395,17 @@ async def httpbin_search(session: ClientSession, query: Query, *, error_rate: in
     logger.debug("%s", json_query)
 
     try:
-        async with session.get(url, params=json_query, data=data, ssl=SSL_CONTEXT) as resp:
+        async with session.request(
+            method="post",
+            url=url,
+            data=json_query,
+            ssl=SSL_CONTEXT,
+            headers={"Accept": "application/json"},
+        ) as resp:
             json = await resp.json()
-            results_nb = int(json["form"]["answer"])
+            logger.debug("%s", json)
+            results_nb = randint(1, 10000)
+            # results_nb = int(json["form"]["answer"])
     except ClientResponseError as err:
         logger.warning("httpbin_search(): ClientResponseError #%i: %s", err.status, err.message)
         logger.warning(err)
@@ -427,7 +435,14 @@ async def scopus_search(session: ClientSession, query: Query):
     logger.debug("%s", json_query)
 
     try:
-        async with session.get(scopus_url, params=json_query, headers=API_KEY, ssl=SSL_CONTEXT) as resp:
+        # async with session.get(scopus_url, params=json_query, headers=API_KEY, ssl=SSL_CONTEXT) as resp:
+        async with session.request(
+            method="post",
+            url=scopus_url,
+            data=json_query,
+            ssl=SSL_CONTEXT,
+            headers=API_KEY | {"Accept": "application/json"},
+        ) as resp:
             logger.debug("X-RateLimit-Remaining=%s", resp.headers.get("X-RateLimit-Remaining", None))
             json = await resp.json()
             results_nb = int(json["search-results"]["opensearch:totalResults"], 10)
@@ -456,7 +471,7 @@ DEFAULT_QUERY_MODE = "cross"
 
 
 def number_queries(compounds, activities, mode: str) -> Optional[int]:
-
+    """Compute the number of queries tobe send to the API"""
     if mode == "cross":
         return len(compounds) * len(activities) + len(compounds) + len(activities) + 1
     if mode == "compounds":

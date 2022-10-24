@@ -1,12 +1,12 @@
 const main = document.querySelector("#main");
-const jsonName = ["vbar.json", "mark.json", "sankey_template.json"];
+const diagrams = ["vbar.json", "mark.json", "sankey.json"];
 
 /**
  * ajoute tout les nom dans jsonName a la select box
  */
 function addToSelect() {
-  jsonName.forEach(function (name) {
-    addChart(name, "json_chart/" + name);
+  diagrams.forEach(function (name) {
+    addChart(name, `charts/${name}`);
   });
 }
 

@@ -1,0 +1,301 @@
+{
+  "config": {
+    "view": {
+      "continuousWidth": 400,
+      "continuousHeight": 300
+    }
+  },
+  "hconcat": [
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "grey"
+          },
+          "encoding": {
+            "size": {
+              "value": 1
+            },
+            "x": {
+              "field": "croix",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "rule",
+            "color": "grey"
+          },
+          "encoding": {
+            "size": {
+              "value": 2
+            },
+            "y": {
+              "field": "croix",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 60
+          },
+          "encoding": {
+            "color": {
+              "condition": {
+                "field": "color",
+                "legend": null,
+                "scale": {
+                  "scheme": "category10"
+                },
+                "type": "ordinal",
+                "selection": "selector072"
+              },
+              "value": "lightgray"
+            },
+            "shape": {
+              "field": "shape",
+              "legend": {
+                "title": "Color Legend"
+              },
+              "scale": {
+                "domain": [
+                  "Activity",
+                  "Compound"
+                ],
+                "range": [
+                  "triangle-up",
+                  "cross"
+                ]
+              },
+              "type": "nominal"
+            },
+            "size": {
+              "field": "size",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "name",
+                "type": "nominal"
+              },
+              {
+                "field": "color",
+                "type": "nominal"
+              },
+              {
+                "field": "size",
+                "type": "quantitative"
+              },
+              {
+                "field": "shape",
+                "type": "nominal"
+              }
+            ],
+            "x": {
+              "axis": {
+                "grid": false,
+                "title": ""
+              },
+              "field": "x",
+              "type": "quantitative"
+            },
+            "y": {
+              "axis": {
+                "grid": false,
+                "title": ""
+              },
+              "field": "y",
+              "type": "quantitative"
+            }
+          },
+          "height": 700,
+          "selection": {
+            "selector073": {
+              "type": "interval",
+              "bind": "scales",
+              "encodings": [
+                "x",
+                "y"
+              ]
+            },
+            "selection": {
+              "type": "single",
+              "fields": [
+                "type"
+              ],
+              "bind": {
+                "input": "select",
+                "options": [
+                  "tt_projection_metric",
+                  "row_implication_metric",
+                  "col_implication_metric",
+                  "fowlkes_mallows_metric",
+                  "fraction_metric",
+                  "odds_metric",
+                  "accuracy_metric"
+                ],
+                "name": "selector metric "
+              },
+              "init": {
+                "type": "tt_projection_metric"
+              }
+            },
+            "slider_min_size": {
+              "type": "single",
+              "fields": [
+                "cutoff"
+              ],
+              "bind": {
+                "input": "range",
+                "max": 64280,
+                "min": 0,
+                "name": "papers threshold ",
+                "step": 10
+              },
+              "init": {
+                "cutoff": 0
+              }
+            }
+          },
+          "title": "mark point",
+          "transform": [
+            {
+              "filter": "selection.type == datum.type && datum.size >= slider_min_size.cutoff[0]"
+            }
+          ],
+          "width": 1100
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "dx": 7
+          },
+          "encoding": {
+            "color": {
+              "condition": {
+                "value": "black",
+                "selection": "selector072"
+              },
+              "value": ""
+            },
+            "text": {
+              "field": "name",
+              "type": "nominal"
+            },
+            "x": {
+              "field": "x",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            }
+          },
+          "selection": {
+            "selector072": {
+              "type": "multi",
+              "fields": [
+                "color"
+              ]
+            }
+          },
+          "transform": [
+            {
+              "filter": "selection.type == datum.type && datum.size >= slider_min_size.cutoff[0]"
+            }
+          ]
+        }
+      ],
+      "data": {
+        "url": "data/mark_data.json"
+      }
+    },
+    {
+      "layer": [
+        {
+          "data": {
+            "url": "data/mark_data.json"
+          },
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 250
+          },
+          "encoding": {
+            "color": {
+              "condition": {
+                "field": "color",
+                "legend": null,
+                "scale": {
+                  "scheme": "category10"
+                },
+                "type": "ordinal",
+                "selection": "selector072"
+              },
+              "value": "lightgray"
+            },
+            "shape": {
+              "field": "shape",
+              "type": "nominal"
+            },
+            "y": {
+              "axis": {
+                "orient": "right"
+              },
+              "field": "color",
+              "sort": null,
+              "type": "nominal"
+            }
+          },
+          "selection": {
+            "selector072": {
+              "type": "multi",
+              "fields": [
+                "color"
+              ]
+            }
+          }
+        },
+        {
+          "data": {
+            "name": "empty"
+          },
+          "mark": {
+            "type": "text",
+            "align": "left"
+          },
+          "encoding": {
+            "size": {
+              "value": 12
+            },
+            "text": {
+              "value": [
+                "Click on the shapes of the legend or the graphic to select an item.",
+                "",
+                "Shift + click to select multiple legend items.",
+                "",
+                "Double click on the legend to select all the items."
+              ]
+            },
+            "y": {
+              "value": 222
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+  "datasets": {
+    "empty": [
+      {}
+    ]
+  }
+}

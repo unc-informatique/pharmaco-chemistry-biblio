@@ -1,0 +1,171 @@
+{
+  "config": {
+    "view": {
+      "continuousWidth": 400,
+      "continuousHeight": 300
+    }
+  },
+  "data": {
+    "url": "data/vbar_data.json"
+  },
+  "mark": "bar",
+  "encoding": {
+    "color": {
+      "field": "class",
+      "scale": {
+        "domain": [
+          "abiotic",
+          "abiotic",
+          "abiotic",
+          "abiotic",
+          "abiotic",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "allelopathy",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "pharmaco",
+          "toxicity"
+        ]
+      },
+      "type": "nominal"
+    },
+    "tooltip": [
+      {
+        "field": "acti",
+        "type": "nominal"
+      },
+      {
+        "field": "value",
+        "type": "quantitative"
+      },
+      {
+        "field": "class",
+        "type": "nominal"
+      }
+    ],
+    "x": {
+      "field": "acti",
+      "type": "nominal"
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative"
+    }
+  },
+  "height": 700,
+  "selection": {
+    "selection": {
+      "type": "single",
+      "fields": [
+        "com"
+      ],
+      "bind": {
+        "input": "select",
+        "options": [
+          "acridine",
+          "benzylamine",
+          "colchicine",
+          "cyclopeptide",
+          "imidazole",
+          "indole",
+          "indolizidine",
+          "isoquinoline",
+          "isoxazole",
+          "muscarine",
+          "oxazole",
+          "phenylethylamine",
+          "piperidine",
+          "purine",
+          "putrescine",
+          "pyridine",
+          "pyrrolidine",
+          "pyrrolizidine",
+          "quinazoline",
+          "quinoline",
+          "quinolizidine",
+          "spermidine",
+          "spermine",
+          "thiazole",
+          "tropane",
+          "acetophenone",
+          "anthraquinone",
+          "biflavonoids",
+          "flavonoids",
+          "isoflavanoids",
+          "lignans",
+          "naphthoquinone",
+          "phenol",
+          "phenolic acid",
+          "phenylpropanoid",
+          "stilbene",
+          "tannin",
+          "xanthone",
+          "acetogenin",
+          "ansamycin",
+          "macrolide",
+          "polyene",
+          "polyether",
+          "tetracycline",
+          "diterpene",
+          "hemiterpene",
+          "monoterpene",
+          "norisoprenoid",
+          "polyterpene",
+          "sesquiterpene",
+          "sesterterpene",
+          "tetraterpene/carotenoid/xanthophyll",
+          "triterpene"
+        ],
+        "name": "selector of compound "
+      },
+      "init": {
+        "com": "acridine"
+      }
+    },
+    "slider": {
+      "type": "single",
+      "fields": [
+        "cutoff"
+      ],
+      "bind": {
+        "input": "range",
+        "max": 1000,
+        "min": 0,
+        "name": "papers threshold ",
+        "step": 1
+      },
+      "init": {
+        "cutoff": 0
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "selection.com == datum.com && datum.value >= slider.cutoff[0]"
+    }
+  ],
+  "width": 900,
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json"
+}

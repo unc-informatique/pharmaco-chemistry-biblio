@@ -5,7 +5,7 @@
   "data": [
     {
       "name": "rawData",
-      "url": "json_chart/sankey_data.json",
+      "url": "data/sankey_data.json",
       "format": { "property": "aggregations.table.buckets" },
       "transform": [
         { "type": "formula", "expr": "datum.key.stk1", "as": "stk1" },

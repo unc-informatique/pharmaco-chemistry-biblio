@@ -1,5 +1,6 @@
 const main = document.querySelector("#main");
-const diagrams = ["vbar.json", "mark.json", "sankey.json"];
+const diagrams = ["mark.json"]; // ["vbar.json", "mark.json", "sankey.json"]
+
 
 /**
  * ajoute tout les nom dans jsonName a la select box

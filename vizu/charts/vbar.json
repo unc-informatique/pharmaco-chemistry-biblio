@@ -1,8 +1,8 @@
 {
   "config": {
     "view": {
-      "continuousWidth": 400,
-      "continuousHeight": 300
+      "continuousWidth": 711,
+      "continuousHeight": 400
     }
   },
   "data": {
@@ -13,41 +13,7 @@
     "color": {
       "field": "class",
       "scale": {
-        "domain": [
-          "abiotic",
-          "abiotic",
-          "abiotic",
-          "abiotic",
-          "abiotic",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "allelopathy",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "pharmaco",
-          "toxicity"
-        ]
+        "domain": ["abiotic", "abiotic", "abiotic", "abiotic", "abiotic", "abiotic", "biotic", "biotic", "biotic", "biotic", "biotic", "biotic", "biotic", "biotic", "biotic", "biotic", "biotic", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "pharmaco", "toxicity"]
       },
       "type": "nominal"
     },
@@ -83,65 +49,11 @@
       ],
       "bind": {
         "input": "select",
-        "options": [
-          "acridine",
-          "benzylamine",
-          "colchicine",
-          "cyclopeptide",
-          "imidazole",
-          "indole",
-          "indolizidine",
-          "isoquinoline",
-          "isoxazole",
-          "muscarine",
-          "oxazole",
-          "phenylethylamine",
-          "piperidine",
-          "purine",
-          "putrescine",
-          "pyridine",
-          "pyrrolidine",
-          "pyrrolizidine",
-          "quinazoline",
-          "quinoline",
-          "quinolizidine",
-          "spermidine",
-          "spermine",
-          "thiazole",
-          "tropane",
-          "acetophenone",
-          "anthraquinone",
-          "biflavonoids",
-          "flavonoids",
-          "isoflavanoids",
-          "lignans",
-          "naphthoquinone",
-          "phenol",
-          "phenolic acid",
-          "phenylpropanoid",
-          "stilbene",
-          "tannin",
-          "xanthone",
-          "acetogenin",
-          "ansamycin",
-          "macrolide",
-          "polyene",
-          "polyether",
-          "tetracycline",
-          "diterpene",
-          "hemiterpene",
-          "monoterpene",
-          "norisoprenoid",
-          "polyterpene",
-          "sesquiterpene",
-          "sesterterpene",
-          "tetraterpene/carotenoid/xanthophyll",
-          "triterpene"
-        ],
-        "name": "selector of compound "
+        "options": ["benzylamine", "colchicine", "cyclopeptide", "imidazole", "indole", "indolizidine", "isoquinoline", "isoxazole", "muscarine", "oxazole", "phenylethylamine", "piperidine", "purine", "putrescine", "pyridine", "pyrrolidine", "pyrrolizidine", "quinazoline", "quinoline", "quinolizidine", "spermidine", "spermine", "thiazole", "tropane", "lactones/strigolactones", "acetophenone", "anthraquinone", "coumarin", "flavonoids/\u2026", "isoflavanoids", "lignans", "naphthoquinone", "phenolic acid", "phenylpropanoid", "stilbene", "tannin", "xanthone", "acetogenin", "ansamycin", "macrolide", "polyene", "polyether", "tetracycline", "sterols/cardenolides", "sulphur compounds/\u2026", "diterpene", "hemiterpene", "monoterpene", "norisoprenoid", "polyterpene", "sesquiterpene", "sesterterpene", "tetraterpene/\u2026", "triterpene/saponin"],
+        "name": "Compound "
       },
       "init": {
-        "com": "acridine"
+        "com": "benzylamine"
       }
     },
     "slider": {
@@ -151,10 +63,10 @@
       ],
       "bind": {
         "input": "range",
-        "max": 1000,
+        "max": 1024,
         "min": 0,
-        "name": "papers threshold ",
-        "step": 1
+        "name": "Min. number of papers",
+        "step": 2
       },
       "init": {
         "cutoff": 0

@@ -298,8 +298,8 @@
   "signals": [
     {
       "name": "papers_threshold",
-      "bind": { "input": "range", "min": 0, "max": 10000, "step": 1 },
-      "value": 1700
+      "bind": { "input": "range", "min": 0, "max": 16384, "step": 2, "name": "Min. nnb of papers" },
+      "value": 1024
     },
     {
       "name": "groupHover",
@@ -321,10 +321,7 @@
           "update": "{stack:datum.stack, stk1:datum.stack=='stk1' && datum.grpId, stk2:datum.stack=='stk2' && datum.grpId}"
         },
         {
-          "events": [
-            { "type": "click", "markname": "groupReset" },
-            { "type": "dblclick" }
-          ],
+          "events": [{ "type": "click", "markname": "groupReset" }, { "type": "dblclick" }],
           "update": "false"
         }
       ]

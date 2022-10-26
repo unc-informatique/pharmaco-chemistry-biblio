@@ -1,21 +1,28 @@
-.chart{
-    display : block;
-    margin-bottom: 70px;
+body {
+    display: grid;
+    grid-template-columns: 1fr 90% 1fr;
+    /* see https://github.com/kevquirk/simple.css/blob/main/simple.css#L70 */
 }
 
-header > p {
+.chart {
+    display: block;
+    width: 100%;
+}
+
+/*
+header>p {
     color: white;
     font-size: 20px;
     padding: 10px;
 
 }
 
-header>nav a:hover{
+header>nav a:hover {
     color: white;
     border-color: white;
 }
 
-a{  
+a {
     line-height: 2;
     border: 1px solid var(--border);
     border-radius: 5px;
@@ -24,7 +31,7 @@ a{
     text-decoration: none;
 }
 
-svg{
+svg {
     vertical-align: sub;
     width: 1em;
     height: 1.3em;
@@ -33,16 +40,19 @@ svg{
     fill: white;
 }
 
-input, select, textarea{
+input,
+select,
+textarea {
     background-color: rgb(217, 217, 217);
-    color: black; 
+    color: black;
 }
-tbody tr:nth-child(odd){
-    background-color: rgb(217, 217, 217);
-    color: black; 
-  }
 
-body{
+tbody tr:nth-child(odd) {
+    background-color: rgb(217, 217, 217);
+    color: black;
+}
+
+body {
     background-color: white;
     color: black;
 }
@@ -50,7 +60,7 @@ body{
 
 @media (min-width:1500px) {
 
-    #mark{
+    #mark {
         margin-left: -400px;
     }
-  }
+} */

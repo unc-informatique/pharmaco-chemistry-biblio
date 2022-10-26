@@ -79,5 +79,5 @@
     }
   ],
   "width": 900,
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.5.0.json"
 }

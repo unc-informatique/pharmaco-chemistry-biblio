@@ -125,9 +125,13 @@ def load_input(filename: str | Path) -> pd.DataFrame:
     return dataset
 
 
+# TODO : add paramters with default values
+#   shorten_names=False
+#   threshold = 0
 def load_results(filename: str | Path) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
-    """loads a CSV dataset as a dataframe with two levels keywords"""
+    """loads a CSV dataset as a dataframe with two levels keywords + {w/o, w/}"""
     dataset_with_margin = pd.read_csv(filename, index_col=[0, 1, 2], header=[0, 1, 2], sep=";")
+
     logger.debug("load_results(%s): results dataset read", filename)
     dataset_with_margin.sort_index(axis=1, inplace=True, ascending=SORT_ORDER)
     dataset_with_margin.sort_index(axis=0, inplace=True, ascending=SORT_ORDER)

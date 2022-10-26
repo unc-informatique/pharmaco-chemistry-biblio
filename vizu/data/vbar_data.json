@@ -1,43 +1,43 @@
 [
   {
     "value": 4,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "benzylamine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "benzylamine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "benzylamine",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "benzylamine",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "benzylamine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "benzylamine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "benzylamine",
     "class": "biotic"
   },
@@ -91,7 +91,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "benzylamine",
     "class": "biotic"
   },
@@ -115,7 +115,7 @@
   },
   {
     "value": 71,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "benzylamine",
     "class": "pharmaco"
   },
@@ -223,43 +223,43 @@
   },
   {
     "value": 30,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "colchicine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "colchicine",
     "class": "abiotic"
   },
   {
     "value": 19,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "colchicine",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "colchicine",
     "class": "abiotic"
   },
   {
     "value": 15,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "colchicine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "colchicine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "colchicine",
     "class": "biotic"
   },
@@ -313,7 +313,7 @@
   },
   {
     "value": 8,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "colchicine",
     "class": "biotic"
   },
@@ -337,7 +337,7 @@
   },
   {
     "value": 1129,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "colchicine",
     "class": "pharmaco"
   },
@@ -445,43 +445,43 @@
   },
   {
     "value": 5,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "cyclopeptide",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "cyclopeptide",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "cyclopeptide",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "cyclopeptide",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "cyclopeptide",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "cyclopeptide",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "cyclopeptide",
     "class": "biotic"
   },
@@ -535,7 +535,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "cyclopeptide",
     "class": "biotic"
   },
@@ -559,7 +559,7 @@
   },
   {
     "value": 362,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "cyclopeptide",
     "class": "pharmaco"
   },
@@ -667,43 +667,43 @@
   },
   {
     "value": 149,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "imidazole",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "imidazole",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "imidazole",
     "class": "abiotic"
   },
   {
     "value": 76,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "imidazole",
     "class": "abiotic"
   },
   {
     "value": 35,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "imidazole",
     "class": "abiotic"
   },
   {
     "value": 17,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "imidazole",
     "class": "abiotic"
   },
   {
     "value": 24,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "imidazole",
     "class": "biotic"
   },
@@ -757,7 +757,7 @@
   },
   {
     "value": 7,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "imidazole",
     "class": "biotic"
   },
@@ -781,7 +781,7 @@
   },
   {
     "value": 2511,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "imidazole",
     "class": "pharmaco"
   },
@@ -889,43 +889,43 @@
   },
   {
     "value": 194,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "indole",
     "class": "abiotic"
   },
   {
     "value": 84,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "indole",
     "class": "abiotic"
   },
   {
     "value": 344,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "indole",
     "class": "abiotic"
   },
   {
     "value": 70,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "indole",
     "class": "abiotic"
   },
   {
     "value": 571,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "indole",
     "class": "abiotic"
   },
   {
     "value": 80,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "indole",
     "class": "abiotic"
   },
   {
     "value": 172,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "indole",
     "class": "biotic"
   },
@@ -979,7 +979,7 @@
   },
   {
     "value": 657,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "indole",
     "class": "biotic"
   },
@@ -1003,7 +1003,7 @@
   },
   {
     "value": 3410,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "indole",
     "class": "pharmaco"
   },
@@ -1111,43 +1111,43 @@
   },
   {
     "value": 0,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "indolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "indolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "indolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "indolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "indolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "indolizidine",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "indolizidine",
     "class": "biotic"
   },
@@ -1201,7 +1201,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "indolizidine",
     "class": "biotic"
   },
@@ -1225,7 +1225,7 @@
   },
   {
     "value": 26,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "indolizidine",
     "class": "pharmaco"
   },
@@ -1333,43 +1333,43 @@
   },
   {
     "value": 13,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "isoquinoline",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "isoquinoline",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "isoquinoline",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "isoquinoline",
     "class": "abiotic"
   },
   {
     "value": 7,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "isoquinoline",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "isoquinoline",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "isoquinoline",
     "class": "biotic"
   },
@@ -1423,7 +1423,7 @@
   },
   {
     "value": 3,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "isoquinoline",
     "class": "biotic"
   },
@@ -1447,7 +1447,7 @@
   },
   {
     "value": 611,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "isoquinoline",
     "class": "pharmaco"
   },
@@ -1555,43 +1555,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "isoxazole",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "isoxazole",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "isoxazole",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "isoxazole",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "isoxazole",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "isoxazole",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "isoxazole",
     "class": "biotic"
   },
@@ -1645,7 +1645,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "isoxazole",
     "class": "biotic"
   },
@@ -1669,7 +1669,7 @@
   },
   {
     "value": 288,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "isoxazole",
     "class": "pharmaco"
   },
@@ -1777,43 +1777,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "muscarine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "muscarine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "muscarine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "muscarine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "muscarine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "muscarine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "muscarine",
     "class": "biotic"
   },
@@ -1867,7 +1867,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "muscarine",
     "class": "biotic"
   },
@@ -1891,7 +1891,7 @@
   },
   {
     "value": 2,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "muscarine",
     "class": "pharmaco"
   },
@@ -1999,43 +1999,43 @@
   },
   {
     "value": 15,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "oxazole",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "oxazole",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "oxazole",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "oxazole",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "oxazole",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "oxazole",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "oxazole",
     "class": "biotic"
   },
@@ -2089,7 +2089,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "oxazole",
     "class": "biotic"
   },
@@ -2113,7 +2113,7 @@
   },
   {
     "value": 221,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "oxazole",
     "class": "pharmaco"
   },
@@ -2221,43 +2221,43 @@
   },
   {
     "value": 3,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "phenylethylamine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "phenylethylamine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "phenylethylamine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "phenylethylamine",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "phenylethylamine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "phenylethylamine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "phenylethylamine",
     "class": "biotic"
   },
@@ -2311,7 +2311,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "phenylethylamine",
     "class": "biotic"
   },
@@ -2335,7 +2335,7 @@
   },
   {
     "value": 9,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "phenylethylamine",
     "class": "pharmaco"
   },
@@ -2443,43 +2443,43 @@
   },
   {
     "value": 29,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "piperidine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "piperidine",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "piperidine",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "piperidine",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "piperidine",
     "class": "abiotic"
   },
   {
     "value": 11,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "piperidine",
     "class": "abiotic"
   },
   {
     "value": 16,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "piperidine",
     "class": "biotic"
   },
@@ -2533,7 +2533,7 @@
   },
   {
     "value": 3,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "piperidine",
     "class": "biotic"
   },
@@ -2557,7 +2557,7 @@
   },
   {
     "value": 919,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "piperidine",
     "class": "pharmaco"
   },
@@ -2665,43 +2665,43 @@
   },
   {
     "value": 79,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "purine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "purine",
     "class": "abiotic"
   },
   {
     "value": 36,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "purine",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "purine",
     "class": "abiotic"
   },
   {
     "value": 59,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "purine",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "purine",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "purine",
     "class": "biotic"
   },
@@ -2755,7 +2755,7 @@
   },
   {
     "value": 46,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "purine",
     "class": "biotic"
   },
@@ -2779,7 +2779,7 @@
   },
   {
     "value": 1032,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "purine",
     "class": "pharmaco"
   },
@@ -2887,43 +2887,43 @@
   },
   {
     "value": 98,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "putrescine",
     "class": "abiotic"
   },
   {
     "value": 22,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "putrescine",
     "class": "abiotic"
   },
   {
     "value": 154,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "putrescine",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "putrescine",
     "class": "abiotic"
   },
   {
     "value": 261,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "putrescine",
     "class": "abiotic"
   },
   {
     "value": 17,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "putrescine",
     "class": "abiotic"
   },
   {
     "value": 16,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "putrescine",
     "class": "biotic"
   },
@@ -2977,7 +2977,7 @@
   },
   {
     "value": 46,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "putrescine",
     "class": "biotic"
   },
@@ -3001,7 +3001,7 @@
   },
   {
     "value": 109,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "putrescine",
     "class": "pharmaco"
   },
@@ -3109,43 +3109,43 @@
   },
   {
     "value": 175,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "pyridine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "pyridine",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "pyridine",
     "class": "abiotic"
   },
   {
     "value": 66,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "pyridine",
     "class": "abiotic"
   },
   {
     "value": 34,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "pyridine",
     "class": "abiotic"
   },
   {
     "value": 44,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "pyridine",
     "class": "abiotic"
   },
   {
     "value": 24,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "pyridine",
     "class": "biotic"
   },
@@ -3199,7 +3199,7 @@
   },
   {
     "value": 3,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "pyridine",
     "class": "biotic"
   },
@@ -3223,7 +3223,7 @@
   },
   {
     "value": 3233,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "pyridine",
     "class": "pharmaco"
   },
@@ -3331,43 +3331,43 @@
   },
   {
     "value": 18,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "pyrrolidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "pyrrolidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "pyrrolidine",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "pyrrolidine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "pyrrolidine",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "pyrrolidine",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "pyrrolidine",
     "class": "biotic"
   },
@@ -3421,7 +3421,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "pyrrolidine",
     "class": "biotic"
   },
@@ -3445,7 +3445,7 @@
   },
   {
     "value": 483,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "pyrrolidine",
     "class": "pharmaco"
   },
@@ -3553,43 +3553,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "pyrrolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "pyrrolizidine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "pyrrolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "pyrrolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "pyrrolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "pyrrolizidine",
     "class": "abiotic"
   },
   {
     "value": 76,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "pyrrolizidine",
     "class": "biotic"
   },
@@ -3643,7 +3643,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "pyrrolizidine",
     "class": "biotic"
   },
@@ -3667,7 +3667,7 @@
   },
   {
     "value": 28,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "pyrrolizidine",
     "class": "pharmaco"
   },
@@ -3775,43 +3775,43 @@
   },
   {
     "value": 3,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "quinazoline",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "quinazoline",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "quinazoline",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "quinazoline",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "quinazoline",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "quinazoline",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "quinazoline",
     "class": "biotic"
   },
@@ -3865,7 +3865,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "quinazoline",
     "class": "biotic"
   },
@@ -3889,7 +3889,7 @@
   },
   {
     "value": 1139,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "quinazoline",
     "class": "pharmaco"
   },
@@ -3997,43 +3997,43 @@
   },
   {
     "value": 30,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "quinoline",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "quinoline",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "quinoline",
     "class": "abiotic"
   },
   {
     "value": 30,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "quinoline",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "quinoline",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "quinoline",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "quinoline",
     "class": "biotic"
   },
@@ -4087,7 +4087,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "quinoline",
     "class": "biotic"
   },
@@ -4111,7 +4111,7 @@
   },
   {
     "value": 1618,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "quinoline",
     "class": "pharmaco"
   },
@@ -4219,43 +4219,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "quinolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "quinolizidine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "quinolizidine",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "quinolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "quinolizidine",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "quinolizidine",
     "class": "abiotic"
   },
   {
     "value": 18,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "quinolizidine",
     "class": "biotic"
   },
@@ -4309,7 +4309,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "quinolizidine",
     "class": "biotic"
   },
@@ -4333,7 +4333,7 @@
   },
   {
     "value": 32,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "quinolizidine",
     "class": "pharmaco"
   },
@@ -4441,43 +4441,43 @@
   },
   {
     "value": 113,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "spermidine",
     "class": "abiotic"
   },
   {
     "value": 19,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "spermidine",
     "class": "abiotic"
   },
   {
     "value": 134,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "spermidine",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "spermidine",
     "class": "abiotic"
   },
   {
     "value": 307,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "spermidine",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "spermidine",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "spermidine",
     "class": "biotic"
   },
@@ -4531,7 +4531,7 @@
   },
   {
     "value": 37,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "spermidine",
     "class": "biotic"
   },
@@ -4555,7 +4555,7 @@
   },
   {
     "value": 171,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "spermidine",
     "class": "pharmaco"
   },
@@ -4663,43 +4663,43 @@
   },
   {
     "value": 63,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "spermine",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "spermine",
     "class": "abiotic"
   },
   {
     "value": 111,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "spermine",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "spermine",
     "class": "abiotic"
   },
   {
     "value": 232,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "spermine",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "spermine",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "spermine",
     "class": "biotic"
   },
@@ -4753,7 +4753,7 @@
   },
   {
     "value": 29,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "spermine",
     "class": "biotic"
   },
@@ -4777,7 +4777,7 @@
   },
   {
     "value": 235,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "spermine",
     "class": "pharmaco"
   },
@@ -4885,43 +4885,43 @@
   },
   {
     "value": 30,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "thiazole",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "thiazole",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "thiazole",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "thiazole",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "thiazole",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "thiazole",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "thiazole",
     "class": "biotic"
   },
@@ -4975,7 +4975,7 @@
   },
   {
     "value": 2,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "thiazole",
     "class": "biotic"
   },
@@ -4999,7 +4999,7 @@
   },
   {
     "value": 1619,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "thiazole",
     "class": "pharmaco"
   },
@@ -5107,43 +5107,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "tropane",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "tropane",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "tropane",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "tropane",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "tropane",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "tropane",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "tropane",
     "class": "biotic"
   },
@@ -5197,7 +5197,7 @@
   },
   {
     "value": 3,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "tropane",
     "class": "biotic"
   },
@@ -5221,7 +5221,7 @@
   },
   {
     "value": 18,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "tropane",
     "class": "pharmaco"
   },
@@ -5329,43 +5329,43 @@
   },
   {
     "value": 74,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "lactones/strigolactones",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "lactones/strigolactones",
     "class": "abiotic"
   },
   {
     "value": 52,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "lactones/strigolactones",
     "class": "abiotic"
   },
   {
     "value": 31,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "lactones/strigolactones",
     "class": "abiotic"
   },
   {
     "value": 59,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "lactones/strigolactones",
     "class": "abiotic"
   },
   {
     "value": 18,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "lactones/strigolactones",
     "class": "abiotic"
   },
   {
     "value": 169,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "lactones/strigolactones",
     "class": "biotic"
   },
@@ -5419,7 +5419,7 @@
   },
   {
     "value": 48,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "lactones/strigolactones",
     "class": "biotic"
   },
@@ -5443,7 +5443,7 @@
   },
   {
     "value": 1466,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "lactones/strigolactones",
     "class": "pharmaco"
   },
@@ -5551,43 +5551,43 @@
   },
   {
     "value": 10,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "acetophenone",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "acetophenone",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "acetophenone",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "acetophenone",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "acetophenone",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "acetophenone",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "acetophenone",
     "class": "biotic"
   },
@@ -5641,7 +5641,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "acetophenone",
     "class": "biotic"
   },
@@ -5665,7 +5665,7 @@
   },
   {
     "value": 177,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "acetophenone",
     "class": "pharmaco"
   },
@@ -5773,43 +5773,43 @@
   },
   {
     "value": 28,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "anthraquinone",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "anthraquinone",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "anthraquinone",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "anthraquinone",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "anthraquinone",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "anthraquinone",
     "class": "abiotic"
   },
   {
     "value": 32,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "anthraquinone",
     "class": "biotic"
   },
@@ -5863,7 +5863,7 @@
   },
   {
     "value": 5,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "anthraquinone",
     "class": "biotic"
   },
@@ -5887,7 +5887,7 @@
   },
   {
     "value": 849,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "anthraquinone",
     "class": "pharmaco"
   },
@@ -5995,43 +5995,43 @@
   },
   {
     "value": 26,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "coumarin",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "coumarin",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "coumarin",
     "class": "abiotic"
   },
   {
     "value": 44,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "coumarin",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "coumarin",
     "class": "abiotic"
   },
   {
     "value": 26,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "coumarin",
     "class": "abiotic"
   },
   {
     "value": 51,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "coumarin",
     "class": "biotic"
   },
@@ -6085,7 +6085,7 @@
   },
   {
     "value": 17,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "coumarin",
     "class": "biotic"
   },
@@ -6109,7 +6109,7 @@
   },
   {
     "value": 1392,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "coumarin",
     "class": "pharmaco"
   },
@@ -6217,265 +6217,265 @@
   },
   {
     "value": 509,
-    "acti": "heat stress/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "heat stress/…",
+    "com": "flavonoids/…",
     "class": "abiotic"
   },
   {
     "value": 74,
-    "acti": "heavy metal stress/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "heavy metal stress/…",
+    "com": "flavonoids/…",
     "class": "abiotic"
   },
   {
     "value": 821,
-    "acti": "hydric stress/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "hydric stress/…",
+    "com": "flavonoids/…",
     "class": "abiotic"
   },
   {
     "value": 109,
-    "acti": "ph stress/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "ph stress/…",
+    "com": "flavonoids/…",
     "class": "abiotic"
   },
   {
     "value": 838,
-    "acti": "salt stress/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "salt stress/…",
+    "com": "flavonoids/…",
     "class": "abiotic"
   },
   {
     "value": 472,
-    "acti": "uv stress/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "uv stress/…",
+    "com": "flavonoids/…",
     "class": "abiotic"
   },
   {
     "value": 371,
-    "acti": "antifeedant/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "antifeedant/…",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 41,
     "acti": "attractant",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 1744,
     "acti": "germination",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 55,
     "acti": "herbicidal",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 377,
     "acti": "phytotoxicity",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 18171,
     "acti": "pigment/colour",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 322,
     "acti": "pollination",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 170,
     "acti": "quorum sensing",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 20,
     "acti": "repulsive",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 71,
-    "acti": "root respiration/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "root respiration/…",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 28,
     "acti": "seed dispersal",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "biotic"
   },
   {
     "value": 11145,
     "acti": "anti-inflammatory",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 8234,
     "acti": "antibacterial",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 6598,
-    "acti": "anticancer/\u2026",
-    "com": "flavonoids/\u2026",
+    "acti": "anticancer/…",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 3664,
     "acti": "antidiabetic",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 3251,
     "acti": "antifungal",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 8610,
     "acti": "antimicrobial",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 55613,
     "acti": "antioxidant",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 205,
     "acti": "antiparasitic",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 2052,
     "acti": "antiviral",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 953,
     "acti": "arthritis",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 252,
     "acti": "burns",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 3514,
     "acti": "cardiovascular",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 9618,
     "acti": "cytotoxicity",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 1839,
     "acti": "dementia/alzheimer",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 18,
     "acti": "immuno-modulatory",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 2046,
     "acti": "obesity",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 339,
     "acti": "rheumatism",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 2084,
     "acti": "sedative/analgesic",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 2326,
     "acti": "wound",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "pharmaco"
   },
   {
     "value": 8566,
     "acti": "toxicity",
-    "com": "flavonoids/\u2026",
+    "com": "flavonoids/…",
     "class": "toxicity"
   },
   {
     "value": 0,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "isoflavanoids",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "isoflavanoids",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "isoflavanoids",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "isoflavanoids",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "isoflavanoids",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "isoflavanoids",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "isoflavanoids",
     "class": "biotic"
   },
@@ -6529,7 +6529,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "isoflavanoids",
     "class": "biotic"
   },
@@ -6553,7 +6553,7 @@
   },
   {
     "value": 1,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "isoflavanoids",
     "class": "pharmaco"
   },
@@ -6661,43 +6661,43 @@
   },
   {
     "value": 7,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "lignans",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "lignans",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "lignans",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "lignans",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "lignans",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "lignans",
     "class": "abiotic"
   },
   {
     "value": 27,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "lignans",
     "class": "biotic"
   },
@@ -6751,7 +6751,7 @@
   },
   {
     "value": 2,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "lignans",
     "class": "biotic"
   },
@@ -6775,7 +6775,7 @@
   },
   {
     "value": 700,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "lignans",
     "class": "pharmaco"
   },
@@ -6883,43 +6883,43 @@
   },
   {
     "value": 13,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "naphthoquinone",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "naphthoquinone",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "naphthoquinone",
     "class": "abiotic"
   },
   {
     "value": 7,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "naphthoquinone",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "naphthoquinone",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "naphthoquinone",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "naphthoquinone",
     "class": "biotic"
   },
@@ -6973,7 +6973,7 @@
   },
   {
     "value": 4,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "naphthoquinone",
     "class": "biotic"
   },
@@ -6997,7 +6997,7 @@
   },
   {
     "value": 776,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "naphthoquinone",
     "class": "pharmaco"
   },
@@ -7105,43 +7105,43 @@
   },
   {
     "value": 34,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "phenolic acid",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "phenolic acid",
     "class": "abiotic"
   },
   {
     "value": 58,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "phenolic acid",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "phenolic acid",
     "class": "abiotic"
   },
   {
     "value": 62,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "phenolic acid",
     "class": "abiotic"
   },
   {
     "value": 21,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "phenolic acid",
     "class": "abiotic"
   },
   {
     "value": 43,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "phenolic acid",
     "class": "biotic"
   },
@@ -7195,7 +7195,7 @@
   },
   {
     "value": 14,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "phenolic acid",
     "class": "biotic"
   },
@@ -7219,7 +7219,7 @@
   },
   {
     "value": 393,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "phenolic acid",
     "class": "pharmaco"
   },
@@ -7327,43 +7327,43 @@
   },
   {
     "value": 69,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "phenylpropanoid",
     "class": "abiotic"
   },
   {
     "value": 17,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "phenylpropanoid",
     "class": "abiotic"
   },
   {
     "value": 152,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "phenylpropanoid",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "phenylpropanoid",
     "class": "abiotic"
   },
   {
     "value": 118,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "phenylpropanoid",
     "class": "abiotic"
   },
   {
     "value": 35,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "phenylpropanoid",
     "class": "abiotic"
   },
   {
     "value": 78,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "phenylpropanoid",
     "class": "biotic"
   },
@@ -7417,7 +7417,7 @@
   },
   {
     "value": 23,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "phenylpropanoid",
     "class": "biotic"
   },
@@ -7441,7 +7441,7 @@
   },
   {
     "value": 101,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "phenylpropanoid",
     "class": "pharmaco"
   },
@@ -7549,43 +7549,43 @@
   },
   {
     "value": 29,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "stilbene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "stilbene",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "stilbene",
     "class": "abiotic"
   },
   {
     "value": 18,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "stilbene",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "stilbene",
     "class": "abiotic"
   },
   {
     "value": 18,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "stilbene",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "stilbene",
     "class": "biotic"
   },
@@ -7639,7 +7639,7 @@
   },
   {
     "value": 1,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "stilbene",
     "class": "biotic"
   },
@@ -7663,7 +7663,7 @@
   },
   {
     "value": 1089,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "stilbene",
     "class": "pharmaco"
   },
@@ -7771,43 +7771,43 @@
   },
   {
     "value": 67,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "tannin",
     "class": "abiotic"
   },
   {
     "value": 7,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "tannin",
     "class": "abiotic"
   },
   {
     "value": 64,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "tannin",
     "class": "abiotic"
   },
   {
     "value": 15,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "tannin",
     "class": "abiotic"
   },
   {
     "value": 41,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "tannin",
     "class": "abiotic"
   },
   {
     "value": 45,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "tannin",
     "class": "abiotic"
   },
   {
     "value": 597,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "tannin",
     "class": "biotic"
   },
@@ -7861,7 +7861,7 @@
   },
   {
     "value": 3,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "tannin",
     "class": "biotic"
   },
@@ -7885,7 +7885,7 @@
   },
   {
     "value": 940,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "tannin",
     "class": "pharmaco"
   },
@@ -7993,43 +7993,43 @@
   },
   {
     "value": 7,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "xanthone",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "xanthone",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "xanthone",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "xanthone",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "xanthone",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "xanthone",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "xanthone",
     "class": "biotic"
   },
@@ -8083,7 +8083,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "xanthone",
     "class": "biotic"
   },
@@ -8107,7 +8107,7 @@
   },
   {
     "value": 527,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "xanthone",
     "class": "pharmaco"
   },
@@ -8215,43 +8215,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "acetogenin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "acetogenin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "acetogenin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "acetogenin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "acetogenin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "acetogenin",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "acetogenin",
     "class": "biotic"
   },
@@ -8305,7 +8305,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "acetogenin",
     "class": "biotic"
   },
@@ -8329,7 +8329,7 @@
   },
   {
     "value": 74,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "acetogenin",
     "class": "pharmaco"
   },
@@ -8437,43 +8437,43 @@
   },
   {
     "value": 2,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "ansamycin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "ansamycin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "ansamycin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "ansamycin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "ansamycin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "ansamycin",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "ansamycin",
     "class": "biotic"
   },
@@ -8527,7 +8527,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "ansamycin",
     "class": "biotic"
   },
@@ -8551,7 +8551,7 @@
   },
   {
     "value": 52,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "ansamycin",
     "class": "pharmaco"
   },
@@ -8659,43 +8659,43 @@
   },
   {
     "value": 23,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "macrolide",
     "class": "abiotic"
   },
   {
     "value": 38,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "macrolide",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "macrolide",
     "class": "abiotic"
   },
   {
     "value": 18,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "macrolide",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "macrolide",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "macrolide",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "macrolide",
     "class": "biotic"
   },
@@ -8749,7 +8749,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "macrolide",
     "class": "biotic"
   },
@@ -8773,7 +8773,7 @@
   },
   {
     "value": 430,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "macrolide",
     "class": "pharmaco"
   },
@@ -8881,43 +8881,43 @@
   },
   {
     "value": 24,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "polyene",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "polyene",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "polyene",
     "class": "abiotic"
   },
   {
     "value": 9,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "polyene",
     "class": "abiotic"
   },
   {
     "value": 5,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "polyene",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "polyene",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "polyene",
     "class": "biotic"
   },
@@ -8971,7 +8971,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "polyene",
     "class": "biotic"
   },
@@ -8995,7 +8995,7 @@
   },
   {
     "value": 68,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "polyene",
     "class": "pharmaco"
   },
@@ -9103,43 +9103,43 @@
   },
   {
     "value": 184,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "polyether",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "polyether",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "polyether",
     "class": "abiotic"
   },
   {
     "value": 6,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "polyether",
     "class": "abiotic"
   },
   {
     "value": 21,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "polyether",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "polyether",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "polyether",
     "class": "biotic"
   },
@@ -9193,7 +9193,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "polyether",
     "class": "biotic"
   },
@@ -9217,7 +9217,7 @@
   },
   {
     "value": 87,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "polyether",
     "class": "pharmaco"
   },
@@ -9325,43 +9325,43 @@
   },
   {
     "value": 113,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "tetracycline",
     "class": "abiotic"
   },
   {
     "value": 174,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "tetracycline",
     "class": "abiotic"
   },
   {
     "value": 11,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "tetracycline",
     "class": "abiotic"
   },
   {
     "value": 40,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "tetracycline",
     "class": "abiotic"
   },
   {
     "value": 169,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "tetracycline",
     "class": "abiotic"
   },
   {
     "value": 29,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "tetracycline",
     "class": "abiotic"
   },
   {
     "value": 10,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "tetracycline",
     "class": "biotic"
   },
@@ -9415,7 +9415,7 @@
   },
   {
     "value": 10,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "tetracycline",
     "class": "biotic"
   },
@@ -9439,7 +9439,7 @@
   },
   {
     "value": 360,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "tetracycline",
     "class": "pharmaco"
   },
@@ -9547,43 +9547,43 @@
   },
   {
     "value": 109,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "sterols/cardenolides",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "sterols/cardenolides",
     "class": "abiotic"
   },
   {
     "value": 39,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "sterols/cardenolides",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "sterols/cardenolides",
     "class": "abiotic"
   },
   {
     "value": 100,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "sterols/cardenolides",
     "class": "abiotic"
   },
   {
     "value": 21,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "sterols/cardenolides",
     "class": "abiotic"
   },
   {
     "value": 141,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "sterols/cardenolides",
     "class": "biotic"
   },
@@ -9637,7 +9637,7 @@
   },
   {
     "value": 6,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "sterols/cardenolides",
     "class": "biotic"
   },
@@ -9661,7 +9661,7 @@
   },
   {
     "value": 586,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "sterols/cardenolides",
     "class": "pharmaco"
   },
@@ -9769,265 +9769,265 @@
   },
   {
     "value": 471,
-    "acti": "heat stress/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "heat stress/…",
+    "com": "sulphur compounds/…",
     "class": "abiotic"
   },
   {
     "value": 29,
-    "acti": "heavy metal stress/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "heavy metal stress/…",
+    "com": "sulphur compounds/…",
     "class": "abiotic"
   },
   {
     "value": 56,
-    "acti": "hydric stress/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "hydric stress/…",
+    "com": "sulphur compounds/…",
     "class": "abiotic"
   },
   {
     "value": 136,
-    "acti": "ph stress/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "ph stress/…",
+    "com": "sulphur compounds/…",
     "class": "abiotic"
   },
   {
     "value": 173,
-    "acti": "salt stress/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "salt stress/…",
+    "com": "sulphur compounds/…",
     "class": "abiotic"
   },
   {
     "value": 120,
-    "acti": "uv stress/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "uv stress/…",
+    "com": "sulphur compounds/…",
     "class": "abiotic"
   },
   {
     "value": 322,
-    "acti": "antifeedant/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "antifeedant/…",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 37,
     "acti": "attractant",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 316,
     "acti": "germination",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 17,
     "acti": "herbicidal",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 148,
     "acti": "phytotoxicity",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 2608,
     "acti": "pigment/colour",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 30,
     "acti": "pollination",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 49,
     "acti": "quorum sensing",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 168,
     "acti": "repulsive",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 14,
-    "acti": "root respiration/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "root respiration/…",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 5,
     "acti": "seed dispersal",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "biotic"
   },
   {
     "value": 602,
     "acti": "anti-inflammatory",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 1165,
     "acti": "antibacterial",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 1072,
-    "acti": "anticancer/\u2026",
-    "com": "sulphur compounds/\u2026",
+    "acti": "anticancer/…",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 79,
     "acti": "antidiabetic",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 329,
     "acti": "antifungal",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 1243,
     "acti": "antimicrobial",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 1910,
     "acti": "antioxidant",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 20,
     "acti": "antiparasitic",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 176,
     "acti": "antiviral",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 56,
     "acti": "arthritis",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 123,
     "acti": "burns",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 442,
     "acti": "cardiovascular",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 1585,
     "acti": "cytotoxicity",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 152,
     "acti": "dementia/alzheimer",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 1,
     "acti": "immuno-modulatory",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 101,
     "acti": "obesity",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 5,
     "acti": "rheumatism",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 81,
     "acti": "sedative/analgesic",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 378,
     "acti": "wound",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "pharmaco"
   },
   {
     "value": 3313,
     "acti": "toxicity",
-    "com": "sulphur compounds/\u2026",
+    "com": "sulphur compounds/…",
     "class": "toxicity"
   },
   {
     "value": 15,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "diterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "diterpene",
     "class": "abiotic"
   },
   {
     "value": 11,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "diterpene",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "diterpene",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "diterpene",
     "class": "abiotic"
   },
   {
     "value": 4,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "diterpene",
     "class": "abiotic"
   },
   {
     "value": 137,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "diterpene",
     "class": "biotic"
   },
@@ -10081,7 +10081,7 @@
   },
   {
     "value": 2,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "diterpene",
     "class": "biotic"
   },
@@ -10105,7 +10105,7 @@
   },
   {
     "value": 672,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "diterpene",
     "class": "pharmaco"
   },
@@ -10213,43 +10213,43 @@
   },
   {
     "value": 21,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "hemiterpene",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "hemiterpene",
     "class": "abiotic"
   },
   {
     "value": 14,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "hemiterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "hemiterpene",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "hemiterpene",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "hemiterpene",
     "class": "abiotic"
   },
   {
     "value": 7,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "hemiterpene",
     "class": "biotic"
   },
@@ -10303,7 +10303,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "hemiterpene",
     "class": "biotic"
   },
@@ -10327,7 +10327,7 @@
   },
   {
     "value": 21,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "hemiterpene",
     "class": "pharmaco"
   },
@@ -10435,43 +10435,43 @@
   },
   {
     "value": 43,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "monoterpene",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "monoterpene",
     "class": "abiotic"
   },
   {
     "value": 59,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "monoterpene",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "monoterpene",
     "class": "abiotic"
   },
   {
     "value": 11,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "monoterpene",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "monoterpene",
     "class": "abiotic"
   },
   {
     "value": 181,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "monoterpene",
     "class": "biotic"
   },
@@ -10525,7 +10525,7 @@
   },
   {
     "value": 3,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "monoterpene",
     "class": "biotic"
   },
@@ -10549,7 +10549,7 @@
   },
   {
     "value": 216,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "monoterpene",
     "class": "pharmaco"
   },
@@ -10657,43 +10657,43 @@
   },
   {
     "value": 1,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "norisoprenoid",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "norisoprenoid",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "norisoprenoid",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "norisoprenoid",
     "class": "abiotic"
   },
   {
     "value": 1,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "norisoprenoid",
     "class": "abiotic"
   },
   {
     "value": 2,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "norisoprenoid",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "norisoprenoid",
     "class": "biotic"
   },
@@ -10747,7 +10747,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "norisoprenoid",
     "class": "biotic"
   },
@@ -10771,7 +10771,7 @@
   },
   {
     "value": 8,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "norisoprenoid",
     "class": "pharmaco"
   },
@@ -10879,43 +10879,43 @@
   },
   {
     "value": 0,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "polyterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "polyterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "polyterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "polyterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "polyterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "polyterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "polyterpene",
     "class": "biotic"
   },
@@ -10969,7 +10969,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "polyterpene",
     "class": "biotic"
   },
@@ -10993,7 +10993,7 @@
   },
   {
     "value": 1,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "polyterpene",
     "class": "pharmaco"
   },
@@ -11101,43 +11101,43 @@
   },
   {
     "value": 36,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "sesquiterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "sesquiterpene",
     "class": "abiotic"
   },
   {
     "value": 42,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "sesquiterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "sesquiterpene",
     "class": "abiotic"
   },
   {
     "value": 24,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "sesquiterpene",
     "class": "abiotic"
   },
   {
     "value": 13,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "sesquiterpene",
     "class": "abiotic"
   },
   {
     "value": 472,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "sesquiterpene",
     "class": "biotic"
   },
@@ -11191,7 +11191,7 @@
   },
   {
     "value": 14,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "sesquiterpene",
     "class": "biotic"
   },
@@ -11215,7 +11215,7 @@
   },
   {
     "value": 1397,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "sesquiterpene",
     "class": "pharmaco"
   },
@@ -11323,43 +11323,43 @@
   },
   {
     "value": 0,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "sesterterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "sesterterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "sesterterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "sesterterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "sesterterpene",
     "class": "abiotic"
   },
   {
     "value": 0,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "sesterterpene",
     "class": "abiotic"
   },
   {
     "value": 17,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "sesterterpene",
     "class": "biotic"
   },
@@ -11413,7 +11413,7 @@
   },
   {
     "value": 0,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "sesterterpene",
     "class": "biotic"
   },
@@ -11437,7 +11437,7 @@
   },
   {
     "value": 27,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "sesterterpene",
     "class": "pharmaco"
   },
@@ -11545,265 +11545,265 @@
   },
   {
     "value": 535,
-    "acti": "heat stress/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "heat stress/…",
+    "com": "tetraterpene/…",
     "class": "abiotic"
   },
   {
     "value": 121,
-    "acti": "heavy metal stress/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "heavy metal stress/…",
+    "com": "tetraterpene/…",
     "class": "abiotic"
   },
   {
     "value": 884,
-    "acti": "hydric stress/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "hydric stress/…",
+    "com": "tetraterpene/…",
     "class": "abiotic"
   },
   {
     "value": 44,
-    "acti": "ph stress/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "ph stress/…",
+    "com": "tetraterpene/…",
     "class": "abiotic"
   },
   {
     "value": 1167,
-    "acti": "salt stress/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "salt stress/…",
+    "com": "tetraterpene/…",
     "class": "abiotic"
   },
   {
     "value": 1436,
-    "acti": "uv stress/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "uv stress/…",
+    "com": "tetraterpene/…",
     "class": "abiotic"
   },
   {
     "value": 47,
-    "acti": "antifeedant/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "antifeedant/…",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 28,
     "acti": "attractant",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 947,
     "acti": "germination",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 67,
     "acti": "herbicidal",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 405,
     "acti": "phytotoxicity",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 22425,
     "acti": "pigment/colour",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 95,
     "acti": "pollination",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 25,
     "acti": "quorum sensing",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 4,
     "acti": "repulsive",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 34,
-    "acti": "root respiration/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "root respiration/…",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 15,
     "acti": "seed dispersal",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "biotic"
   },
   {
     "value": 1056,
     "acti": "anti-inflammatory",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 416,
     "acti": "antibacterial",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 616,
-    "acti": "anticancer/\u2026",
-    "com": "tetraterpene/\u2026",
+    "acti": "anticancer/…",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 213,
     "acti": "antidiabetic",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 219,
     "acti": "antifungal",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 575,
     "acti": "antimicrobial",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 14911,
     "acti": "antioxidant",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 13,
     "acti": "antiparasitic",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 115,
     "acti": "antiviral",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 90,
     "acti": "arthritis",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 44,
     "acti": "burns",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 993,
     "acti": "cardiovascular",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 727,
     "acti": "cytotoxicity",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 286,
     "acti": "dementia/alzheimer",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 6,
     "acti": "immuno-modulatory",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 654,
     "acti": "obesity",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 11,
     "acti": "rheumatism",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 104,
     "acti": "sedative/analgesic",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 192,
     "acti": "wound",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "pharmaco"
   },
   {
     "value": 2104,
     "acti": "toxicity",
-    "com": "tetraterpene/\u2026",
+    "com": "tetraterpene/…",
     "class": "toxicity"
   },
   {
     "value": 74,
-    "acti": "heat stress/\u2026",
+    "acti": "heat stress/…",
     "com": "triterpene/saponin",
     "class": "abiotic"
   },
   {
     "value": 3,
-    "acti": "heavy metal stress/\u2026",
+    "acti": "heavy metal stress/…",
     "com": "triterpene/saponin",
     "class": "abiotic"
   },
   {
     "value": 39,
-    "acti": "hydric stress/\u2026",
+    "acti": "hydric stress/…",
     "com": "triterpene/saponin",
     "class": "abiotic"
   },
   {
     "value": 8,
-    "acti": "ph stress/\u2026",
+    "acti": "ph stress/…",
     "com": "triterpene/saponin",
     "class": "abiotic"
   },
   {
     "value": 38,
-    "acti": "salt stress/\u2026",
+    "acti": "salt stress/…",
     "com": "triterpene/saponin",
     "class": "abiotic"
   },
   {
     "value": 12,
-    "acti": "uv stress/\u2026",
+    "acti": "uv stress/…",
     "com": "triterpene/saponin",
     "class": "abiotic"
   },
   {
     "value": 172,
-    "acti": "antifeedant/\u2026",
+    "acti": "antifeedant/…",
     "com": "triterpene/saponin",
     "class": "biotic"
   },
@@ -11857,7 +11857,7 @@
   },
   {
     "value": 8,
-    "acti": "root respiration/\u2026",
+    "acti": "root respiration/…",
     "com": "triterpene/saponin",
     "class": "biotic"
   },
@@ -11881,7 +11881,7 @@
   },
   {
     "value": 2886,
-    "acti": "anticancer/\u2026",
+    "acti": "anticancer/…",
     "com": "triterpene/saponin",
     "class": "pharmaco"
   },

@@ -6,12 +6,16 @@ import numpy as np
 
 import scopus.biblio_extractor as bex
 
+
 def label(s):
     """Add label attribute to a function"""
+
     def wrapper(f):
         f.label = s
         return f
+
     return wrapper
+
 
 @label("Simple projection")
 def tt_projection_metric(arr):
@@ -47,11 +51,13 @@ def accuracy_metric(arr):
     [FF, FT], [TF, TT] = arr.reshape(2, 2)
     return (TT + FF) / (FF + FT + TF + TT)
 
+
 @label("Custom metric #1")
 def x_metric(arr):
     """Some another one by our own"""
     [FF, FT], [TF, TT] = arr.reshape(2, 2)
     return (FF + TT - FT - TF) / (FF + FT + TF + TT)
+
 
 @label("Custom metric #2")
 def fraction_metric(arr):
@@ -59,12 +65,14 @@ def fraction_metric(arr):
     [_, FT], [TF, TT] = arr.reshape(2, 2)
     return TT / (FT + TF - TT)
 
+
 @label("The odds of having both the compound and the activity")
 def odds_metric(arr):
     """The odds of having related keywords."""
     [FF, FT], [TF, TT] = arr.reshape(2, 2)
     # adds extra 0.5 to avoid division by 0.
     return (FF * TT + 0.5) / (FT * TF + 0.5)
+
 
 @label("Logodds")
 def logodds_metric(arr):
@@ -85,7 +93,6 @@ def apply_metric(data, func):
     return df
 
 
-
 metrics = [
     tt_projection_metric,
     row_implication_metric,
@@ -102,4 +109,3 @@ if __name__ == "__main__":
     df = apply_metric(dataset, odds_metric)
     print(tt_projection_metric)
     print(tt_projection_metric.label)
-

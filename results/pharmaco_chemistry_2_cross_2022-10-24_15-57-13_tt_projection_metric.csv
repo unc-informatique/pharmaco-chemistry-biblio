@@ -1,0 +1,46 @@
+;;abiotic;abiotic;abiotic;abiotic;abiotic;abiotic;biotic;biotic;biotic;biotic;biotic;biotic;biotic;biotic;biotic;biotic;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;pharmaco;toxicity
+;;heat stress/heat tolerance/heat resistance/heat impact/heat change/temperature stress/temperature tolerance/temperature resistance/temperature impact/temperature change;heavy metal stress/metallic trace element stress/heavy metal tolerance/metallic trace element tolerance/heavy metal resistance/metallic trace element resistance/heavy metal impact/metallic trace element impact/heavy metal change/metallic trace element change;hydric stress/drought stress/hydric tolerance/drought tolerance/hydric resistance/drought resistance/hydric impact/drought impact/hydric change/drought change;ph stress/ph tolerance/ph resistance/ph impact/ph change;salt stress/salinity stress/salt tolerance/salinity tolerance/salt resistance/salinity resistance/salt impact/salinity impact/salt change/salinity change;uv stress/light stress/uv tolerance/light tolerance/uv resistance/light resistance/uv impact/light impact/uv change/light change/irradiance;antifeedant/phytophagous/herbivory/feeding deterrents;attractant;germination;herbicidal;phytotoxicity;pigment/colour;pollination;quorum sensing;repulsive;root respiration/branching factors/root formation;anti-inflammatory;antibacterial;anticancer/anti-tumour/anti-apoptotic/anti-angiogenic;antidiabetic;antifungal;antimicrobial;antioxidant;antiparasitic;antiviral;arthritis;burns;cardiovascular;cytotoxicity;dementia/alzheimer;obesity;rheumatism;sedative/analgesic;wound;toxicity
+alkaloid;benzylamine;4;0;0;3;6;0;1;1;10;9;2;39;0;0;6;1;80;64;71;22;94;71;102;2;30;11;1;93;159;84;51;0;72;20;170
+alkaloid;colchicine;30;0;19;3;15;2;1;1;179;5;13;337;119;2;4;8;1666;87;1129;112;165;116;314;23;204;2312;41;987;1671;213;235;109;406;323;1627
+alkaloid;cyclopeptide;5;2;2;2;6;2;1;1;32;2;14;44;1;73;4;1;153;387;362;33;466;567;86;16;130;737;2;134;676;64;60;32;100;67;436
+alkaloid;imidazole;149;3;8;76;35;17;24;15;99;25;67;1031;27;25;49;7;1754;1550;2511;230;3298;1597;1672;181;1481;513;154;2010;3766;558;388;6;1419;658;3866
+alkaloid;indole;194;84;344;70;571;80;172;126;1358;37;153;2202;165;247;32;657;1913;2122;3410;324;1417;2066;2770;105;1156;394;38;1400;4922;1059;493;31;1284;642;4160
+alkaloid;isoquinoline;13;1;5;3;7;1;5;2;21;6;9;155;1;4;2;3;353;225;611;83;152;269;286;39;400;94;6;205;938;201;57;7;271;59;520
+alkaloid;isoxazole;1;0;1;1;0;1;3;1;7;35;7;35;0;3;2;0;374;310;288;36;208;300;153;60;192;256;5;74;406;178;51;7;265;50;405
+alkaloid;oxazole;15;0;1;6;0;2;2;3;6;15;8;66;0;2;4;0;131;299;221;57;184;252;72;12;90;42;3;76;374;49;50;0;103;26;281
+alkaloid;piperidine;29;1;3;9;4;11;16;8;16;11;4;215;3;8;9;3;858;690;919;522;412;571;918;37;409;549;48;1466;1409;1800;613;6;2913;159;1937
+alkaloid;purine;79;2;36;14;59;10;8;10;259;9;13;434;13;56;14;46;557;306;1032;140;199;320;882;82;1592;550;26;906;1951;284;350;8;269;197;2205
+alkaloid;putrescine;98;22;154;8;261;17;16;53;255;2;29;317;26;21;4;46;69;59;109;5;41;112;550;15;25;26;9;59;307;50;27;1;10;98;479
+alkaloid;pyridine;175;2;10;66;34;44;24;20;112;137;59;2289;20;35;111;3;1951;2305;3233;314;1633;2254;1782;98;1290;604;111;2013;4419;1049;390;6;2061;565;4746
+alkaloid;pyrrolidine;18;0;0;6;1;5;2;6;6;22;5;109;2;16;3;1;491;404;483;252;215;289;1099;13;452;97;28;300;835;229;114;2;369;81;698
+alkaloid;pyrrolizidine;1;0;1;0;0;0;76;12;10;1;21;32;6;1;0;1;38;28;28;7;22;34;61;4;15;8;4;46;172;11;3;2;18;14;721
+alkaloid;quinazoline;3;0;0;1;0;1;2;3;3;7;6;76;0;8;5;1;370;456;1139;87;282;409;189;27;277;73;3;313;1068;122;50;1;256;103;1311
+alkaloid;quinoline;30;9;4;30;10;6;6;5;40;17;28;781;0;90;13;1;1029;4142;1618;182;1378;7767;859;174;719;482;116;806;2671;518;212;24;664;766;2886
+alkaloid;spermidine;113;19;134;6;307;14;13;5;253;1;36;238;23;19;9;37;105;78;171;14;51;122;635;27;52;32;8;85;436;73;66;2;13;73;518
+alkaloid;spermine;63;12;111;6;232;6;5;8;183;2;24;193;18;7;12;29;102;66;235;11;33;108;518;11;56;24;9;96;595;64;56;0;20;65;565
+alkaloid;thiazole;30;3;5;12;9;9;13;14;46;38;15;489;36;34;8;2;1734;1606;1619;663;1266;1583;1128;210;736;301;35;571;3477;1434;353;5;657;236;2647
+alkaloid;tropane;1;0;4;0;4;1;14;0;16;0;3;29;2;1;1;3;11;15;18;9;9;15;39;1;17;6;0;38;37;132;10;1;70;6;101
+lactones;lactones/strigolactones;74;2;52;31;59;18;169;96;552;44;117;725;19;3592;9;48;1706;1157;1466;182;977;1125;1150;248;423;291;47;540;3187;199;586;30;347;245;1743
+phenolic compound;acetophenone;10;0;1;5;3;6;12;38;19;6;6;155;2;14;7;1;292;459;177;43;344;405;514;6;78;26;6;80;327;57;27;1;83;32;292
+phenolic compound;anthraquinone;28;1;2;13;14;14;32;3;56;10;57;1560;1;15;13;5;667;908;849;202;445;785;1140;21;191;87;33;123;1363;79;74;40;149;199;1405
+phenolic compound;coumarin;26;1;13;44;10;26;51;9;204;26;64;872;8;46;3;17;1448;1654;1392;456;937;1490;2480;61;479;214;53;738;2521;405;169;63;489;296;2059
+phenolic compound;flavonoids/biflavonoids/anthocyanin;509;74;821;109;838;472;371;41;1744;55;377;18171;322;170;20;71;11145;8234;6598;3664;3251;8610;55613;205;2052;953;252;3514;9618;1839;2046;339;2084;2326;8566
+phenolic compound;lignans;7;0;10;1;10;2;27;1;64;4;23;136;1;3;3;2;1095;281;700;132;206;274;1808;37;325;102;7;337;1321;162;155;24;136;107;545
+phenolic compound;naphthoquinone;13;0;0;7;0;3;12;0;37;13;16;620;1;7;4;4;311;451;776;33;338;405;530;67;149;17;12;40;1288;56;22;5;51;119;701
+phenolic compound;phenolic acid;34;8;58;9;62;21;43;6;374;15;93;973;13;23;3;14;852;612;393;259;336;851;6506;14;118;49;13;313;576;101;165;17;115;148;496
+phenolic compound;phenylpropanoid;69;17;152;4;118;35;78;29;147;4;27;412;45;4;0;23;234;126;101;39;134;169;969;9;72;18;5;39;201;29;9;3;39;160;199
+phenolic compound;stilbene;29;0;9;18;12;18;13;3;63;1;9;411;8;18;10;1;1349;254;1089;173;245;285;3336;21;162;80;17;602;1364;400;327;4;70;141;813
+phenolic compound;tannin;67;7;64;15;41;45;597;8;498;5;83;2642;76;38;11;3;1895;3721;940;1189;1370;3515;9333;100;484;234;160;376;1862;219;253;148;784;935;2959
+phenolic compound;xanthone;7;0;0;1;2;2;6;1;13;2;4;120;3;11;0;0;413;366;527;134;191;258;784;14;127;45;8;83;884;91;65;3;60;94;344
+polyketide;acetogenin;1;0;0;0;0;0;8;5;5;1;2;2;0;2;0;0;14;27;74;3;18;18;31;10;11;1;0;2;291;7;2;1;0;4;90
+polyketide;macrolide;23;38;1;18;8;5;4;30;49;7;25;145;11;80;2;0;811;2599;430;116;1533;7105;150;233;360;304;55;494;1112;94;153;2;349;415;1416
+polyketide;polyene;24;1;1;9;5;4;2;39;31;4;7;593;0;11;9;0;60;159;68;3;1772;259;188;12;52;16;8;31;210;12;17;0;18;19;424
+polyketide;polyether;184;0;0;6;21;12;2;0;3;0;4;163;1;3;18;0;34;200;87;0;44;126;76;21;25;10;21;49;303;3;3;0;8;96;264
+polyketide;tetracycline;113;174;11;40;169;29;10;15;109;3;71;1205;5;242;10;10;1099;6399;360;286;1454;22712;759;114;338;1185;497;575;1153;215;248;29;769;2752;3272
+sterols;sterols/cardenolides;109;0;39;14;100;21;141;14;259;11;35;755;22;17;5;6;1055;732;586;562;2275;961;2478;100;289;131;40;1684;1500;346;2951;23;180;223;1580
+sulphur compounds;sulphur compounds/glucosinolates;471;29;56;136;173;120;322;37;316;17;148;2608;30;49;168;14;602;1165;1072;79;329;1243;1910;20;176;56;123;442;1585;152;101;5;81;378;3313
+terpenoid/terpene;diterpene;15;0;11;1;12;4;137;17;66;7;39;95;12;16;1;2;940;587;672;80;321;543;607;24;262;109;7;103;1688;81;53;25;188;136;662
+terpenoid/terpene;monoterpene;43;1;59;1;11;13;181;89;112;34;64;126;56;11;2;3;353;463;216;40;339;552;718;21;61;22;9;59;420;38;20;17;155;79;430
+terpenoid/terpene;sesquiterpene;36;0;42;0;24;13;472;192;318;50;192;317;75;40;3;14;1807;1517;1397;154;1240;1746;1794;128;385;160;15;140;3296;322;108;53;336;297;1480
+terpenoid/terpene;tetraterpene/carotenoid/xanthophyll;535;121;884;44;1167;1436;47;28;947;67;405;22425;95;25;4;34;1056;416;616;213;219;575;14911;13;115;90;44;993;727;286;654;11;104;192;2104
+terpenoid/terpene;triterpene/saponin;74;3;39;8;38;12;172;8;344;16;89;868;16;40;9;8;3941;3270;2886;1534;1766;3123;6646;117;868;520;135;875;5262;479;563;173;1081;1023;3700

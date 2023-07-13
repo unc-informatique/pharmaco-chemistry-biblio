@@ -1,0 +1,9 @@
+certifi
+numpy
+pandas
+aiohttp
+python-dotenv
+mypy
+pylint
+black
+pytest

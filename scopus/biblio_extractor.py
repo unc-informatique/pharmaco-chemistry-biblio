@@ -83,7 +83,9 @@ class Query:
 
 
 # type of searches
-ResultAPI = tuple[Optional[int], float]
+ResultAPI = tuple[Optional[int], float, Optional[str]]
+
+
 # SearchAPI = Callable[[ClientSession, Query, Optional[Any]], Awaitable[ResultAPI]]
 class SearchAPI(Protocol):  # pylint: disable=too-few-public-methods
     """A class to describe callbacks to a web API"""
@@ -128,7 +130,7 @@ def load_input(filename: str | Path) -> pd.DataFrame:
 # TODO : add paramters with default values
 #   shorten_names=False
 #   threshold = 0
-def load_results(filename: str | Path) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
+def load_results(filename: str | Path) -> tuple[pd.DataFrame, pd.Series, pd.Series, int]:
     """loads a CSV dataset as a dataframe with two levels keywords + {w/o, w/}"""
     dataset_with_margin = pd.read_csv(filename, index_col=[0, 1, 2], header=[0, 1, 2], sep=";")
 
@@ -378,7 +380,7 @@ async def fake_search(_: ClientSession, query: Query) -> ResultAPI:
     results_nb = randint(1, 10000)
     # await asyncio.sleep(randint(1, 1000) / 1000)
     elapsed = time.perf_counter() - start_time
-    return results_nb, elapsed
+    return results_nb, elapsed, None
 
 
 async def httpbin_search(session: ClientSession, query: Query, *, error_rate: int = 0) -> ResultAPI:
@@ -774,7 +776,6 @@ async def spawner(
     logger.debug(result_df)
 
     async with ClientSession(raise_for_status=True) as session:
-
         # on lance tous les exécuteurs de requêtes
         consumer_tasks = [
             asyncio.create_task(
